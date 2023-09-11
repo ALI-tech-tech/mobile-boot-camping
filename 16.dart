@@ -8,13 +8,13 @@ void main(List<String> args) {
       alpha.add({"num":count(txt[i], txt),"letter":txt[i]});
     }
   for (var i = 0; i < alpha.length; i++) {
-    if (alpha[i]["num"]>1) {
+    
       if (!repeat.contains(alpha[i]["letter"])) {
         repeat.add(alpha[i]["letter"]);
         print("Letter ${alpha[i]["letter"]} : ${alpha[i]["num"]} times"); 
       }
       
-    }
+    
   }
   
 
