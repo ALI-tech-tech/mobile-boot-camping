@@ -21,7 +21,7 @@ void main(List<String> args) {
 
   for (var i = 0; i < restaurants.length; i++) {
     List<double> my=restaurants[i]["ratings"];
-    double sumli=  sum(my);
+    double sumli=  sum(my)/my.length;
     restaurants[i]["avgRating"]=sumli;
     
   }
