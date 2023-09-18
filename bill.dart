@@ -21,6 +21,6 @@ set Discount(double di)=>this._discount=di;
   }
 
   toString(){
-    return "doctorFees : $_doctorFees \n pharmacyChargesFees : $_pharmacyChargesFees \n roomRentFees : $_roomRentFees \n discount: $_discount ";
+    return "doctorFees : $_doctorFees \n pharmacyChargesFees : $_pharmacyChargesFees \n roomRentFees : $_roomRentFees \n discount: $_discount \n Total Amount : ${getBillTotalAmount()>0?getBillTotalAmount():0}";
   }
 }

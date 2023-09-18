@@ -11,13 +11,10 @@ abstract class Person {
     this._fname=fname;
     this._lname=lname;
   }
+  
 
-set setID(String id)=>this._id;
-  // String? get getName=> this._fname;
-  // String? get getAddress=> this._address;
-
-  //set setAddress(String address)=> this._address=address;
+set setID(String id)=>this._id=id;
   String Displayinfo(){
-    return "ID=${this._id} name : ${this._fname} ${this._lname}";
+    return "ID : ${this._id} name : ${this._fname} ${this._lname}";
   }
 }

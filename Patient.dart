@@ -7,14 +7,18 @@ class Patient extends Person {
   late Doctor _physician;
   late List<Bill> bl=[];
 
-  Patient({required String id ,required String fname,required String lname ,required String birthdate ,required Doctor physician}):super( fname: fname,lname: lname){
-    this.setID=setId(id);
+  Patient({required String fname,required String lname ,required String birthdate ,required Doctor physician}):super( fname: fname,lname: lname){
+    
     this._physician=physician;
     this._birthdate=birthdate;
+  
   }
   
-  String setId(String id){
-    return (id.length==6)?id.toUpperCase():"Enter coreect ID";
+ setId(String id){
+  if (id.length>0) {
+    this.setID=id.toUpperCase();
+  }
+    
     }
   Displayinfo(){
     

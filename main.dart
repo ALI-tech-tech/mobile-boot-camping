@@ -9,9 +9,13 @@ void main(List<String> args) {
 //  Doctor D4=Doctor(id: "2138", fname: "Ali4", lname: "BenJahlan", specialty: "specialty 4"); 
  
 
- Patient p1=Patient(id: "hhckkc", fname: "Patient 1", lname: "lname", birthdate:"17/5/199" , physician: D1);
+ Patient p1=Patient( fname: "Patient 1", lname: "lname", birthdate:"17/5/1956" , physician: D1);
+ p1.setId("vmh451");
  Bill b1=Bill(doctorFees: 40.2, pharmacyChargesFees: 30.0);
+ Bill b2=Bill(doctorFees: 50.2, pharmacyChargesFees: 80.0);
+
  p1.addbill(b1);
+ p1.addbill(b2);
  print(p1.Displayinfo());
  p1.bl.forEach((element) {
   print(element.toString());
