@@ -5,4 +5,5 @@ void main(List<String> args) {
   sv.newstudent();
   sv.addgrades();
   sv.show();
+  sv.viewwithtotalfee();
 }

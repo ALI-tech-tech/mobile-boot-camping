@@ -1,18 +1,20 @@
 
 
+import 'Course.dart';
+
 class Grad {
-  String? _cours;
+  Course? _cours;
   int? _mark;
   String? _Grade;
 
-  Grad({required Course,required mark}){
+  Grad({required Course Course,required mark}){
     this._cours=Course;
     this._mark=mark;
     
   }
- String? get cours => this._cours;
+ Course? get cours => this._cours;
 
- set cours(String? value) => this._cours = value;
+ set cours(Course? value) => this._cours = value;
 
   get mark => this._mark;
 

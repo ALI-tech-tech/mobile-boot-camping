@@ -14,6 +14,22 @@ class StudentController {
     return students;
   }
 
-  
+  allstudentwithtotalfee(){
+    for (var i = 0; i < students.length; i++) {
+      print(" Student :${students[i].name} Totalfee:${this.totalfeeAstudent(students[i].id)}");
+    }
+  }
+
+  totalfeeAstudent(int id){
+    double sum=0;
+    for (var i = 0; i < students.length; i++) {
+      if (students[i].id==id) {
+        students[i].getGrads!.forEach((element) {
+          sum+=element.cours!.fee;
+        });
+      }
+    }
+    return sum;
+  }
 
 }
