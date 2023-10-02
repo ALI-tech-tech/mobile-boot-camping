@@ -1,4 +1,5 @@
 import '../Exptions/Myexption.dart';
+import 'Person.dart';
 
 class PersonBuilder {
   String? firstName;
@@ -10,7 +11,7 @@ class PersonBuilder {
  List<String> get hobbies => this._hobbies;
 
  set hobbies( value) {
-   if (value!=null || !value.isEmpty) {
+   if (value!=null || value.length>0) {
       this._hobbies=value.split(" ");
     }
     else{
@@ -45,6 +46,8 @@ class PersonBuilder {
   
   PersonBuilder({required this.firstName,required this.lastName});
 
-
+Buil(){
+  return Person(pb: this);
+}
 
 }

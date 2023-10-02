@@ -7,7 +7,7 @@ class PersonController {
   late PersonBuilder p1;
   late PersonView pv;
   List<String> listhobbis=[];
-  PersonController({required this.p1,required this.pv});
+  PersonController({required  this.p1,required this.pv});
 
   addage({ required int age }){
     p1.age=age;
@@ -20,7 +20,8 @@ class PersonController {
   }
 
   showperson(){
-    print("Name ${p1.firstName} ${p1.lastName}\nHobbies: ${p1.hobbies}\nProfession:${p1.profession}\nage:${p1.age}");
+    Person person=p1.Buil();
+    print("Name ${person.firstName} ${person.lastName}\nHobbies: ${person.hobbies}\nProfession:${person.profession}\nage:${person.age}");
   }
 
 }

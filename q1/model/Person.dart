@@ -6,7 +6,7 @@ class Person {
   int? age;
   String? profession;
   List<String>hobbies=[];
-
+  
   Person({required PersonBuilder pb}){
     this.firstName=pb.firstName;
     this.lastName=pb.lastName;
