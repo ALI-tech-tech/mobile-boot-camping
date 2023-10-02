@@ -45,11 +45,11 @@ class Course_controller extends Crud {
   }
   
   addStudentsToCourse(List<Student> st,String Cours){
-    for (var i = 0; i < allcourses.length; i++) {
-      if (Cours==allcourses[i].name) {
-        allcourses[i].students=st;
-      }
-    }
+    // for (var i = 0; i < allcourses.length; i++) {
+    //   if (Cours==allcourses[i].name) {
+    //     allcourses[i].students=st;
+    //   }
+    // }
   }
  
   findcours(String name){

@@ -7,3 +7,7 @@ void main(List<String> args) {
   sv.show();
   sv.viewwithtotalfee();
 }
+
+enum Types{
+  girls,boys 
+}

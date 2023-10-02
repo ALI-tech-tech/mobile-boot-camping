@@ -1,12 +1,14 @@
 import 'Grads.dart';
+import 'department.dart';
 
 class Student {
   String? _name;
   int? _id;
-  List<Grad> _grads=[];
- List<Grad>? get getGrads => this._grads;
+  Department? d;
+  //List<Grad> _grads=[];
+ //List<Grad>? get getGrads => this._grads;
 
- set setGrads(Grad grads) { this._grads.add(grads);}
+ //set setGrads(Grad grads) { this._grads.add(grads);}
  String? get name => this._name;
 
  set name(String? value) => this._name = value;
