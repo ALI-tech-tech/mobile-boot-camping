@@ -1,0 +1,17 @@
+[
+    {
+        "id":1,
+        "name":"program 4",
+        "fees":20
+    },
+    {
+        "id":2,
+        "name":"program 5",
+        "fees":25
+    },
+    {
+        "id":3,
+        "name":"program 6",
+        "fees":40
+    }
+]
