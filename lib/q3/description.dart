@@ -9,8 +9,9 @@ class Description extends StatelessWidget {
         children: [
           Container(
             
-            
+            padding: EdgeInsets.only(left: 20),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "Ali Ben Jahlan",

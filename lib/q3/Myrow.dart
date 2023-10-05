@@ -12,7 +12,9 @@ class Myrow extends StatelessWidget {
       children: [
         for(int i=1;i<=3;i++)
          
-         Image.asset("assets/images/${i}.jpg",cacheHeight: 134,cacheWidth: 134,),
+         Container(
+          padding: EdgeInsets.only(bottom: 2),
+          child: Image.asset("assets/images/${i}.jpg",cacheHeight: 134,cacheWidth: 134,)),
          
       ],
     );
