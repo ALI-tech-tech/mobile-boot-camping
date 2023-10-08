@@ -14,13 +14,19 @@ class HomeScreen extends StatelessWidget {
     return 
     Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.teal,
         title: Text("Products"),
       ),
       drawer: Drawer(
+        
           child: Column(
         children: [
           UserAccountsDrawerHeader(
+           decoration: BoxDecoration(
+            color: Colors.teal
+           ),
             currentAccountPicture: CircleAvatar(
+              
               backgroundImage: AssetImage("assets/images/logo.jpg"),
             ),
             accountEmail: Text("mokhtar.ghaleb@gmail.com"),

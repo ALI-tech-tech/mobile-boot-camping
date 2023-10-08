@@ -27,6 +27,9 @@ class Cart extends StatelessWidget {
           child: Column(
         children: [
           UserAccountsDrawerHeader(
+            decoration: BoxDecoration(
+            color: Colors.teal
+           ),
             currentAccountPicture: CircleAvatar(
               backgroundImage: AssetImage("assets/images/logo.jpg"),
             ),
@@ -73,6 +76,11 @@ class Cart extends StatelessWidget {
                                     ),
                                   ),
                                 ),
+                                Positioned(
+                                  top: 5,
+                                  left: 170,
+                                  child: Icon(Icons.delete, color: Colors.white,))
+                                ,
                                 Positioned(
                                     top: 123,
                                     //left: 90,
