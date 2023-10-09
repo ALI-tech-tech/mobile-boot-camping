@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practis/day29/q2/picture1/news.dart';
 
 import 'day28/Todo/view/ViewTask.dart';
 import 'day28/q1/exchange.dart';
 import 'day28/q2/Text.dart';
+import 'day29/q1/search.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Textwidget(),
+      home: News(),
     );
   }
 }
