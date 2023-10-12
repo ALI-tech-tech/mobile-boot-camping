@@ -7,6 +7,8 @@ import 'day28/q1/exchange.dart';
 import 'day28/q2/Text.dart';
 import 'day29/q1/search.dart';
 import 'day30/q2/subinfo.dart';
+import 'day31/q1/container.dart';
+import 'day31/q2/tween.dart';
 
 
 void main() {
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Formvalid(),
+      home: AnimMycontainer(),
     );
   }
 }

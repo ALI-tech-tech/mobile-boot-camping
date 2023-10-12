@@ -33,6 +33,11 @@ class _FormvalidState extends State<Formvalid> {
               child: Column(
                 children: [
                   TextFormField(
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp('[A-Za-z]+'))
+                    ],
+                    autofocus: true,
+                    maxLength: 3 ,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) =>
                         value!.length < 3 ? "write more 2 char" : null,
@@ -89,6 +94,7 @@ class _FormvalidState extends State<Formvalid> {
                       child: Text("Clear name")),
                   ElevatedButton(
                       onPressed: () {
+                        //kk.currentState!.reset();
                         namec.clear();
                         emailc.clear();
                         passc2.clear();

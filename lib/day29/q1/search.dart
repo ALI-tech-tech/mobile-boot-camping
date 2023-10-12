@@ -1,6 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
-
+// import 'package:flutter_practis/MyPackage/Extentios/MyList.dart';
 import 'person.dart';
 
 class Search extends StatefulWidget {
@@ -26,6 +26,7 @@ class _SearchState extends State<Search> {
                     li=genratelist();
                   }else{
                   li=li.where((element) => element.email!.contains(v)).toList();
+                  
                   }
                   setState(() {
                     

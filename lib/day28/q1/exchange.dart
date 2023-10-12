@@ -38,7 +38,7 @@ class _ExchangeState extends State<Exchange> {
                 });
             },title: Text("SADUI"),),
 
-            Text("${result}"),
+            Text("${result.toStringAsFixed(3)}"),
             // Row(
             //   children: [
             //     Radio(value: 1, groupValue: selected, onChanged: (v){
