@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practis/day29/q2/picture1/news.dart';
 import 'package:flutter_practis/day30/q1/form.dart';
+import 'package:flutter_practis/day31/homework/movieapp/pages/paage8.dart';
+import 'package:flutter_practis/day31/homework/movieapp/pages/page14.dart';
 
 import 'day28/Todo/view/ViewTask.dart';
 import 'day28/q1/exchange.dart';
 import 'day28/q2/Text.dart';
 import 'day29/q1/search.dart';
 import 'day30/q2/subinfo.dart';
+import 'day31/homework/movieapp/pages/page16.dart';
+import 'day31/homework/movieapp/pages/page17.dart';
 import 'day31/q1/container.dart';
 import 'day31/q2/tween.dart';
 
@@ -22,12 +26,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: AnimMycontainer(),
+      home: PaymentPage(),
     );
   }
 }
