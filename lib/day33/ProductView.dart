@@ -33,7 +33,7 @@ class _ProductViewState extends State<ProductView> {
             ),
             itemBuilder: (_) => <PopupMenuItem<Widget>>[
               PopupMenuItem<Widget>(
-                  child: InkWell(
+                  
                       onTap: () async {
                         //Navigator.pushReplacement(context, MaterialPageRoute(builder: (cx)=>Cardd(),));
                         final bool? shouldRefresh = await Navigator.push(
@@ -46,18 +46,18 @@ class _ProductViewState extends State<ProductView> {
                           
                         }
                       },
-                      child: Text('View all'))),
+                      child: Text('View all')),
               PopupMenuItem<Widget>(
                   onTap: () {
                     pc.removeallselct();
                   },
                   child:  Text('Clear All')),
               PopupMenuItem<Widget>(
-                  child: InkWell(
+                  
                       onTap: () {
                         setState(() {});
                       },
-                      child: Text('Refresh'))),
+                      child: Text('Refresh')),
             ],
           )
         ],

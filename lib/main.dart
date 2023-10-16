@@ -14,6 +14,7 @@ import 'day31/homework/movieapp/pages/page17.dart';
 import 'day31/q1/container.dart';
 import 'day31/q2/tween.dart';
 import 'day33/ProductView.dart';
+import 'day34/animcontainer.dart';
 
 
 void main() {
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ProductView(),
+      home: AppearContiner(),
     );
   }
 }
