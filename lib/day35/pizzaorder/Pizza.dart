@@ -1,6 +1,6 @@
 class Pizza {
   size? s;
-  bool? gluteen;
+  bool? gluteen=false;
   List<String> toppings=[];
   String? instructions; 
 }
