@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:faker/faker.dart';
+
 import 'package:flutter_practis/day33/product.dart';
 
 class ProductController {

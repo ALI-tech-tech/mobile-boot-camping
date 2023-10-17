@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practis/day33/ProductController.dart';
 
 import 'card.dart';
-import 'product.dart';
+
 
 class ProductView extends StatefulWidget {
   const ProductView({super.key});
@@ -28,36 +28,36 @@ class _ProductViewState extends State<ProductView> {
         title: Text("Product"),
         actions: [
           PopupMenuButton(
-            icon: Icon(
-              Icons.more_vert,
-            ),
-            itemBuilder: (_) => <PopupMenuItem<Widget>>[
-              PopupMenuItem<Widget>(
-                  
-                      onTap: () async {
-                        //Navigator.pushReplacement(context, MaterialPageRoute(builder: (cx)=>Cardd(),));
-                        final bool? shouldRefresh = await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (cx) => Cardd(),
-                            ));
-                        if (shouldRefresh!) {
-                          setState(() {});
-                          
-                        }
-                      },
-                      child: Text('View all')),
-              PopupMenuItem<Widget>(
+            // icon: Icon(
+            //   Icons.more_vert,
+            // ),
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                  onTap: () async {
+                    //  print('hjhjh');
+                    // Navigator.push(context, MaterialPageRoute(builder: (cx)=>Cardd(),));
+                    bool? shouldRefresh = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Cardd(),
+                        )) as bool?;
+
+                        print(shouldRefresh);
+                    // if (shouldRefresh!) {
+                    //   setState(() {});
+                    // }
+                  },
+                  child: Text('View all')),
+              PopupMenuItem(
                   onTap: () {
                     pc.removeallselct();
                   },
-                  child:  Text('Clear All')),
-              PopupMenuItem<Widget>(
-                  
-                      onTap: () {
-                        setState(() {});
-                      },
-                      child: Text('Refresh')),
+                  child: Text('Clear All')),
+              PopupMenuItem(
+                  onTap: () {
+                    setState(() {});
+                  },
+                  child: Text('Refresh')),
             ],
           )
         ],
