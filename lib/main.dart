@@ -4,6 +4,8 @@ import 'package:flutter_practis/day30/q1/form.dart';
 import 'package:flutter_practis/day31/homework/movieapp/pages/paage8.dart';
 import 'package:flutter_practis/day31/homework/movieapp/pages/page14.dart';
 import 'package:flutter_practis/day35/pizzaorder/Pizzaview.dart';
+import 'package:flutter_practis/day36/view/CoursesView.dart';
+
 
 import 'day28/Todo/view/ViewTask.dart';
 import 'day28/q1/exchange.dart';
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: PizzaView(),
+      home: CourseView(),
     );
   }
 }

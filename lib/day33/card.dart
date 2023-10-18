@@ -18,7 +18,7 @@ class _CarddState extends State<Cardd> {
      WillPopScope(
     
       onWillPop: () async{
-        Navigator.of(context).pop(true);
+        Navigator.pop(context, true);
         return false;
       },
       child: 

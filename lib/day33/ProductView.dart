@@ -20,6 +20,20 @@ class _ProductViewState extends State<ProductView> {
     super.initState();
     pc.getdata();
   }
+  Future<void> _navigateAndDisplaySelection(BuildContext context) async {
+    
+    final result = await Navigator.push(
+      context,
+      
+      MaterialPageRoute(builder: (context) =>  Cardd()),
+    );
+
+    if (result!=null && result) {
+      setState(() {
+        
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,21 +46,22 @@ class _ProductViewState extends State<ProductView> {
             //   Icons.more_vert,
             // ),
             itemBuilder: (context) => [
-              PopupMenuItem(
-                  onTap: () async {
-                    //  print('hjhjh');
-                    // Navigator.push(context, MaterialPageRoute(builder: (cx)=>Cardd(),));
-                    bool? shouldRefresh = await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Cardd(),
-                        )) as bool?;
+               PopupMenuItem(
+                  onTap: ()async { return await _navigateAndDisplaySelection(context);},
+                  // () async {
+                  //   //  print('hjhjh');
+                  //   // Navigator.push(context, MaterialPageRoute(builder: (cx)=>Cardd(),));
+                  //   bool? shouldRefresh = await Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (context) => Cardd(),
+                  //       )) as bool?;
 
-                        print(shouldRefresh);
-                    // if (shouldRefresh!) {
-                    //   setState(() {});
-                    // }
-                  },
+                  //       print(shouldRefresh);
+                  //   // if (shouldRefresh!) {
+                  //   //   setState(() {});
+                  //   // }
+                  // },
                   child: Text('View all')),
               PopupMenuItem(
                   onTap: () {
