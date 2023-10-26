@@ -12,4 +12,5 @@ com.example.flutter_practis.app-rs-10 F:\flutter_bootcamp\flutter_practis\build\
 com.example.flutter_practis.app-mergeDebugResources-11 F:\flutter_bootcamp\flutter_practis\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
 com.example.flutter_practis.app-mergeDebugResources-12 F:\flutter_bootcamp\flutter_practis\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
 com.example.flutter_practis.app-merged_res-13 F:\flutter_bootcamp\flutter_practis\build\app\intermediates\merged_res\debug
-com.example.flutter_practis.app-packaged_res-14 F:\flutter_bootcamp\flutter_practis\build\video_player_android\intermediates\packaged_res\debug
+com.example.flutter_practis.app-packaged_res-14 F:\flutter_bootcamp\flutter_practis\build\path_provider_android\intermediates\packaged_res\debug
+com.example.flutter_practis.app-packaged_res-15 F:\flutter_bootcamp\flutter_practis\build\video_player_android\intermediates\packaged_res\debug

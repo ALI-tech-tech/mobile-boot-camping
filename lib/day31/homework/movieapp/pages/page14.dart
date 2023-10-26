@@ -23,6 +23,7 @@ class _PaymentPageState extends State<PaymentPage> {
             Container(
               height: 300,
               decoration: BoxDecoration(
+                border: Border.all(width: 0),
                 image:DecorationImage(image: AssetImage("assets/images/img_thumbnailimage_160x312.png",), fit: BoxFit.fill),
                 
               ),
@@ -33,8 +34,12 @@ class _PaymentPageState extends State<PaymentPage> {
                     colors: [
                   Colors.grey.withOpacity(0.2),
                   Colors.grey.withOpacity(0.6),
-                  Colors.black.withOpacity(0.8),
-                ])
+                  Colors.grey,
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                
+                )
                 ),
               ),
             ),

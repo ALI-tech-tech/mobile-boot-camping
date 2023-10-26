@@ -5,6 +5,7 @@ import 'package:flutter_practis/day31/homework/movieapp/pages/paage8.dart';
 import 'package:flutter_practis/day31/homework/movieapp/pages/page14.dart';
 import 'package:flutter_practis/day35/pizzaorder/Pizzaview.dart';
 import 'package:flutter_practis/day36/view/CoursesView.dart';
+import 'package:flutter_practis/day37/view/GbaHome.dart';
 
 
 import 'day28/Todo/view/ViewTask.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: CourseView(),
+      home: GbaCalocltor(),
     );
   }
 }
