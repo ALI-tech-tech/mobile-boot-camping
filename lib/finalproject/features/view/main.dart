@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
+
 import 'package:flutter_practis/finalproject/core/widgets/backgroundpages.dart';
 import 'package:flutter_practis/finalproject/core/widgets/onbordingcontent.dart';
+import 'package:flutter_practis/finalproject/features/view/Categorypayment.dart';
 import 'package:flutter_practis/finalproject/features/view/createaccount.dart';
 import 'package:flutter_practis/finalproject/features/view/customplane.dart';
 import 'package:flutter_practis/finalproject/features/view/moviepage.dart';
+import 'package:flutter_practis/finalproject/features/view/movievideopage.dart';
 import 'package:flutter_practis/finalproject/features/view/otp.dart';
 import 'package:flutter_practis/finalproject/features/view/paymentmethod.dart';
 import 'package:flutter_practis/finalproject/features/view/paymentmethodP2.dart';
@@ -39,6 +42,8 @@ class MyApp extends StatelessWidget {
         "/paymentmethod":(context) => PaymentMethod(),
         "/paymentP2":(context) => PaymentPage(),
         "/pincode":(context) => PinCode(),
+        "/categorypayment":(context) => CategoryPayment(),
+        "/movievediopage":(context) => MovieVideopage(),
         // "/otppage":(context) => OTP(),
       },
     );

@@ -1,9 +1,14 @@
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 ThemeData dark=ThemeData(
-  brightness: Brightness.dark,
   
+  brightness: Brightness.dark,
+  appBarTheme: AppBarTheme(
+    
+    iconTheme: IconThemeData(color: Colors.amber)
+  ),
   scaffoldBackgroundColor: Colors.black38,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(

@@ -5,6 +5,7 @@ import 'package:flutter_practis/finalproject/core/widgets/alert.dart';
 import 'package:flutter_practis/finalproject/core/widgets/categoryicon.dart';
 import 'package:flutter_practis/finalproject/core/widgets/drawer.dart';
 import 'package:flutter_practis/finalproject/core/widgets/picwithdetails.dart';
+import 'package:flutter_practis/finalproject/features/view/movievideopage.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -115,22 +116,27 @@ class _MovieHomepageState extends State<MovieHomepage> {
                               ].map((i) {
                                 return Builder(
                                   builder: (BuildContext context) {
-                                    return Container(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                1.5,
-
-                                        // margin: EdgeInsets.symmetric(horizontal: 5.0),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/images/${i}"),
-                                                fit: BoxFit.fill)),
-                                        child: Text(
-                                          '',
-                                        ));
+                                    return InkWell(
+                                      onTap: (){
+                                        Navigator.pushNamed(context, MovieVideopage.rout);
+                                      },
+                                      child: Container(
+                                          width:
+                                              MediaQuery.of(context).size.width /
+                                                  1.5,
+                                    
+                                          // margin: EdgeInsets.symmetric(horizontal: 5.0),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/${i}"),
+                                                  fit: BoxFit.fill)),
+                                          child: Text(
+                                            '',
+                                          )),
+                                    );
                                   },
                                 );
                               }).toList(),

@@ -53,7 +53,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       minimumSize: Size(400, 50)
                     ),
                     onPressed: (){
-                      //Navigator.pushNamed(context, OTP.rout);
+                      Navigator.pushNamed(context, PinCode.rout);
                     }, child: Text("Create an Account")),
                     SizedBox(height: 8,),
                   Text("By sign in ...."),

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 application
-INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:2:5-32:19
+INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:2:5-36:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Eng.ALI\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Eng.ALI\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.core:core:1.7.0] C:\Users\Eng.ALI\.gradle\caches\transforms-3\57d13c65eae90a7945dea98c1aa2b720\transformed\core-1.7.0\AndroidManifest.xml:24:5-89
@@ -12,11 +12,11 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\En
 	android:name
 		INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml
 manifest
-ADDED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-35:12
-INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-35:12
-INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-35:12
-INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-35:12
-MERGED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-35:12
+ADDED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-39:12
+INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-39:12
+INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-39:12
+INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-39:12
+MERGED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-39:12
 MERGED from [:path_provider_android] F:\flutter_bootcamp\flutter_practis\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:video_player_android] F:\flutter_bootcamp\flutter_practis\build\video_player_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Eng.ALI\.gradle\caches\transforms-3\ae81e06d24c799147c26814497a2a305\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
@@ -50,24 +50,24 @@ INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\debug\AndroidM
 INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 	package
 		INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml
-		ADDED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-35:12
+		ADDED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-39:12
 		INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml
-		ADDED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-35:12
+		ADDED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-39:12
 		INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml
-		ADDED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-35:12
+		ADDED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-39:12
 		INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:11-69
 uses-permission#android.permission.INTERNET
-ADDED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:33:5-66
-MERGED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:33:5-66
-MERGED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:33:5-66
+ADDED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:37:5-66
+MERGED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:37:5-66
+MERGED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:37:5-66
 	android:name
-		ADDED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:33:22-64
+		ADDED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:37:22-64
 uses-sdk
 INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml

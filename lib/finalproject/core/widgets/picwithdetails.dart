@@ -70,7 +70,7 @@ class _PicWithDetailsState extends State<PicWithDetails> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text("data",style: TextStyle(color: Colors.yellow),),SizedBox(width: 70,), Icon(Icons.favorite_border,color: Colors.white,)],
+                children: [Icon(Icons.watch_later_outlined,size: 12,), Text(" 01:30:21",style: TextStyle(color: Colors.amber, fontSize: 10),),SizedBox(width: 55,), Icon(Icons.favorite_border,color: Colors.white,)],
               )
             ],
           ),
