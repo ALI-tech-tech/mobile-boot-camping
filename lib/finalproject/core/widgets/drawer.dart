@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practis/day31/homework/movieapp/Theme/Textstyle.dart';
+import 'package:flutter_practis/finalproject/features/view/personalaccount.dart';
+import 'package:flutter_practis/finalproject/features/view/subscribtion.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -13,13 +15,22 @@ class CustomDrawer extends StatelessWidget {
         padding: EdgeInsets.only(top: 100, left: 30),
         children: [
           ListTile(
-            leading: CircleAvatar(
-              backgroundImage: AssetImage("assets/images/ali.JPG"),
+            leading: InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, PersonalAccount.rout);
+              },
+              child: CircleAvatar(
+                
+                backgroundImage: AssetImage("assets/images/ali.JPG"),
+              ),
             ),
             title: Text("ALi Ben Jahlan" ,style: TextStyleTheme.hiheadertext(),),
             subtitle: Text("alibenjhlan@gmail.com", style: TextStyleTheme.headertext(),),
           ),
           ListTile(
+            onTap: (){
+              Navigator.pushNamed(context, PersonalAccount.rout);
+            },
             leading: Icon(Icons.person_2_sharp,color: Colors.white,),
             title: Text("Myaccount",style: TextStyleTheme.hiheadertext(),),
           ),
@@ -28,6 +39,9 @@ class CustomDrawer extends StatelessWidget {
             title: Text("About Us",style: TextStyleTheme.hiheadertext(),),
           ),
           ListTile(
+            onTap: (){
+              Navigator.pushNamed(context, SbScribtionPlansUser.rout);
+            },
             leading: Icon(Icons.subscriptions,color: Colors.white),
             title: Text("My Subscription",style: TextStyleTheme.hiheadertext(),),
           ),

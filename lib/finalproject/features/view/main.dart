@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practis/finalproject/core/widgets/backgroundpages.dart';
 import 'package:flutter_practis/finalproject/core/widgets/onbordingcontent.dart';
 import 'package:flutter_practis/finalproject/features/view/Categorypayment.dart';
+import 'package:flutter_practis/finalproject/features/view/botomnavigatehome.dart';
+import 'package:flutter_practis/finalproject/features/view/category.dart';
 import 'package:flutter_practis/finalproject/features/view/createaccount.dart';
 import 'package:flutter_practis/finalproject/features/view/customplane.dart';
 import 'package:flutter_practis/finalproject/features/view/moviepage.dart';
@@ -11,9 +13,12 @@ import 'package:flutter_practis/finalproject/features/view/movievideopage.dart';
 import 'package:flutter_practis/finalproject/features/view/otp.dart';
 import 'package:flutter_practis/finalproject/features/view/paymentmethod.dart';
 import 'package:flutter_practis/finalproject/features/view/paymentmethodP2.dart';
+import 'package:flutter_practis/finalproject/features/view/personalaccount.dart';
 import 'package:flutter_practis/finalproject/features/view/signin.dart';
 import 'package:flutter_practis/finalproject/features/view/start.dart';
+import 'package:flutter_practis/finalproject/features/view/subscribtion.dart';
 import 'package:flutter_practis/finalproject/features/view/subscriptionplan.dart';
+import 'package:flutter_practis/finalproject/features/view/watchlist.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -30,7 +35,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: dark,
       title: 'Movie App',
-      home: HomePage(),
+      home:HomePage(),
       routes: {
         "/home": (context) => HomePage(),
         "/startpage": (context) => StartPage(),
@@ -44,7 +49,12 @@ class MyApp extends StatelessWidget {
         "/pincode":(context) => PinCode(),
         "/categorypayment":(context) => CategoryPayment(),
         "/movievediopage":(context) => MovieVideopage(),
-        // "/otppage":(context) => OTP(),
+        "/watchlist":(context) => WatchList(),
+        "/Homemoviepage":(context) => BottomNavigationBarApp(),
+        "/SbScribtionPlansUser":(context) => SbScribtionPlansUser(),
+        "/personalaccount":(context) => PersonalAccount(),
+        "/category":(context) => Category(),
+        
       },
     );
   }
@@ -91,17 +101,17 @@ class _HomePageState extends State<HomePage> {
                       context: context,
                       icon: Icons.computer,
                       Headr: "Wach on any device",
-                      Content: "Content"),
+                      Content: "Connect to using your favorite\ndevice"),
                   onbordingcontent(
                       context: context,
                       icon: Icons.computer,
-                      Headr: "Wach on any device",
-                      Content: "Content"),
+                      Headr: "Unlimited EnterTainment",
+                      Content: "Iam an early bird and I am a night owl"),
                   onbordingcontent(
                     context: context,
                     icon: Icons.computer,
-                    Headr: "Wach on any device",
-                    Content: "Content",
+                    Headr: "NO ANNOYING CONTRACTS",
+                    Content: "Iam an early bird and I am a night owl",
                   ),
                 ],
               ),

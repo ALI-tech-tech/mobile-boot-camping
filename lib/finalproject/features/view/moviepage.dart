@@ -148,7 +148,8 @@ class _MovieHomepageState extends State<MovieHomepage> {
                   ),
                   Positioned(
                     top: MediaQuery.of(context).size.height / 3.5,
-                    child: Container(
+                    child: 
+                    Container(
                       height: 80,
                       padding: EdgeInsets.all(6),
                       width: MediaQuery.of(context).size.width,
@@ -161,7 +162,8 @@ class _MovieHomepageState extends State<MovieHomepage> {
                       child: ListView(
                       
                         scrollDirection: Axis.horizontal,
-                        children: List.generate(
+                        children: 
+                        List.generate(
                             category.length,
                             (index) => category_icon(
                                 icon: caticon[index], title: category[index]),
@@ -169,6 +171,7 @@ class _MovieHomepageState extends State<MovieHomepage> {
                         
                       ),
                     ),
+                 
                   )
                 ],
               ),
@@ -314,7 +317,9 @@ class _MovieHomepageState extends State<MovieHomepage> {
                 ),
               )
             ]),
-          )),
+          ),
+          
+          ),
     );
   }
 }

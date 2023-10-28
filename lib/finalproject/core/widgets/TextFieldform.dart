@@ -8,7 +8,8 @@ class TextFieldForm extends StatefulWidget {
   TextFieldForm({
     Key? key,
     required this.controller,
-    required this.lable,this.pass=false
+    required this.lable,
+    this.pass=false
   }) : super(key: key);
 
   @override
@@ -21,7 +22,7 @@ class _TextFieldFormState extends State<TextFieldForm> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      obscureText: !visabil,
+      obscureText:widget.pass==true? !visabil:false,
       controller: widget.controller,
       decoration: InputDecoration(
         suffixIcon: widget.pass==true?(IconButton(onPressed: (){

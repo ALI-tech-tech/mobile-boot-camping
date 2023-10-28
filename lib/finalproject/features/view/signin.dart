@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practis/finalproject/core/widgets/TextFieldform.dart';
 
 import 'package:flutter_practis/finalproject/core/widgets/backgroundpages.dart';
+import 'package:flutter_practis/finalproject/features/view/botomnavigatehome.dart';
 import 'package:flutter_practis/finalproject/features/view/moviepage.dart';
 import 'package:icons_plus/icons_plus.dart';
 
@@ -48,9 +49,10 @@ class _SignInState extends State<SignIn> {
                       ),
                       TextFieldForm(
                           controller: password, lable: "Password", pass: true),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [Text("forgot your password?")],),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [Text("forgot your password?")],
+                      ),
                       SizedBox(
                         height: 20,
                       ),
@@ -58,10 +60,9 @@ class _SignInState extends State<SignIn> {
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(400, 50)),
                           onPressed: () {
-                            Navigator.pushNamed(context, MovieHomepage.rout);
+                            Navigator.pushNamed(context, BottomNavigationBarApp.rout);
                           },
                           child: Text("Sign In")),
-                     
                     ],
                   )),
             ),

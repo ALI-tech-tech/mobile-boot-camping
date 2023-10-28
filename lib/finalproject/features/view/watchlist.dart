@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practis/finalproject/core/widgets/Textstyle.dart';
+import 'package:flutter_practis/finalproject/core/widgets/WachListunit.dart';
 
 
-class WathList extends StatefulWidget {
+class WatchList extends StatefulWidget {
   static String rout="/watchlist";
   List<String> li=["ali.JPG"];
   @override
-  State<WathList> createState() => _WathListState();
+  State<WatchList> createState() => _WatchListState();
 }
 
-class _WathListState extends State<WathList> {
+class _WatchListState extends State<WatchList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,58 +50,63 @@ class _WathListState extends State<WathList> {
               Expanded(
                 child: SizedBox(
                   //height: MediaQuery.of(context).size.height,
-                  child: ListView.separated(
+                  child: 
+                  
+                  ListView.separated(
                       itemBuilder: (ctx, index) {
-                        return Container(
-                          margin: EdgeInsets.only(bottom: 5),
-                          child: ListTile(
-                            leading: Container(
-                              width: 80,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage("assets/images/${widget.li[index]}"),
-                                    fit: BoxFit.fill),
-                              ),
-                            ),
-                            title: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "HD",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      backgroundColor: Colors.yellow),
-                                ),
-                                Text(
-                                  "Ali",
-                                  style: TextStyleTheme.headertext(),
-                                ),
-                                Text(
-                                  "Ali",
-                                  style: TextStyle(color: Colors.yellow),
-                                ),
-                                Row(
-                                  children: [
-                                    for (int i = 0; i < 3; i++)
-                                      Icon(
-                                        Icons.star,
-                                        color: Colors.yellow,
-                                        size: 15,
-                                      ),
-                                    for (int i = 0; i < 2; i++)
-                                      Icon(
-                                        Icons.star_border,
-                                        color: Colors.white,
-                                        size: 15,
-                                      ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        );
+                        return WachListunit(img:widget.li[index] ,);
+                        // Container(
+                        //   margin: EdgeInsets.only(bottom: 5),
+                        //   child: ListTile(
+                        //     leading: Container(
+                        //       width: 80,
+                        //       height: 100,
+                        //       decoration: BoxDecoration(
+                        //         image: DecorationImage(
+                        //             image: AssetImage("assets/images/${widget.li[index]}"),
+                        //             fit: BoxFit.fill),
+                        //       ),
+                        //     ),
+                        //     title: Column(
+                        //       crossAxisAlignment: CrossAxisAlignment.start,
+                        //       children: [
+                        //         Text(
+                        //           "HD",
+                        //           style: TextStyle(
+                        //               fontSize: 12,
+                        //               color: Colors.black,
+                        //               backgroundColor: Colors.yellow),
+                        //         ),
+                        //         Text(
+                        //           "Ali",
+                        //           style: TextStyleTheme.headertext(),
+                        //         ),
+                        //         Text(
+                        //           "Ali",
+                        //           style: TextStyle(color: Colors.yellow),
+                        //         ),
+                        //         Row(
+                        //           children: [
+                        //             for (int i = 0; i < 3; i++)
+                        //               Icon(
+                        //                 Icons.star,
+                        //                 color: Colors.yellow,
+                        //                 size: 15,
+                        //               ),
+                        //             for (int i = 0; i < 2; i++)
+                        //               Icon(
+                        //                 Icons.star_border,
+                        //                 color: Colors.white,
+                        //                 size: 15,
+                        //               ),
+                        //           ],
+                        //         )
+                        //       ],
+                        //     ),
+                        //   ),
+                        // );
+                    
+                    
                       },
                       separatorBuilder: (ctx, index) {
                         return Divider();
@@ -134,13 +140,7 @@ class _WathListState extends State<WathList> {
        
         ),
 
-        // bottomNavigationBar: BottomNavigationBar(
-        //   currentIndex: 0,
-        //   items: [
-        //   BottomNavigationBarItem(icon: Icon(Icons.favorite_border, color: Colors.white,)), 
-        //   BottomNavigationBarItem(icon: Icon(Icons.favorite_border, color: Colors.white,)), 
-        //   BottomNavigationBarItem(icon: Icon(Icons.favorite_border, color: Colors.white,)), 
-        // ]),
         );
   }
 }
+
