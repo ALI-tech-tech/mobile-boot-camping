@@ -78,6 +78,7 @@ flutter:
     - assets/post.json
     - assets/images/
     - assets/video/
+    - assets/images/talka/
     
   #   - images/a_dot_ham.jpeg
   # fonts: 
