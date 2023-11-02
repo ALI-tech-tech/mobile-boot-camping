@@ -61,24 +61,6 @@ class CustomDrawer extends StatelessWidget {
       ),
     );
 
-    //     Column(
-    //   mainAxisAlignment: MainAxisAlignment.center,
-    //   children: [
-    //     Row(
-    //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //       children: [
-    //         CircleAvatar(
-    //           backgroundImage: AssetImage("assets/images/ali.JPG"),
-    //         ),
-    //         Expanded(
-    //             child: Container(
-    //                 child: ListTile(
-    //           title: Text("ALi Ben Jahlan"),
-    //           subtitle: Text("alibenjhlan@gmail.com"),
-    //         )))
-    //       ],
-    //     )
-    //   ],
-    // ));
+
   }
 }

@@ -49,7 +49,8 @@ class _TodoViewState extends State<TodoView> {
                         subtitle: Text((snap.data![index].completed!
                             ? "Completed"
                             : "UnCompleted")),
-                        trailing: PopupMenuButton<int>(
+                        trailing: 
+                        PopupMenuButton<int>(
                           onSelected: (result) {
                             if (result == 1) {
                               nav(context, snap.data![index]);
@@ -59,7 +60,7 @@ class _TodoViewState extends State<TodoView> {
                           itemBuilder: (context) => [
                             PopupMenuItem(
                                 onTap: () async {
-                                  //nav(context, snap.data![index]);
+                                 
                                 },
                                 value: 1,
                                 child: Text("Edit")),
@@ -77,6 +78,7 @@ class _TodoViewState extends State<TodoView> {
                                 child: Text("Delete")),
                           ],
                         ),
+                     
                       );
                     });
               }

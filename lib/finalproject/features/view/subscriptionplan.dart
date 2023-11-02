@@ -35,7 +35,7 @@ class _SubscriptionplanState extends State<Subscriptionplan> {
       resolution: "4k+HDR",
       vedioquality: "Best",
       screens: "06");
-  List<SubscripPlan>? title;
+  List<dynamic>? title;
   bool isConfirm = false;
   List<bool> isactive = [true, false, false];
 

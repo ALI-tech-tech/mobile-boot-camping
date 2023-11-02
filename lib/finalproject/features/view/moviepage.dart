@@ -146,6 +146,8 @@ class _MovieHomepageState extends State<MovieHomepage> {
                       ],
                     ),
                   ),
+                  
+                  
                   Positioned(
                     top: MediaQuery.of(context).size.height / 3.5,
                     child: 

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'Container.dart';
@@ -14,23 +13,17 @@ class MyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        
-        decoration: BoxDecoration(
-          boxShadow:[
-      BoxShadow(
-        color: Colors.grey.withOpacity(0.5),
-        spreadRadius: 5,
-        blurRadius: 7,
-        offset: Offset(0, 3), // changes position of shadow
-      ),
-    ] ,
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20)
-        ),
+        decoration: BoxDecoration(boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ], color: Colors.white, borderRadius: BorderRadius.circular(20)),
         width: 370,
         height: 90,
         child: Row(
-          
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             MyContainer(),
@@ -46,14 +39,11 @@ class MyCard extends StatelessWidget {
               ),
             ),
             Column(
-              
-             mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                
                 ElevatedButton(
                     onPressed: () {},
                     child: Row(
-                      
                       children: [Text("Add"), Icon(Icons.add)],
                     )),
               ],

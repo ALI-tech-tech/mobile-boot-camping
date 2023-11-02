@@ -20,7 +20,7 @@ class LoginScreen extends StatelessWidget {
         child: Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: App_Color.backroundapp,
+        
         body: SingleChildScrollView(
           child: Column(
             
@@ -29,9 +29,9 @@ class LoginScreen extends StatelessWidget {
               Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  ContainerBarClip(context),
+                  ContainerBarClip(context, 200),
                   Container(
-                    width: getHeight(context),
+                    width: getWidth(context),
                     height: (getHeight(context) / 3) - 60,
                     child: Row(
                       children: [
