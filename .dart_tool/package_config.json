@@ -104,6 +104,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "flutter_gif",
+      "rootUri": "file:///C:/Users/Eng.ALI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_gif-0.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///C:/Users/Eng.ALI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-2.0.3",
       "packageUri": "lib/",
@@ -422,7 +428,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-03T16:05:09.436237Z",
+  "generated": "2023-11-05T05:21:26.708541Z",
   "generator": "pub",
   "generatorVersion": "3.0.6"
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practis/TalkahApp/core/Theme/Theme.dart';
 import 'package:flutter_practis/TalkahApp/features/view/login/loginscreen.dart';
 import 'package:flutter_practis/TalkahApp/features/view/main/Appmainscreen.dart';
+import 'package:flutter_practis/TalkahApp/features/view/splash_screen/splashscreen.dart';
 import 'package:flutter_practis/TalkahApp/routes/app_routs.dart';
 
 import 'features/view/account/account_screnn.dart';
