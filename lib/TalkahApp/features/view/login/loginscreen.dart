@@ -55,10 +55,12 @@ class LoginScreen extends StatelessWidget {
                         ),
                         Expanded(
                           child: Container(
+                            height: 200,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(App_Images.motorbic),
-                                    fit: BoxFit.fill)),
+                                    fit: BoxFit.fill)
+                                    ),
                           ),
                         ),
                       ],
@@ -107,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                       backgroundColor: App_Color.btnlogin,
                     ),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, AppRoutes.homeScreen);
+                      Navigator.pushReplacementNamed(context, AppRoutes.appmainscreen);
                     },
                     child: Text("تسجيل الدخول", style: App_TextStyle.appbarbody,)),
               ),
@@ -115,7 +117,9 @@ class LoginScreen extends StatelessWidget {
                 child: Container(
                   margin: EdgeInsets.only(top: 20),
                   child: TextButton(
-                      onPressed: () {}, child: Text("المتابعة بدون تسجيل ", style: App_TextStyle.BodyHeadr.copyWith(color: Colors.grey),)),
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, AppRoutes.appmainscreen);
+                      }, child: Text("المتابعة بدون تسجيل ", style: App_TextStyle.BodyHeadr.copyWith(color: Colors.grey),)),
                 ),
               )
             ],

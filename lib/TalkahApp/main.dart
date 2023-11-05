@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practis/TalkahApp/core/Theme/Theme.dart';
 import 'package:flutter_practis/TalkahApp/features/view/login/loginscreen.dart';
+import 'package:flutter_practis/TalkahApp/features/view/main/Appmainscreen.dart';
 import 'package:flutter_practis/TalkahApp/routes/app_routs.dart';
 
 import 'features/view/account/account_screnn.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme:AppTheme,
       title: 'Material App',
-      home:AccountScreen(),
+      home:LoginScreen(),
       routes: AppRoutes.routes,
     );
   }

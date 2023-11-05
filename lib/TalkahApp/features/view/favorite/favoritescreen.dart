@@ -1,0 +1,150 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_practis/TalkahApp/core/Theme/TextStyles.dart';
+import 'package:flutter_practis/TalkahApp/core/Theme/size.dart';
+import 'package:flutter_practis/TalkahApp/core/constant/App_image.dart';
+import 'package:flutter_practis/TalkahApp/core/widget/containerbarclippath.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../Home/Homescreen.dart';
+
+
+class FavoriteScreen extends StatefulWidget {
+  const FavoriteScreen({super.key});
+
+  @override
+  State<FavoriteScreen> createState() => _FavoriteScreenState();
+}
+
+class _FavoriteScreenState extends State<FavoriteScreen> {
+  int selectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Directionality(
+        textDirection: TextDirection.rtl,
+        child: Scaffold(
+          appBar: AppBar(
+              flexibleSpace: Container(
+                padding: EdgeInsets.only(right: 10, top: 10),
+                width: getWidth(context),
+                height: 300,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(appbarBKImagetop), fit: BoxFit.fill)),
+               child: Text(
+                        "المفضله",
+                        style: App_TextStyle.appbarheader,
+                      ),
+              ),
+              elevation: 0,
+            ),
+            
+          body: Container(
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    ContainerBarClip(context, 100),
+                    Center(
+                      child: Container(
+                                      height: 70,
+                                      width: 320,
+                                      margin: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(35),
+                                      ),
+                                      child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = 0;
+                            });
+                          },
+                          child: AnimatedContainer(
+                            curve: Curves.easeInBack,
+                            duration: Duration(milliseconds: 300),
+                            height: 60,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              color:
+                                  selectedIndex == 0 ? Colors.orange : Colors.white,
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "مطاعم/منشات",
+                                style: TextStyle(
+                                  color: selectedIndex == 0
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = 1;
+                            });
+                          },
+                          child: AnimatedContainer(
+                            duration: Duration(milliseconds: 300),
+                            height: 60,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              color:
+                                  selectedIndex == 1 ? Colors.orange : Colors.white,
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "اصناف/خدمات",
+                                style: TextStyle(
+                                  color: selectedIndex == 1
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                                      ),
+                                    ),
+                    ),
+                  
+                  ],
+                ),
+                
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset("assets/talka/icons/favorite.svg", height: 40, width: 40,),
+                      Text(
+                        " المفضله فارغة",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "لم تقم باضافة اي عناصر حتى الان",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

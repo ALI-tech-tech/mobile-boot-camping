@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practis/TalkahApp/core/constant/App_image.dart';
 
 import '../Theme/app_colors.dart';
 import '../Theme/size.dart';
@@ -10,7 +11,17 @@ Widget ContainerBarClip(BuildContext context, double height) {
       clipBehavior: Clip.none,
       height: height,
       width: getWidth(context),
-      color: App_Color.Primary,
+      decoration: BoxDecoration(
+         image: DecorationImage(image: AssetImage(appbarBKImagetop),fit: BoxFit.fill)
+      ),
+      // child: Container(
+      //   width: getWidth(context),
+      //   height: height*2,
+      //   decoration: BoxDecoration(
+      //     image: DecorationImage(image: AssetImage(appbarBKImagebottom), fit: BoxFit.fill)
+      //   ),
+      // ),
+      //color: App_Color.Primary,
     ),
   );
 }

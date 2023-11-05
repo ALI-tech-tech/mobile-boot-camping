@@ -5,6 +5,7 @@ ThemeData AppTheme=ThemeData(
   scaffoldBackgroundColor: App_Color.bkgroundapp,
   useMaterial3: true,
   appBarTheme: AppBarTheme(
+    
     backgroundColor: App_Color.Primary,
     foregroundColor: App_Color.AppbarTextheader,
     iconTheme: IconThemeData(
