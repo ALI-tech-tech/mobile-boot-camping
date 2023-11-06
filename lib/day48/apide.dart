@@ -9,15 +9,15 @@ class APIdp {
     Response<String> result = await d.get(apiUrl);
 
     List<dynamic> cont = jsonDecode((result.data!));
-    //List<dynamic> product = cont[key];
+   
     print(cont);
     return cont;
-    //return product;
+    
   }
 
   sendApi(Map<String, dynamic> data, String apiUrl) async {
     Dio d = Dio();
-
+   
     Response<String> result = await d.post(apiUrl,
         data: data,
         options: Options(headers: {'Content-Type': 'application/json'}));

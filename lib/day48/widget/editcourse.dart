@@ -5,6 +5,7 @@ Edit(BuildContext context, Course dept) async {
   TextEditingController txt = TextEditingController();
   TextEditingController txt2 = TextEditingController();
   txt.text = dept.name!;
+  txt.text=dept.credits!;
   return await showDialog(
     context: context,
     builder: (context) {

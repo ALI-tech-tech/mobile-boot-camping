@@ -78,7 +78,7 @@ class _DeptScreenState extends State<DeptScreen> {
 
                                   if (data != null) Dc.edit(data);
 
-                                  getdata();
+                                  // getdata();
                                   setState(() {});
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(

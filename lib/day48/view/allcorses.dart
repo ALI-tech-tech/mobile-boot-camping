@@ -91,7 +91,7 @@ class _CourseScreenState extends State<CourseScreen> {
                                       dynamic? res =
                                           await Dc.delet(widget.id,snap.data![index].id!);
                                           if (res is Course) {
-                                           getdata();
+                                          //  getdata();
                                       setState(() {});
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
@@ -100,7 +100,7 @@ class _CourseScreenState extends State<CourseScreen> {
                                                   " ${snap.data![index].id} is deleted ")));
                                           }
                                           else  {
-                                            getdata();
+                                            // getdata();
                                             setState(() {
                                               
                                             });
