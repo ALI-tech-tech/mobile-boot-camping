@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practis/TalkahApp/core/Theme/TextStyles.dart';
 import 'package:flutter_practis/TalkahApp/core/Theme/app_colors.dart';
 import 'package:flutter_practis/TalkahApp/core/Theme/size.dart';
 
@@ -20,9 +21,11 @@ Widget textFormFeild(BuildContext context, Widget? suffix, String? Hint) {
           ),
           Expanded(
             child: TextField(
+              style: App_TextStyle.Bodycontent,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: Hint,
+                
               ),
             ),
           ),

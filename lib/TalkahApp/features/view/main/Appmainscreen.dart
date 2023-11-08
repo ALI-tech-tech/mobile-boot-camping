@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practis/TalkahApp/core/widget/acart.dart';
+import 'package:flutter_practis/TalkahApp/core/Theme/TextStyles.dart';
+import 'package:flutter_practis/TalkahApp/features/view/cart/acart.dart';
 import 'package:flutter_practis/TalkahApp/core/widget/bksvg.dart';
 import 'package:flutter_practis/TalkahApp/features/view/Home/Homescreen.dart';
 import 'package:flutter_practis/TalkahApp/features/view/account/account_screnn.dart';
@@ -92,8 +93,7 @@ class _AppMainPageState extends State<AppMainPage>
                               
                               Text(
                                 "الدعم الفني",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 25),
+                                style: App_TextStyle.BodyHeadr,
                               ),
                               IconButton(
                                   onPressed: () {
@@ -102,7 +102,7 @@ class _AppMainPageState extends State<AppMainPage>
                                   icon: Icon(Icons.cancel_outlined)),
                             ],
                           ),
-                          Text("يمكنك التواصل معنا عن طريق أحد الطرق التالية"),
+                          Text("يمكنك التواصل معنا عن طريق أحد الطرق التالية", style: App_TextStyle.Bodycontent,),
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.green.withBlue(180),
@@ -114,7 +114,7 @@ class _AppMainPageState extends State<AppMainPage>
                               child: ListTile(
                                 leading: bksvg(SvgPicture.asset("assets/talka/icons/whatsapp.svg"),
                                  50, 50, 10),
-                                title: Text("خدمة العملاء واتساب"),
+                                title: Text("خدمة العملاء واتساب", style: App_TextStyle.Bodycontent,),
                                 trailing: Icon(Icons.arrow_right),
                               ),
                             ),
@@ -129,7 +129,7 @@ class _AppMainPageState extends State<AppMainPage>
                               child: ListTile(
                                 leading:  bksvg(SvgPicture.asset("assets/talka/icons/whatsapp.svg"),
                                  50, 50, 10),
-                                title: Text("خدمة العملاء واتساب"),
+                                title: Text("خدمة العملاء واتساب", style: App_TextStyle.Bodycontent,),
                                 trailing: Icon(Icons.arrow_right),
                               ),
                             ),
@@ -143,7 +143,7 @@ class _AppMainPageState extends State<AppMainPage>
                               textDirection: TextDirection.rtl,
                               child: ListTile(
                                 leading: Icon(Icons.arrow_left),
-                                title: Text("خدمة العملاء واتساب"),
+                                title: Text("خدمة العملاء واتساب", style: App_TextStyle.Bodycontent,),
                                 trailing: Icon(Icons.arrow_right),
                               ),
                             ),
@@ -157,7 +157,7 @@ class _AppMainPageState extends State<AppMainPage>
                               textDirection: TextDirection.rtl,
                               child: ListTile(
                                 leading: Icon(Icons.arrow_left),
-                                title: Text("خدمة العملاء واتساب"),
+                                title: Text("خدمة العملاء واتساب", style: App_TextStyle.Bodycontent,),
                                 trailing: Icon(Icons.arrow_right),
                               ),
                             ),
@@ -171,7 +171,7 @@ class _AppMainPageState extends State<AppMainPage>
                               textDirection: TextDirection.rtl,
                               child: ListTile(
                                 leading: Icon(Icons.arrow_left),
-                                title: Text("خدمة العملاء واتساب"),
+                                title: Text("خدمة العملاء واتساب", style: App_TextStyle.Bodycontent,),
                                 trailing: Icon(Icons.arrow_right),
                               ),
                             ),
@@ -205,6 +205,8 @@ class _AppMainPageState extends State<AppMainPage>
                 naviBar = value;
               });
             },
+            selectedLabelStyle: App_TextStyle.Bodycontent,
+            unselectedLabelStyle: App_TextStyle.Bodycontent.copyWith(fontSize: 13),
             currentIndex: naviBar,
             selectedItemColor: const Color.fromARGB(255, 5, 53, 91),
             showSelectedLabels: true,
@@ -213,6 +215,7 @@ class _AppMainPageState extends State<AppMainPage>
             items: List.generate(
               lottiname.length,
               (index) => BottomNavigationBarItem(
+
                 label: lables[index],
                 icon: Lottie.asset(
                     'assets/talka/animations/${lottiname[index]}',

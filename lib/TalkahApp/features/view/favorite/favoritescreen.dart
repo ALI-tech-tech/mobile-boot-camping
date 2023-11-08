@@ -77,11 +77,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                             child: Center(
                               child: Text(
                                 "مطاعم/منشات",
-                                style: TextStyle(
-                                  color: selectedIndex == 0
+                                style:App_TextStyle.Bodycontent.copyWith(color: selectedIndex == 0
                                       ? Colors.white
-                                      : Colors.black,
-                                ),
+                                      : Colors.black,),
                               ),
                             ),
                           ),
@@ -107,11 +105,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                             child: Center(
                               child: Text(
                                 "اصناف/خدمات",
-                                style: TextStyle(
-                                  color: selectedIndex == 1
+                                style: App_TextStyle.Bodycontent.copyWith(color: selectedIndex == 1
                                       ? Colors.white
-                                      : Colors.black,
-                                ),
+                                      : Colors.black,),
                               ),
                             ),
                           ),
@@ -131,11 +127,11 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                       SvgPicture.asset("assets/talka/icons/favorite.svg", height: 40, width: 40,),
                       Text(
                         " المفضله فارغة",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: App_TextStyle.Bodycontent,
                       ),
                       Text(
                         "لم تقم باضافة اي عناصر حتى الان",
-                        style: TextStyle(color: Colors.grey),
+                        style: App_TextStyle.Bodycontent,
                       ),
                     ],
                   ),

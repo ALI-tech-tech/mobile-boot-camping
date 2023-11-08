@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practis/TalkahApp/core/Theme/TextStyles.dart';
 import 'package:flutter_practis/TalkahApp/core/Theme/app_colors.dart';
 import 'package:flutter_practis/TalkahApp/core/Theme/size.dart';
+import 'package:flutter_practis/TalkahApp/core/constant/App_image.dart';
 import 'package:flutter_practis/TalkahApp/core/constant/App_name.dart';
 import 'package:flutter_practis/TalkahApp/core/utils/App_images.dart';
 import 'package:flutter_practis/TalkahApp/core/widget/TextformField.dart';
@@ -20,7 +21,19 @@ class LoginScreen extends StatelessWidget {
         child: Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        
+        appBar: 
+         AppBar(
+            flexibleSpace: Container(
+              width: getWidth(context),
+              height: 300,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(appbarBKImagetop), fit: BoxFit.fill)),
+            
+            ),
+            elevation: 0,
+          ),
+          
         body: SingleChildScrollView(
           child: Column(
             
@@ -37,13 +50,17 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Container(
-                            padding: EdgeInsets.only(top: 60, right: 20),
+                            padding: EdgeInsets.only(top: 40, right: 20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
+                              
                               children: [
-                                Text(
-                                  "تسجيل الدخول",
-                                  style: App_TextStyle.appbarheader,
+                                Container(
+                                  margin: EdgeInsets.only(bottom: 10),
+                                  child: Text(
+                                    "تسجيل الدخول",
+                                    style: App_TextStyle.appbarheader,
+                                  ),
                                 ),
                                 Text(
                                   "اهلا بك في منصة ${App_Name} 👋",
@@ -53,21 +70,21 @@ class LoginScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Expanded(
-                          child: Container(
-                            height: 200,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(App_Images.motorbic),
-                                    fit: BoxFit.fill)
-                                    ),
-                          ),
+                        Container(
+                          height: 180,
+                          width: (getWidth(context)/2)-10,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(App_Images.motorbic),
+                                  fit: BoxFit.fill)
+                                  ),
                         ),
                       ],
                     ),
                   ),
                 ],
               ),
+             
               SizedBox(
                 height: 75,
               ),
@@ -90,8 +107,15 @@ class LoginScreen extends StatelessWidget {
                         children: [
                           Container(
                             margin: EdgeInsets.only(right: 3),
-                            child: Icon(Icons.key)),
-                          Text("+967",style: TextStyle(fontSize: 16),),
+                            child: Container(
+                              margin: EdgeInsets.only(left: 5),
+                              width: 20,
+                              height: 15,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(image: AssetImage("assets/talka/icons/arabic.png"))
+                              ),
+                            )),
+                          Text("+967",style: App_TextStyle.Bodycontent,),
                           Padding(padding: EdgeInsets.all(0),
                           child: Text("|",style: TextStyle(fontSize: 26),), )
                         ],
@@ -109,7 +133,7 @@ class LoginScreen extends StatelessWidget {
                       backgroundColor: App_Color.btnlogin,
                     ),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, AppRoutes.appmainscreen);
+                      Navigator.pushReplacementNamed(context, AppRoutes.otpscreen);
                     },
                     child: Text("تسجيل الدخول", style: App_TextStyle.appbarbody,)),
               ),
@@ -118,7 +142,7 @@ class LoginScreen extends StatelessWidget {
                   margin: EdgeInsets.only(top: 20),
                   child: TextButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, AppRoutes.appmainscreen);
+                        Navigator.pushReplacementNamed(context, AppRoutes.otpscreen);
                       }, child: Text("المتابعة بدون تسجيل ", style: App_TextStyle.BodyHeadr.copyWith(color: Colors.grey),)),
                 ),
               )

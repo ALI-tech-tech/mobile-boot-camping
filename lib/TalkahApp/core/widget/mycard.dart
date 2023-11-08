@@ -22,12 +22,12 @@ Widget NCard(BuildContext context, double width, String header,String content){
         Container(
           width: getWidth(context)/2,
           child: ListTile(
-            title: Text(header,maxLines: 4,),
-            subtitle: Text(content,),
+            title: Text(header,maxLines: 4,style: App_TextStyle.Bodycontent,),
+            subtitle: Text(content,style: App_TextStyle.Bodycontent.copyWith(fontSize: 12),),
           ),
           
         ),
-        Text("منذ 5 ساعات"),
+        Text("منذ 5 ساعات", style: App_TextStyle.Bodycontent.copyWith(fontSize: 10),),
       ],
     )
     

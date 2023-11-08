@@ -254,16 +254,13 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Text(
                                     "توصيل الطعام",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 25),
+                                    style: App_TextStyle.BodyHeadr
                                   ),
                                   SizedBox(
                                     width: 240,
                                     child: Text(
                                       "لاتشيل هم الجوعززطعام,شراب ,وجبات سريعة, اكل بيت , أيسكريم ...كلو موجود ومن افخم الاماكن",
-                                      style: TextStyle(color: Colors.grey),
+                                      style: App_TextStyle.Bodycontent.copyWith(color: Colors.grey),
                                     ),
                                   )
                                 ],
@@ -307,13 +304,11 @@ class _HomePageState extends State<HomePage> {
                                         children: [
                                           Text(
                                             "طلقة بلاس",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 25),
+                                            style:App_TextStyle.BodyHeadr,
                                           ),
                                           Text(
                                             "توصيل سريع لأي شيء من والى أي مكان",
-                                            style: TextStyle(fontSize: 20),
+                                            style:  App_TextStyle.Bodycontent.copyWith(color: Colors.grey),
                                           ),
                                           Container(
                                             
@@ -347,13 +342,11 @@ class _HomePageState extends State<HomePage> {
                                         children: [
                                           Text(
                                             "متاجر",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 25),
+                                            style: App_TextStyle.BodyHeadr,
                                           ),
                                           Text(
                                             "تسوق واشتر كل احتياجاتك من أضحم المحلات بضغطة زر",
-                                            style: TextStyle(fontSize: 20),
+                                            style:  App_TextStyle.Bodycontent.copyWith(color: Colors.grey),
                                           ),
                                           Align(
                                             alignment: Alignment.bottomLeft,
@@ -389,13 +382,11 @@ class _HomePageState extends State<HomePage> {
                                         children: [
                                           Text(
                                             "دوائي",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 25),
+                                            style: App_TextStyle.BodyHeadr,
                                           ),
                                           Text(
                                             "تسوق واشتر كل احتياجاتك من أضحم المحلات بضغطة زر",
-                                            style: TextStyle(fontSize: 20),
+                                            style:  App_TextStyle.Bodycontent.copyWith(color: Colors.grey),
                                           ),
                                           Align(
                                             alignment: Alignment.center,
@@ -432,13 +423,11 @@ class _HomePageState extends State<HomePage> {
                                         children: [
                                           Text(
                                             "وصلني",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 25),
+                                            style: App_TextStyle.BodyHeadr,
                                           ),
                                           Text(
                                             "تسوق واشتر كل احتياجاتك من أضحم المحلات بضغطة زر",
-                                            style: TextStyle(fontSize: 20),
+                                            style:  App_TextStyle.Bodycontent.copyWith(color: Colors.grey),
                                           ),
                                           Align(
                                             alignment: Alignment.bottomLeft,

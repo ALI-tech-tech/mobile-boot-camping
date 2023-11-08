@@ -77,11 +77,9 @@ class _MyOrdersState extends State<MyOrders> {
                             child: Center(
                               child: Text(
                                 "الحالية",
-                                style: TextStyle(
-                                  color: selectedIndex == 0
+                                style: App_TextStyle.Bodycontent.copyWith(color: selectedIndex == 0
                                       ? Colors.white
-                                      : Colors.black,
-                                ),
+                                      : Colors.black,),
                               ),
                             ),
                           ),
@@ -107,11 +105,9 @@ class _MyOrdersState extends State<MyOrders> {
                             child: Center(
                               child: Text(
                                 "السابقة",
-                                style: TextStyle(
-                                  color: selectedIndex == 1
+                                style: App_TextStyle.Bodycontent.copyWith(color: selectedIndex == 1
                                       ? Colors.white
-                                      : Colors.black,
-                                ),
+                                      : Colors.black,),
                               ),
                             ),
                           ),
@@ -130,11 +126,11 @@ class _MyOrdersState extends State<MyOrders> {
                       SvgPicture.asset("assets/talka/icons/empty-order.svg", height: 40, width: 40,),
                       Text(
                         "قائمة طلباتي فارغة",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: App_TextStyle.Bodycontent,
                       ),
                       Text(
                         "ليس لديك طلبات حتى الان",
-                        style: TextStyle(color: Colors.grey),
+                        style: App_TextStyle.Bodycontent,
                       ),
                     ],
                   ),

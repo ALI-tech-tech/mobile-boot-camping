@@ -4,6 +4,7 @@ import 'package:flutter_practis/TalkahApp/features/view/account/account_screnn.d
 import 'package:flutter_practis/TalkahApp/features/view/login/loginscreen.dart';
 import 'package:flutter_practis/TalkahApp/features/view/main/Appmainscreen.dart';
 import 'package:flutter_practis/TalkahApp/features/view/notification/notificationscreen.dart';
+import 'package:flutter_practis/TalkahApp/features/view/otp/otpscreen.dart';
 
 class AppRoutes {
     static const String loginScreen = '/login_screen';
@@ -11,6 +12,7 @@ class AppRoutes {
     static const String notificationScreen = '/notification_screen';
     static const String accountscreen = '/account_screen';
     static const String appmainscreen = '/appmain_screen';
+    static const String otpscreen = '/otp_screen';
     
 
 
@@ -20,5 +22,6 @@ class AppRoutes {
     notificationScreen:(context) => NotificationScreen(),
     accountscreen:(context) => AccountScreen(),
     appmainscreen:(context) => AppMainPage(),
+    otpscreen:(context) => OTPScreen(),
   };
 }

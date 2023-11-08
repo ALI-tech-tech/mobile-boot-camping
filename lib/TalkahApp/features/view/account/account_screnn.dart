@@ -27,7 +27,7 @@ class _AccountScreenState extends State<AccountScreen> {
               toolbarHeight: 80,
               flexibleSpace: ListTile(
                 leading: Containerlogo(
-                    SvgPicture.asset("assets/talka/icons/app-logo.svg")),
+                    SvgPicture.asset("assets/talka/icons/app-logo.svg"),10, 60, 50),
                 title: Text(
                   "علي",
                   style: App_TextStyle.appbarheader,
@@ -81,8 +81,8 @@ class _AccountScreenState extends State<AccountScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          Text("0"),
-                                          Text("طلباتي الحالية"),
+                                          Text("0", style: App_TextStyle.Bodycontent,),
+                                          Text("طلباتي الحالية", style: App_TextStyle.Bodycontent,),
                                         ],
                                       )
                                     ],
@@ -106,15 +106,13 @@ class _AccountScreenState extends State<AccountScreen> {
                                           40,
                                           40,
                                           15),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
+                                      
                                       Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceAround,
                                         children: [
-                                          Text("0"),
-                                          Text("اجمالي طلباتي"),
+                                          Text("0", style: App_TextStyle.Bodycontent,),
+                                          Text("اجمالي طلباتي",style: App_TextStyle.Bodycontent,),
                                         ],
                                       )
                                     ],
@@ -132,15 +130,15 @@ class _AccountScreenState extends State<AccountScreen> {
                   ),
                   Container(
                     margin: EdgeInsets.only(right: 15),
-                    child: Text("عن المستخدم")),
+                    child: Text("عن المستخدم", style: App_TextStyle.Bodycontent.copyWith(fontSize: 16),)),
                  Center(
                    child: Column(
                     
                     children: [
                        blockcontainer(
                         bksvg(SvgPicture.asset("assets/talka/icons/edit.svg"), 40, 40, 12),
-                        Text("بياناتي"),
-                        Text("قم بتغيير بياناتك الشخصيه"),
+                        Text("بياناتي", style: App_TextStyle.Bodycontent,),
+                        Text("قم بتغيير بياناتك الشخصيه", style: App_TextStyle.Bodycontent),
                         Icon(Icons.arrow_forward),
                         getWidth(context) - 40,
                         80,
@@ -148,8 +146,8 @@ class _AccountScreenState extends State<AccountScreen> {
                         () {}),
                     blockcontainer(
                        bksvg(SvgPicture.asset("assets/talka/icons/gallery.svg"), 40, 40, 12),
-                        Text("العناوين"),
-                        Text("قم بتغيير بيانات عنوانك"),
+                        Text("العناوين", style: App_TextStyle.Bodycontent),
+                        Text("قم بتغيير بيانات عنوانك", style: App_TextStyle.Bodycontent),
                         Icon(Icons.arrow_forward),
                         getWidth(context) - 40,
                         80,
@@ -157,8 +155,8 @@ class _AccountScreenState extends State<AccountScreen> {
                         () {}),
                     blockcontainer(
                         bksvg(SvgPicture.asset("assets/talka/icons/setting.svg"), 40, 40, 12),
-                        Text("الاعدادات"),
-                        Text("اللغة,سياسة الخصوصية,الشروط والاحكام"),
+                        Text("الاعدادات", style: App_TextStyle.Bodycontent),
+                        Text("اللغة,سياسة الخصوصية,الشروط والاحكام", style: App_TextStyle.Bodycontent),
                         Icon(Icons.arrow_forward),
                         getWidth(context) - 40,
                         80,
@@ -171,15 +169,15 @@ class _AccountScreenState extends State<AccountScreen> {
                   
                   Container(
                     margin: EdgeInsets.only(right: 15),
-                    child: Text("data")),
+                    child: Text("data", style: App_TextStyle.Bodycontent.copyWith(fontSize: 16))),
                   Center(
                    child: Column(
                     
                     children: [
                        blockcontainer(
                         bksvg(SvgPicture.asset("assets/talka/icons/call-calling-2.svg"), 40, 40, 12),
-                        Text("title"),
-                        Text("subtitle"),
+                        Text("title", style: App_TextStyle.Bodycontent),
+                        Text("subtitle", style: App_TextStyle.Bodycontent),
                         Icon(Icons.arrow_forward),
                         getWidth(context) - 40,
                         80,
@@ -187,8 +185,8 @@ class _AccountScreenState extends State<AccountScreen> {
                         () {}),
                     blockcontainer(
                         bksvg(SvgPicture.asset("assets/talka/icons/developer-icon.svg"), 40, 40, 12),
-                        Text("title"),
-                        Text("subtitle"),
+                        Text("title", style: App_TextStyle.Bodycontent),
+                        Text("subtitle", style: App_TextStyle.Bodycontent),
                         Icon(Icons.arrow_forward),
                         getWidth(context) - 40,
                         80,
@@ -196,8 +194,8 @@ class _AccountScreenState extends State<AccountScreen> {
                         () {}),
                     blockcontainer(
                         bksvg(SvgPicture.asset("assets/talka/icons/share.svg"), 40, 40, 12),
-                        Text("title"),
-                        Text("subtitle"),
+                        Text("title", style: App_TextStyle.Bodycontent),
+                        Text("subtitle", style: App_TextStyle.Bodycontent),
                         Icon(Icons.arrow_forward),
                         getWidth(context) - 40,
                         80,
