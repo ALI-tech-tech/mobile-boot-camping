@@ -65,22 +65,21 @@ class _AppMainPageState extends State<AppMainPage>
           //shape:CircleBorder(eccentricity: 5),
           onPressed: () {
             showModalBottomSheet(
-              
               context: context,
               builder: (context) {
                 return AnimatedContainer(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30))
-                      ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30))),
                   curve: Curves.bounceInOut,
-                  
-                  height: 1000,
-                  duration: Duration(seconds: 10),
+                  height: 1200,
+                  duration: Duration(seconds: 13),
                   child: Directionality(
                     textDirection: TextDirection.rtl,
-                    child: Container(
-                      
+                    child:
+                     Container(
                       margin: EdgeInsets.all(10),
                       child: 
                       Column(
@@ -90,7 +89,6 @@ class _AppMainPageState extends State<AppMainPage>
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              
                               Text(
                                 "الدعم الفني",
                                 style: App_TextStyle.BodyHeadr,
@@ -102,87 +100,109 @@ class _AppMainPageState extends State<AppMainPage>
                                   icon: Icon(Icons.cancel_outlined)),
                             ],
                           ),
-                          Text("يمكنك التواصل معنا عن طريق أحد الطرق التالية", style: App_TextStyle.Bodycontent,),
+                          Text(
+                            "يمكنك التواصل معنا عن طريق أحد الطرق التالية",
+                            style: App_TextStyle.Bodycontent,
+                          ),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.green.withBlue(180),
-                              borderRadius: BorderRadius.circular(8)
-                            ),
-                            
+                                color: Colors.green.withBlue(180),
+                                borderRadius: BorderRadius.circular(8)),
                             child: Directionality(
                               textDirection: TextDirection.rtl,
                               child: ListTile(
-                                leading: bksvg(SvgPicture.asset("assets/talka/icons/whatsapp.svg"),
-                                 50, 50, 10),
-                                title: Text("خدمة العملاء واتساب", style: App_TextStyle.Bodycontent,),
+                                leading: bksvg(
+                                    SvgPicture.asset(
+                                        "assets/talka/icons/whatsapp.svg"),
+                                    50,
+                                    50,
+                                    10),
+                                title: Text(
+                                  "خدمة العملاء واتساب",
+                                  style: App_TextStyle.Bodycontent,
+                                ),
                                 trailing: Icon(Icons.arrow_right),
                               ),
                             ),
                           ),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.green.withBlue(180),
-                              borderRadius: BorderRadius.circular(8)
-                            ),
+                                color: Colors.green.withBlue(180),
+                                borderRadius: BorderRadius.circular(8)),
                             child: Directionality(
                               textDirection: TextDirection.rtl,
                               child: ListTile(
-                                leading:  bksvg(SvgPicture.asset("assets/talka/icons/whatsapp.svg"),
-                                 50, 50, 10),
-                                title: Text("خدمة العملاء واتساب", style: App_TextStyle.Bodycontent,),
+                                leading: bksvg(
+                                    SvgPicture.asset(
+                                        "assets/talka/icons/whatsapp.svg"),
+                                    50,
+                                    50,
+                                    10),
+                                title: Text(
+                                  "خدمة العملاء واتساب",
+                                  style: App_TextStyle.Bodycontent,
+                                ),
                                 trailing: Icon(Icons.arrow_right),
                               ),
                             ),
                           ),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(8)
-                            ),
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(8)),
                             child: Directionality(
                               textDirection: TextDirection.rtl,
                               child: ListTile(
                                 leading: Icon(Icons.arrow_left),
-                                title: Text("خدمة العملاء واتساب", style: App_TextStyle.Bodycontent,),
+                                title: Text(
+                                  "خدمة العملاء واتساب",
+                                  style: App_TextStyle.Bodycontent,
+                                ),
                                 trailing: Icon(Icons.arrow_right),
                               ),
                             ),
                           ),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(8)
-                            ),
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(8)),
                             child: Directionality(
                               textDirection: TextDirection.rtl,
                               child: ListTile(
                                 leading: Icon(Icons.arrow_left),
-                                title: Text("خدمة العملاء واتساب", style: App_TextStyle.Bodycontent,),
+                                title: Text(
+                                  "خدمة العملاء واتساب",
+                                  style: App_TextStyle.Bodycontent,
+                                ),
                                 trailing: Icon(Icons.arrow_right),
                               ),
                             ),
                           ),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(8)
-                            ),
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(8)),
                             child: Directionality(
                               textDirection: TextDirection.rtl,
                               child: ListTile(
                                 leading: Icon(Icons.arrow_left),
-                                title: Text("خدمة العملاء واتساب", style: App_TextStyle.Bodycontent,),
+                                title: Text(
+                                  "خدمة العملاء واتساب",
+                                  style: App_TextStyle.Bodycontent,
+                                ),
                                 trailing: Icon(Icons.arrow_right),
                               ),
                             ),
                           )
                         ],
                       ),
+                    
                     ),
                   ),
                 );
               },
             );
+          
           },
           backgroundColor: Colors.blue[800],
           child: SvgPicture.asset(
@@ -206,7 +226,8 @@ class _AppMainPageState extends State<AppMainPage>
               });
             },
             selectedLabelStyle: App_TextStyle.Bodycontent,
-            unselectedLabelStyle: App_TextStyle.Bodycontent.copyWith(fontSize: 13),
+            unselectedLabelStyle:
+                App_TextStyle.Bodycontent.copyWith(fontSize: 13),
             currentIndex: naviBar,
             selectedItemColor: const Color.fromARGB(255, 5, 53, 91),
             showSelectedLabels: true,
@@ -215,7 +236,6 @@ class _AppMainPageState extends State<AppMainPage>
             items: List.generate(
               lottiname.length,
               (index) => BottomNavigationBarItem(
-
                 label: lables[index],
                 icon: Lottie.asset(
                     'assets/talka/animations/${lottiname[index]}',

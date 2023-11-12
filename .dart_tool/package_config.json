@@ -284,6 +284,18 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "rect_getter",
+      "rootUri": "file:///C:/Users/Eng.ALI/AppData/Local/Pub/Cache/hosted/pub.dev/rect_getter-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "scroll_to_index",
+      "rootUri": "file:///C:/Users/Eng.ALI/AppData/Local/Pub/Cache/hosted/pub.dev/scroll_to_index-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///C:/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -374,6 +386,12 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "vertical_scrollable_tabview",
+      "rootUri": "file:///C:/Users/Eng.ALI/AppData/Local/Pub/Cache/hosted/pub.dev/vertical_scrollable_tabview-0.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "video_player",
       "rootUri": "file:///C:/Users/Eng.ALI/AppData/Local/Pub/Cache/hosted/pub.dev/video_player-2.7.2",
       "packageUri": "lib/",
@@ -428,7 +446,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-07T19:32:59.612008Z",
+  "generated": "2023-11-08T17:26:08.984451Z",
   "generator": "pub",
   "generatorVersion": "3.0.6"
 }
