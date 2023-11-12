@@ -169,8 +169,7 @@ class _HomePageState extends State<HomePage> {
         textDirection: TextDirection.rtl,
         child: Scaffold(
           backgroundColor: Colors.white.withOpacity(0.9),
-          appBar: 
-          AppBar(
+          appBar: AppBar(
             flexibleSpace: Container(
               width: getWidth(context),
               height: 300,
@@ -200,7 +199,7 @@ class _HomePageState extends State<HomePage> {
             ),
             elevation: 0,
           ),
-          
+
           body: SingleChildScrollView(
             controller: _scrollController,
             child: Container(
@@ -236,100 +235,107 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ]),
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, AppRoutes.resturantscreen);
-                    },
-                    child: Column(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Colors.white),
-                          height: 150,
-                          width: MediaQuery.of(context).size.width,
-                          child: Row(
-                            children: [
-                              Container(
+                  Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.white),
+                        height: 150,
+                        width: MediaQuery.of(context).size.width,
+                        child: Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, AppRoutes.shopspage);
+                              },
+                              child: Container(
                                 margin: EdgeInsets.only(right: 20),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      "توصيل الطعام",
-                                      style: App_TextStyle.BodyHeadr
-                                    ),
+                                    Text("توصيل الطعام",
+                                        style: App_TextStyle.BodyHeadr),
                                     SizedBox(
                                       width: 240,
                                       child: Text(
                                         "لاتشيل هم الجوعززطعام,شراب ,وجبات سريعة, اكل بيت , أيسكريم ...كلو موجود ومن افخم الاماكن",
-                                        style: App_TextStyle.Bodycontent.copyWith(color: Colors.grey),
+                                        style:
+                                            App_TextStyle.Bodycontent.copyWith(
+                                                color: Colors.grey),
                                       ),
                                     )
                                   ],
                                 ),
                               ),
-                              Container(
-                                width: 100,
-                                height: 150,
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/talka/images/food.png"))),
-                              ),
-                            ],
-                          ),
+                            ),
+                            Container(
+                              width: 100,
+                              height: 150,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          "assets/talka/images/food.png"))),
+                            ),
+                          ],
                         ),
-                        Column(
-                          children: [
-                            StaggeredGrid.count(
-                              
-                              crossAxisCount: 4,
-                              mainAxisSpacing: 8,
-                              children: [
-                                StaggeredGridTile.count(
-                  
-                                    crossAxisCellCount: 2,
-                                    mainAxisCellCount: 2.8,
+                      ),
+                      Column(
+                        children: [
+                          StaggeredGrid.count(
+                            crossAxisCount: 4,
+                            mainAxisSpacing: 8,
+                            children: [
+                              StaggeredGridTile.count(
+                                  crossAxisCellCount: 2,
+                                  mainAxisCellCount: 2.8,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                    margin: EdgeInsets.only(
+                                      right: 10,
+                                      left: 10,
+                                    ),
                                     child: Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
                                       margin:
-                                          EdgeInsets.only(right: 10, left: 10,),
-                                      child: Container(
-                                        margin:
-                                            EdgeInsets.only(top: 10, right: 10),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "طلقة بلاس",
-                                              style:App_TextStyle.BodyHeadr,
-                                            ),
-                                            Text(
-                                              "توصيل سريع لأي شيء من والى أي مكان",
-                                              style:  App_TextStyle.Bodycontent.copyWith(color: Colors.grey),
-                                            ),
-                                            Container(
-                                              
-                                              width: 100,
-                                              height: 150,
-                                              decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                          "assets/talka/images/dron.png"))),
-                                            ),
-                                          ],
-                                        ),
+                                          EdgeInsets.only(top: 10, right: 10),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "طلقة بلاس",
+                                            style: App_TextStyle.BodyHeadr,
+                                          ),
+                                          Text(
+                                            "توصيل سريع لأي شيء من والى أي مكان",
+                                            style: App_TextStyle.Bodycontent
+                                                .copyWith(color: Colors.grey),
+                                          ),
+                                          Container(
+                                            width: 100,
+                                            height: 150,
+                                            decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                    image: AssetImage(
+                                                        "assets/talka/images/dron.png"))),
+                                          ),
+                                        ],
                                       ),
-                                    )),
-                                StaggeredGridTile.count(
-                                    crossAxisCellCount: 2,
-                                    mainAxisCellCount: 3,
+                                    ),
+                                  )),
+                              StaggeredGridTile.count(
+                                  crossAxisCellCount: 2,
+                                  mainAxisCellCount: 3,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, AppRoutes.shopspage);
+                                    },
                                     child: Container(
                                       decoration: BoxDecoration(
                                           color: Colors.white,
@@ -350,7 +356,8 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             Text(
                                               "تسوق واشتر كل احتياجاتك من أضحم المحلات بضغطة زر",
-                                              style:  App_TextStyle.Bodycontent.copyWith(color: Colors.grey),
+                                              style: App_TextStyle.Bodycontent
+                                                  .copyWith(color: Colors.grey),
                                             ),
                                             Align(
                                               alignment: Alignment.bottomLeft,
@@ -366,10 +373,16 @@ class _HomePageState extends State<HomePage> {
                                           ],
                                         ),
                                       ),
-                                    )),
-                                StaggeredGridTile.count(
-                                    crossAxisCellCount: 2,
-                                    mainAxisCellCount: 2.8,
+                                    ),
+                                  )),
+                              StaggeredGridTile.count(
+                                  crossAxisCellCount: 2,
+                                  mainAxisCellCount: 2.8,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, AppRoutes.dwaeescreen);
+                                    },
                                     child: Container(
                                       decoration: BoxDecoration(
                                           color: Colors.white,
@@ -390,12 +403,12 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             Text(
                                               "تسوق واشتر كل احتياجاتك من أضحم المحلات بضغطة زر",
-                                              style:  App_TextStyle.Bodycontent.copyWith(color: Colors.grey),
+                                              style: App_TextStyle.Bodycontent
+                                                  .copyWith(color: Colors.grey),
                                             ),
                                             Align(
                                               alignment: Alignment.center,
-                                              child: 
-                                               Container(
+                                              child: Container(
                                                 width: 100,
                                                 height: 110,
                                                 decoration: BoxDecoration(
@@ -407,54 +420,55 @@ class _HomePageState extends State<HomePage> {
                                           ],
                                         ),
                                       ),
-                                    )),
-                                StaggeredGridTile.count(
-                                    crossAxisCellCount: 2,
-                                    mainAxisCellCount: 3,
+                                    ),
+                                  )),
+                              StaggeredGridTile.count(
+                                  crossAxisCellCount: 2,
+                                  mainAxisCellCount: 3,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                    margin: EdgeInsets.only(
+                                        right: 10, left: 10, bottom: 20),
                                     child: Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                      margin: EdgeInsets.only(
-                                          right: 10, left: 10, bottom: 20),
-                                      child: Container(
-                                        margin:
-                                            EdgeInsets.only(top: 10, right: 10),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "وصلني",
-                                              style: App_TextStyle.BodyHeadr,
+                                      margin:
+                                          EdgeInsets.only(top: 10, right: 10),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "وصلني",
+                                            style: App_TextStyle.BodyHeadr,
+                                          ),
+                                          Text(
+                                            "تسوق واشتر كل احتياجاتك من أضحم المحلات بضغطة زر",
+                                            style: App_TextStyle.Bodycontent
+                                                .copyWith(color: Colors.grey),
+                                          ),
+                                          Align(
+                                            alignment: Alignment.bottomLeft,
+                                            child: Container(
+                                              margin: EdgeInsets.only(left: 8),
+                                              width: 100,
+                                              height: 100,
+                                              decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                      image: AssetImage(
+                                                          "assets/talka/images/car.png"))),
                                             ),
-                                            Text(
-                                              "تسوق واشتر كل احتياجاتك من أضحم المحلات بضغطة زر",
-                                              style:  App_TextStyle.Bodycontent.copyWith(color: Colors.grey),
-                                            ),
-                                            Align(
-                                              alignment: Alignment.bottomLeft,
-                                              child: Container(
-                                                margin: EdgeInsets.only(left: 8),
-                                                width: 100,
-                                                height: 100,
-                                                decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                        image: AssetImage(
-                                                            "assets/talka/images/car.png"))),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
-                                    )),
-                              ],
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
+                                    ),
+                                  )),
+                            ],
+                          )
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),

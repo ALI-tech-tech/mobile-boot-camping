@@ -1,19 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_practis/TalkahApp/core/constant/App_image.dart';
 import 'package:flutter_practis/TalkahApp/core/widget/custom_arrow_back.dart';
 import 'package:flutter_practis/TalkahApp/core/widget/custom_button_tawseel.dart';
 import 'package:flutter_practis/TalkahApp/core/widget/custom_text_feild.dart';
 import 'package:flutter_svg/svg.dart';
 
 
-class DwaeePage extends StatefulWidget {
-  const DwaeePage({super.key});
+class DwaeeScreen extends StatefulWidget {
+  const DwaeeScreen({super.key});
 
   @override
-  State<DwaeePage> createState() => _DwaeePageState();
+  State<DwaeeScreen> createState() => _DwaeeScreenState();
 }
 
-class _DwaeePageState extends State<DwaeePage> {
+class _DwaeeScreenState extends State<DwaeeScreen> {
   bool _pinned = true;
   bool _snap = false;
   bool _floating = true;
@@ -35,7 +36,7 @@ class _DwaeePageState extends State<DwaeePage> {
                     background: Stack(children: [
                       Image(
                           image: AssetImage(
-                              "assets/images/app-bar-background-top.png")),
+                              appbarBKImagetop)),
                       Positioned(
                         top: 23,
                         right: 5,
@@ -55,17 +56,19 @@ class _DwaeePageState extends State<DwaeePage> {
                   ),
                 ),
                 SliverToBoxAdapter(
-                  child: Stack(children: [
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
                     Image(
                         image: AssetImage(
-                            "assets/images/app-bar-background-bottom.png")),
+                            appbarBKImagebottom)),
                     Positioned(
                         top: 42,
                         right: 20,
-                        child: CustomButtonTawseel(image: "assets/icons/location.svg",title: "التوصيل إلى",
+                        child: CustomButtonTawseel(image: "assets/talka/icons/location.svg",title: "التوصيل إلى",
                             color: Color(0xffdffffff),
                             width: 370,
-                            height: 70,
+                            height: 75,
                             redus: 10,
                             colorTxt: Color(0xffd484e5a),
                             colorIcon: Color(0xffd484e5a)))
@@ -90,7 +93,7 @@ class _DwaeePageState extends State<DwaeePage> {
                                     padding: const EdgeInsets.only(right: 10),
                                     child: Row(
                                       children: [
-                                        SvgPicture.asset("assets/icons/note.svg"),
+                                        SvgPicture.asset("assets/talka/icons/note.svg"),
                                         SizedBox(width: 5,),
                                         Text("إسم الدواء",style: TextStyle(color: Color(0xffd484e5a),fontSize: 17)),
                                         SizedBox(width: 5,),
@@ -118,7 +121,7 @@ class _DwaeePageState extends State<DwaeePage> {
                                     padding: const EdgeInsets.only(right: 10),
                                     child: Row(
                                       children: [
-                                        SvgPicture.asset("assets/icons/gallery.svg",height: 20,),
+                                        SvgPicture.asset("assets/talka/icons/gallery.svg",height: 20,),
                                         SizedBox(width: 5,),
                                         Text("صور العلاج أو الروشته",style: TextStyle(color: Color(0xffd484e5a),fontSize: 17)),
                                       ],
@@ -144,7 +147,7 @@ class _DwaeePageState extends State<DwaeePage> {
                                     padding: const EdgeInsets.only(right: 10),
                                     child: Row(
                                       children: [
-                                        SvgPicture.asset("assets/icons/3square.svg"),
+                                        SvgPicture.asset("assets/talka/icons/3square.svg"),
                                         SizedBox(width: 5,),
                                         Text("العدد المطلوب",style: TextStyle(color: Color(0xffd484e5a),fontSize: 17)),
                                       ],
@@ -170,7 +173,7 @@ class _DwaeePageState extends State<DwaeePage> {
                                     padding: const EdgeInsets.only(right: 10),
                                     child: Row(
                                       children: [
-                                        SvgPicture.asset("assets/icons/note.svg"),
+                                        SvgPicture.asset("assets/talka/icons/note.svg"),
                                         SizedBox(width: 5,),
                                         Text("ملاحظات",style: TextStyle(color: Color(0xffd484e5a),fontSize: 17)),
                                       ],
@@ -180,6 +183,7 @@ class _DwaeePageState extends State<DwaeePage> {
                                   Divider(thickness: 2,color: Colors.grey.withOpacity(0.2),),
                                   SizedBox(height: 10,),
                       Container(
+                        margin: EdgeInsets.only(bottom: 5),
                         width: double.infinity,
                         height: 60,
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(13)),//color: widget.color),

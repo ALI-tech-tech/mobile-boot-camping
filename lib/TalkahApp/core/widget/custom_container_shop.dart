@@ -71,14 +71,14 @@ class _CustomContainerShopState extends State<CustomContainerShop> {
                 ),
                 Container(width: 7,height: 7,decoration: BoxDecoration(color: Colors.grey.withOpacity(0.5),borderRadius: BorderRadius.circular(5)),),
                 SizedBox(width: 5,),
-                SvgPicture.asset("assets/icons/location.svg",height: 15,),
+                SvgPicture.asset("assets/talka/icons/location.svg",height: 15,),
                 SizedBox(width: 5,),
                 Text("${widget.distance} كيلو ",style: TextStyle(
                     color: Color(0xffd656e7e),fontSize: 10),),
                 SizedBox(width: 5,),
                 Container(width: 7,height: 7,decoration: BoxDecoration(color: Colors.grey.withOpacity(0.5),borderRadius: BorderRadius.circular(5)),),
                 SizedBox(width: 5,),
-                SvgPicture.asset("assets/icons/timer.svg",height: 15,),
+                SvgPicture.asset("assets/talka/icons/timer.svg",height: 15,),
                 SizedBox(width: 5,),
                 Text("${widget.time} دقيقة ",style: TextStyle(
                     color: Color(0xffd656e7e).withOpacity(0.5),fontSize: 10),),

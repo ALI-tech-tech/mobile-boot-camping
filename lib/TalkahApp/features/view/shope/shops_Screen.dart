@@ -2,19 +2,13 @@ import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_practis/TalkahApp/core/constant/App_image.dart';
 import 'package:flutter_practis/TalkahApp/core/widget/custom_arrow_back.dart';
 import 'package:flutter_practis/TalkahApp/core/widget/custom_bottom_sheet_filter_loc.dart';
 import 'package:flutter_practis/TalkahApp/core/widget/custom_container_shop.dart';
 import 'package:flutter_practis/TalkahApp/core/widget/custom_type_button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:talqa/Core/Components/custom_arrow_back.dart';
-// import 'package:talqa/Core/Components/custom_bottom_sheet_filter_loc.dart';
-// import 'package:talqa/Core/Components/custom_container_shop.dart';
-// import 'package:talqa/Core/Components/custom_type_button.dart';
-// import 'package:talqa/featurs/Views/info_shop_page.dart';
-// import 'package:talqa/featurs/Views/main_page.dart';
 
-// import 'notification_page.dart';
 
 class ShopsPage extends StatefulWidget {
   const ShopsPage({super.key});
@@ -46,7 +40,7 @@ class _ShopsPageState extends State<ShopsPage> {
                 background: Stack(children: [
                   Image(
                       image: AssetImage(
-                          "assets/images/app-bar-background-top.png")),
+                          appbarBKImagetop)),
                   Positioned(
                     top: 23,
                     right: 5,
@@ -103,7 +97,7 @@ class _ShopsPageState extends State<ShopsPage> {
                             borderRadius: BorderRadius.circular(13)),
                         child: Center(
                             child: SvgPicture.asset(
-                          "assets/icons/search.svg",
+                          "assets/talka/icons/search.svg",
                           color: Colors.white,
                         )),
                       ),
@@ -116,7 +110,7 @@ class _ShopsPageState extends State<ShopsPage> {
               child: Stack(children: [
                 Image(
                     image: AssetImage(
-                        "assets/images/app-bar-background-bottom.png")),
+                        appbarBKImagebottom)),
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
                   //child: 
@@ -167,7 +161,7 @@ class _ShopsPageState extends State<ShopsPage> {
                                           });
                                         },
                                         child: CustomTypeButton(
-                                          image: "assets/images/haitham.JPG",
+                                          image: "assets/images/ali.JPG",
                                             title: "مطاعم",
                                             width: 150, height: 50, redus: 23, color: indexof == i?Color(0xffd245389):Colors.white,colorTxt: indexof == i?Colors.white:Color(0xffd484e5a),)),
                                 ]),
@@ -199,7 +193,11 @@ class _ShopsPageState extends State<ShopsPage> {
                             //     return InfoShopPage();
                             //   },
                             // ));
-                          },child: CustomContainerShop(title: "مطعم الخريف", loc: "شارع الستين - جسر مذبح", rate: "0.0", distance: "0.0", time: "40 - 60", image: "assets/images/logo1.png",width: double.infinity,)),
+                          },child: CustomContainerShop(title: "مطعم الخريف", 
+                          loc: "شارع الستين - جسر مذبح",
+                           rate: "0.0", distance: "0.0", 
+                           time: "40 - 60", 
+                           image: "assets/talka/pic_slider.png",width: double.infinity,)),
                         )
                       ],
                     ),
