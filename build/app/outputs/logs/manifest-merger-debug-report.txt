@@ -17,6 +17,7 @@ INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidMa
 INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-39:12
 INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-39:12
 MERGED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-39:12
+MERGED from [:sqflite] F:\flutter_bootcamp\flutter_practis\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:path_provider_android] F:\flutter_bootcamp\flutter_practis\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:video_player_android] F:\flutter_bootcamp\flutter_practis\build\video_player_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Eng.ALI\.gradle\caches\transforms-3\ae81e06d24c799147c26814497a2a305\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
@@ -72,6 +73,8 @@ uses-sdk
 INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml
 INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml
+MERGED from [:sqflite] F:\flutter_bootcamp\flutter_practis\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:sqflite] F:\flutter_bootcamp\flutter_practis\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] F:\flutter_bootcamp\flutter_practis\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] F:\flutter_bootcamp\flutter_practis\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:video_player_android] F:\flutter_bootcamp\flutter_practis\build\video_player_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
