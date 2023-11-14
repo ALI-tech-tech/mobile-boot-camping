@@ -20,10 +20,10 @@ class IncomViewModel {
   deletIncom(int id){
     return dbManager.deleteData(DBManager.TBL_INCOM_NAME, id);
   }
-  Future<int> getcountincome(String value)async{
+  Future<int?> getcountincome(String value)async{
     //List<Map<String,dynamic>>fetchdata=await dbManager.getAllData(DBManager.TBL_INCOM_NAME);
     List<Map<String,dynamic>> v= await dbManager.getcount(DBManager.TBL_INCOM_NAME, value);
-    int d=v[0]["sum(${DBManager.COL_AMOUNT_NAME})"];
+    int? d=v[0]["sum(${DBManager.COL_AMOUNT_NAME})"];
     return d;
   }
 }

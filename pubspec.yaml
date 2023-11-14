@@ -89,6 +89,7 @@ flutter:
     - assets/talka/
     - assets/talka/animations/
     - assets/talka/icons/
+    - assets/files/
   fonts:
     - family: Montserrat
       fonts:

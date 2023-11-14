@@ -14,13 +14,16 @@ class SqfliteDRUD extends StatefulWidget {
 class _SqfliteDRUDState extends State<SqfliteDRUD> {
   IncomViewModel ivm = IncomViewModel();
   TextEditingController amountcont = TextEditingController();
+  
   dynamic income=0;
   dynamic Expenses=0;
   String? type;
   geth() async{
-    income=(await ivm.getcountincome("+"));
-    Expenses=(await ivm.getcountincome("-"));
-
+    income=(await ivm.getcountincome("+"))??0;
+    Expenses=(await ivm.getcountincome("-"))??0;
+  setState(() {
+    
+  });
     print(income);
   }
   @override
@@ -123,13 +126,13 @@ class _SqfliteDRUDState extends State<SqfliteDRUD> {
                                                             ),
                                                             ElevatedButton(
                                                                 onPressed: () {
-                                                                  print("${int
-                                                                              .parse(
-                                                                            amountcont.text,
-                                                                          )}, jhjhj ${int
-                                                                              .parse(
-                                                                            amountcont.text,
-                                                                          )}");
+                                                                  // print("${int
+                                                                  //             .parse(
+                                                                  //           amountcont.text,
+                                                                  //         )}, jhjhj ${int
+                                                                  //             .parse(
+                                                                  //           amountcont.text,
+                                                                  //         )}");
                                                                   ivm.updateIncom(
                                                                       Incom(
                                                                         id:snapshot.data![index].id ,
@@ -139,32 +142,34 @@ class _SqfliteDRUDState extends State<SqfliteDRUD> {
                                                                           ),
                                                                           type:
                                                                               type));
+                                                                  
                                                                   Navigator.pop(
                                                                       context,
                                                                       true);
                                                                 },
                                                                 child: Text(
-                                                                    "Create new"))
+                                                                    "update"))
                                                           ],
                                                         ),
                                                       );
                                                     });
+                                                    geth();
                                             if (b != null && b) {
                                               setState(() {
-                                                geth();
+                                                
                                               });
                                             }
                                           },
                                           icon: Icon(Icons.edit)),
                                       IconButton(
                                           onPressed: () async {
-                                            int v = await ivm.deletIncom(
+                                             await ivm.deletIncom(
                                                 snapshot.data![index].id!);
-                                            if (v > 0) {
+                                            geth();
                                               setState(() {
-                                                geth();
+                                                
                                               });
-                                            }
+                                            
                                           },
                                           icon: Icon(Icons.delete)),
                                     ],
@@ -184,6 +189,7 @@ class _SqfliteDRUDState extends State<SqfliteDRUD> {
       
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
+          amountcont.clear();
           bool? b = await showModalBottomSheet(
               context: context,
               builder: (context) {
@@ -197,6 +203,7 @@ class _SqfliteDRUDState extends State<SqfliteDRUD> {
                         controller: amountcont,
                       ),
                       DropdownButton<String>(
+                        
                         items:
                             <String>['Increse', 'decrease'].map((String value) {
                           return DropdownMenuItem<String>(
@@ -205,7 +212,9 @@ class _SqfliteDRUDState extends State<SqfliteDRUD> {
                           );
                         }).toList(),
                         onChanged: (v) {
+                          
                           type = v == "Increse" ? "+" : "-";
+                          
                         },
                       ),
                       ElevatedButton(
@@ -222,9 +231,12 @@ class _SqfliteDRUDState extends State<SqfliteDRUD> {
                   ),
                 );
               });
+             
+             
+              geth();
           if (b != null && b) {
             setState(() {
-              geth();
+              
             });
           }
         },
