@@ -22,6 +22,7 @@ import 'day34/animcontainer.dart';
 
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

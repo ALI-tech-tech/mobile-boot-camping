@@ -17,6 +17,7 @@ INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidMa
 INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-39:12
 INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-39:12
 MERGED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml:1:1-39:12
+MERGED from [:shared_preferences_android] F:\flutter_bootcamp\flutter_practis\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:sqflite] F:\flutter_bootcamp\flutter_practis\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:path_provider_android] F:\flutter_bootcamp\flutter_practis\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:video_player_android] F:\flutter_bootcamp\flutter_practis\build\video_player_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
@@ -73,6 +74,8 @@ uses-sdk
 INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml
 INJECTED from F:\flutter_bootcamp\flutter_practis\android\app\src\main\AndroidManifest.xml
+MERGED from [:shared_preferences_android] F:\flutter_bootcamp\flutter_practis\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:shared_preferences_android] F:\flutter_bootcamp\flutter_practis\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:sqflite] F:\flutter_bootcamp\flutter_practis\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:sqflite] F:\flutter_bootcamp\flutter_practis\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] F:\flutter_bootcamp\flutter_practis\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
