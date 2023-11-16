@@ -11,16 +11,27 @@ void main() {
   return runApp(MyApp());
 }
 final ThemeNotifier themeNotifier = ThemeNotifier();
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   
- 
-
 
 
   MyApp({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+     themeNotifier.addListener(() {
+      setState(() {});
+    });
+  }
   @override
   Widget build(BuildContext context) {
     //setcolo();
@@ -32,6 +43,4 @@ class MyApp extends StatelessWidget {
       home: ShaeredScreen(themeNotifier: themeNotifier),
     );
   }
-
- 
 }

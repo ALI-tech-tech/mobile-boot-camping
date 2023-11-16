@@ -21,9 +21,7 @@ class _ColorSelectionWidgetState extends State<ColorSelectionWidget> {
 @override
   void initState() {
     
-    widget.themeNotifier.addListener(() {
-      setState(() {});
-    });
+   
     super.initState();
   }
   @override
