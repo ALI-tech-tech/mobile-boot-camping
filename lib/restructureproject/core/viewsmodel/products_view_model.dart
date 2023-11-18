@@ -17,6 +17,12 @@ class ProductViewModel {
   }
 
   Future<int> addProduct(ProductsRepo productsRepo, Product p) async {
+     List<Map<String, dynamic>> sub_images = [];
+    p.images!.forEach((element) {
+      Map<String, dynamic> img = Map();
+      img[DBManger.COL_IMAGE] = element;
+      sub_images.add(img);
+    });
     return await productsRepo.storeProduct(DBManger.TBL_PRODUCTS, p);
   }
 }

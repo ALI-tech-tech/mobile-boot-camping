@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practis/restructureproject/core/models/product.dart';
+import 'package:flutter_practis/restructureproject/helper/database_crud.dart';
 
 import '../../helper/database_manager.dart';
 import 'products_repo.dart';
 
 class LocalProductsRepo extends ProductsRepo {
 
-  DBManger dbManger = DBManger();
+ DBCRUD dbcrud=DBCRUD();
 
 
   @override
   Future<List<dynamic>> getProducts() async {
     
-    return await dbManger.fetch("select * from products");
+    return await dbcrud.fetch("select * from products");
   }
 
   @override
@@ -27,7 +28,7 @@ class LocalProductsRepo extends ProductsRepo {
       sub_images.add(img);
     });
     prodcutRow.remove("images");
-    return dbManger.insert(source, prodcutRow,
+    return dbcrud.insert(source, prodcutRow,
         foreignTable: DBManger.TBL_IMAGES,foreignkey: DBManger.COL_PRODUCT_ID, sub_rows: sub_images);
   }
 }
