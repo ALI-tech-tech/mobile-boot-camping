@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="568b6ca1-d10c-4df0-8b81-91faabf44766" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/day57/DAOs/reqcoures_dao.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/day57/DAOs/reqcoures_dao.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/day57/DAOs/student_dao.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/day57/DAOs/student_dao.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/day57/database/app_database.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/day57/database/app_database.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/day57/view/course/displayCourse.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/day57/view/course/displayCourse.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/day57/view/department/display_dep.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/day57/view/department/display_dep.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/day57/view/student/student.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/day57/view/student/student.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/day57/view/student/student_courses.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/day57/view/student/student_courses.dart" afterDir="false" />
-    </list>
+    <list default="true" id="568b6ca1-d10c-4df0-8b81-91faabf44766" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

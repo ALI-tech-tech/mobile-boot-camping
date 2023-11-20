@@ -72,7 +72,7 @@ class _StudentScreenState extends State<StudentScreen> {
                                   ),
                                   Center(child: Text("Std.Name: ${snapshot.data![index].name}")),
                                   Divider(),
-                                  FutureBuilder(
+                                  snapshot.data![index].departmentId!=null?FutureBuilder(
                                     future: DBHelper.database.departmentDao.getOneDepartment(snapshot.data![index].departmentId!),
                                     builder: (context,AsyncSnapshot<Department?> snapshot) {
                                       if (snapshot.hasData) {
@@ -80,7 +80,7 @@ class _StudentScreenState extends State<StudentScreen> {
                                       return Text("Std.Department : ${snapshot.data!.name} ");
                                       }
                                       return Text("Not in Department");
-                                    }),
+                                    }):Text("Not Assigned to department"),
                                   Text("Std.Contact: "),
                                   Text(
                                           "Email: ${snapshot.data![index].email}"),

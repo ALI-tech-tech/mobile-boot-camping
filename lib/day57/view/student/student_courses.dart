@@ -39,7 +39,7 @@ class _CourseStudentScreenState extends State<CourseStudentScreen> {
               margin: EdgeInsets.all(10),
               width: MediaQuery.of(context).size.width-20,
               decoration: BoxDecoration(
-                color: Colors.indigo[300],
+                color: Colors.teal[300],
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Center(
