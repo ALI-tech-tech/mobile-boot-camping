@@ -35,53 +35,60 @@ class _StudentScreenState extends State<StudentScreen> {
                   : ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder: (_, index) {
-                        return Card(
-                          margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width - 50,
-                            margin: EdgeInsets.all(15),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Stack(
-                                  children: [
-                                  Center(
-                                    child: Container(
-                                      margin: EdgeInsets.only(bottom: 10),
-                                      width: 100,
-                                      height: 100,
-                                      decoration: BoxDecoration(
-                                          color: Colors.teal,
-                                          borderRadius:
-                                              BorderRadius.circular(50)),
+                        return InkWell(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => CourseStudentScreen(s: snapshot.data![index]),));
+                          },
+                          child: Card(
+                            
+                            margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width - 50,
+                              margin: EdgeInsets.all(15),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Stack(
+                                    children: [
+                                    Center(
+                                      child: Container(
+                                        margin: EdgeInsets.only(bottom: 10),
+                                        width: 100,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                            color: Colors.teal,
+                                            borderRadius:
+                                                BorderRadius.circular(50)),
+                                      ),
                                     ),
+                                    IconButton(onPressed: (){
+                                      DBHelper.database.regcoursedao.deleteRegisteredCourseByStudentid(snapshot.data![index].id!);
+                                      DBHelper.database.studentDao.deleteStudent(snapshot.data![index].id!);
+                                      setState(() {
+                                        
+                                      });
+                                    }, icon: Icon(Icons.delete), color: Colors.red.withOpacity(0.7),)
+                                ]
                                   ),
-                                  IconButton(onPressed: (){
-                                    DBHelper.database.studentDao.deleteStudent(snapshot.data![index].id!);
-                                    setState(() {
-                                      
-                                    });
-                                  }, icon: Icon(Icons.delete), color: Colors.red.withOpacity(0.7),)
-                              ]
-                                ),
-                                Center(child: Text("Std.Name: ${snapshot.data![index].name}")),
-                                Divider(),
-                                FutureBuilder(
-                                  future: DBHelper.database.departmentDao.getOneDepartment(snapshot.data![index].departmentId!),
-                                  builder: (context,AsyncSnapshot<Department?> snapshot) {
-                                    if (snapshot.hasData) {
-                                      
-                                    return Text("Std.Department : ${snapshot.data!.name} ");
-                                    }
-                                    return Text("Not in Department");
-                                  }),
-                                Text("Std.Contact: "),
-                                Text(
-                                        "Email: ${snapshot.data![index].email}"),
-                                    Text(
-                                        "Phone: ${snapshot.data![index].phoneNo}"),
-                                
-                              ],
+                                  Center(child: Text("Std.Name: ${snapshot.data![index].name}")),
+                                  Divider(),
+                                  FutureBuilder(
+                                    future: DBHelper.database.departmentDao.getOneDepartment(snapshot.data![index].departmentId!),
+                                    builder: (context,AsyncSnapshot<Department?> snapshot) {
+                                      if (snapshot.hasData) {
+                                        
+                                      return Text("Std.Department : ${snapshot.data!.name} ");
+                                      }
+                                      return Text("Not in Department");
+                                    }),
+                                  Text("Std.Contact: "),
+                                  Text(
+                                          "Email: ${snapshot.data![index].email}"),
+                                      Text(
+                                          "Phone: ${snapshot.data![index].phoneNo}"),
+                                  
+                                ],
+                              ),
                             ),
                           ),
                         );

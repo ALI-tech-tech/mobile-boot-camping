@@ -48,6 +48,10 @@ class _CourseScreenState extends State<CourseScreen> {
                           title: Text(snapshot.data![index].name!),
                           subtitle:
                               Text(snapshot.data![index].hours!.toString()),
+                          trailing: IconButton(onPressed: (){
+                            DBHelper.database.regcoursedao.deleteRegisteredCourseByCourseid(snapshot.data![index].id!);
+                            DBHelper.database.coursedao.deleteCourse(snapshot.data![index]);
+                          }, icon: Icon(Icons.delete)),
                         );
                       });
             } else if (snapshot.hasError) {

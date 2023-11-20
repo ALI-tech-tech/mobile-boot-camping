@@ -79,6 +79,7 @@ class _CourseStudentScreenState extends State<CourseStudentScreen> {
                                   subtitle:
                                       Text(snapshot.data![index].hours!.toString()),
                                   trailing: IconButton(onPressed: (){
+                                    
                                     DBHelper.database.regcoursedao.deleteRegisteredCourse(RegCourse(CourseId:snapshot.data![index].id!, StudentId: widget.s.id ));
                                     setState(() {
                                       

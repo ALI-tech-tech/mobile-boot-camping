@@ -230,6 +230,14 @@ class _$StudentDao extends StudentDao {
   }
 
   @override
+  Future<int?> updateStudentListByDeptId(int id) async {
+    return _queryAdapter.query(
+        'update studentx  set departmentId=null  where departmentId= ?1',
+        mapper: (Map<String, Object?> row) => row.values.first as int,
+        arguments: [id]);
+  }
+
+  @override
   Future<int?> deleteStudent(int id) async {
     return _queryAdapter.query('DELETE FROM StudentX WHERE id = ?1',
         mapper: (Map<String, Object?> row) => row.values.first as int,
@@ -533,6 +541,20 @@ class _$RegCourseDao extends RegCourseDao {
         'SELECT Course.* FROM Course JOIN RegCourse ON Course.id = RegCourse.CourseId where RegCourse.StudentId=?1',
         mapper: (Map<String, Object?> row) => Course(id: row['id'] as int?, name: row['name'] as String?, hours: row['hours'] as int?),
         arguments: [studentId]);
+  }
+
+  @override
+  Future<void> deleteRegisteredCourseByStudentid(int id) async {
+    await _queryAdapter.queryNoReturn(
+        'delete from regcourse where regcourse.StudentId= ?1',
+        arguments: [id]);
+  }
+
+  @override
+  Future<void> deleteRegisteredCourseByCourseid(int id) async {
+    await _queryAdapter.queryNoReturn(
+        'delete from regcourse where regcourse.CourseId= ?1',
+        arguments: [id]);
   }
 
   @override

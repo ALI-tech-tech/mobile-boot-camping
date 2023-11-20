@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practis/day57/db_helper.dart';
 import 'package:flutter_practis/day57/entites/department.dart';
+import 'package:flutter_practis/day57/entites/student.dart';
 import 'package:flutter_practis/day57/view/department/students_department.dart';
 
 class DepartmentScreen extends StatefulWidget {
@@ -43,6 +44,14 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
                             child: Text(snapshot.data![index].id!.toString()),
                           ),
                           title: Text(snapshot.data![index].name!),
+                          trailing: IconButton(onPressed: (){
+                            DBHelper.database.studentDao.updateStudentListByDeptId(snapshot.data![index].id!);
+                            DBHelper.database.departmentDao.deleteDepartment(snapshot.data![index].id!);
+                            setState(() {
+                              
+                            });
+                            
+                          }, icon: Icon(Icons.delete)),
                         );
                       });
             } else if (snapshot.hasError) {

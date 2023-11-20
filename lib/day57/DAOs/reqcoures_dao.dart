@@ -13,7 +13,10 @@ abstract class RegCourseDao {
  
   @insert
   Future<void> insertRegisteredCourse(RegCourse regCourse);
-
+@Query("delete from regcourse where regcourse.StudentId= :id")
+  Future<void> deleteRegisteredCourseByStudentid(int id);
+  @Query("delete from regcourse where regcourse.CourseId= :id")
+  Future<void> deleteRegisteredCourseByCourseid(int id);
   @delete
   Future<void> deleteRegisteredCourse(RegCourse regCourse);
 }

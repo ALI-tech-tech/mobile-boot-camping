@@ -19,7 +19,8 @@ abstract class StudentDao {
   Future<int> updateStudent(Student s);
   @update
   Future<int> updateStudentList(List<Student> s);
-
+ @Query("update studentx  set departmentId=null  where departmentId= :id")
+  Future<int?> updateStudentListByDeptId(int id);
   @Query('DELETE FROM StudentX WHERE id = :id')
   Future<int?> deleteStudent(int id);
   @delete
