@@ -17,6 +17,6 @@ abstract class RegCourseDao {
   Future<void> deleteRegisteredCourseByStudentid(int id);
   @Query("delete from regcourse where regcourse.CourseId= :id")
   Future<void> deleteRegisteredCourseByCourseid(int id);
-  @delete
+  @delete   
   Future<void> deleteRegisteredCourse(RegCourse regCourse);
 }

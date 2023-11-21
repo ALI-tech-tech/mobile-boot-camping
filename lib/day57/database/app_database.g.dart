@@ -95,7 +95,7 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `Department` (`id` INTEGER, `name` TEXT, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Course` (`id` INTEGER, `name` TEXT, `hours` INTEGER, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Course` (`id` INTEGER, `name` TEXT, `hours` INTEGER, `departmentId` INTEGER, FOREIGN KEY (`departmentId`) REFERENCES `Department` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`id`))');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `RegCourse` (`StudentId` INTEGER, `CourseId` INTEGER, FOREIGN KEY (`StudentId`) REFERENCES `StudentX` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, FOREIGN KEY (`CourseId`) REFERENCES `Course` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`StudentId`, `CourseId`))');
         await database.execute(
@@ -417,7 +417,8 @@ class _$CourseDao extends CourseDao {
             (Course item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
-                  'hours': item.hours
+                  'hours': item.hours,
+                  'departmentId': item.departmentId
                 }),
         _courseUpdateAdapter = UpdateAdapter(
             database,
@@ -426,7 +427,8 @@ class _$CourseDao extends CourseDao {
             (Course item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
-                  'hours': item.hours
+                  'hours': item.hours,
+                  'departmentId': item.departmentId
                 }),
         _courseDeletionAdapter = DeletionAdapter(
             database,
@@ -435,7 +437,8 @@ class _$CourseDao extends CourseDao {
             (Course item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
-                  'hours': item.hours
+                  'hours': item.hours,
+                  'departmentId': item.departmentId
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -456,6 +459,7 @@ class _$CourseDao extends CourseDao {
         mapper: (Map<String, Object?> row) => Course(
             id: row['id'] as int?,
             name: row['name'] as String?,
+            departmentId: row['departmentId'] as int?,
             hours: row['hours'] as int?));
   }
 
@@ -463,7 +467,7 @@ class _$CourseDao extends CourseDao {
   Future<List<Course>> getAllCoursesWithoutRegster(int id) async {
     return _queryAdapter.queryList(
         'SELECT course.* from course where id not in (select regcourse.CourseId from regcourse where regcourse.StudentId= ?1)',
-        mapper: (Map<String, Object?> row) => Course(id: row['id'] as int?, name: row['name'] as String?, hours: row['hours'] as int?),
+        mapper: (Map<String, Object?> row) => Course(id: row['id'] as int?, name: row['name'] as String?, departmentId: row['departmentId'] as int?, hours: row['hours'] as int?),
         arguments: [id]);
   }
 
@@ -473,6 +477,7 @@ class _$CourseDao extends CourseDao {
         mapper: (Map<String, Object?> row) => Course(
             id: row['id'] as int?,
             name: row['name'] as String?,
+            departmentId: row['departmentId'] as int?,
             hours: row['hours'] as int?),
         arguments: [id]);
   }
@@ -539,7 +544,7 @@ class _$RegCourseDao extends RegCourseDao {
   Future<List<Course>> getRegisteredCoursesByStudentId(int studentId) async {
     return _queryAdapter.queryList(
         'SELECT Course.* FROM Course JOIN RegCourse ON Course.id = RegCourse.CourseId where RegCourse.StudentId=?1',
-        mapper: (Map<String, Object?> row) => Course(id: row['id'] as int?, name: row['name'] as String?, hours: row['hours'] as int?),
+        mapper: (Map<String, Object?> row) => Course(id: row['id'] as int?, name: row['name'] as String?, departmentId: row['departmentId'] as int?, hours: row['hours'] as int?),
         arguments: [studentId]);
   }
 

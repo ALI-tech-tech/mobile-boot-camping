@@ -5,6 +5,8 @@ import 'package:flutter_practis/day57/entites/student.dart';
 abstract class StudentDao {
   @Query('SELECT * FROM StudentX')
   Future<List<Student>> getAllStudents();
+  // @Query('select * from studentx join department  on studentx.departmentId=department.id')
+  // Future<List> getAllStudentswithDepart();
   @Query('SELECT * FROM StudentX WHERE id = :id')
   Future<Student?> getOneStudent(int id);
   @Query('SELECT * FROM StudentX WHERE departmentId = :id')
