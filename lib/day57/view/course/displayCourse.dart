@@ -51,6 +51,9 @@ class _CourseScreenState extends State<CourseScreen> {
                           trailing: IconButton(onPressed: (){
                             DBHelper.database.regcoursedao.deleteRegisteredCourseByCourseid(snapshot.data![index].id!);
                             DBHelper.database.coursedao.deleteCourse(snapshot.data![index]);
+                            setState(() {
+                              
+                            });
                           }, icon: Icon(Icons.delete)),
                         );
                       });

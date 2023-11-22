@@ -22,9 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
         
         appBar: AppBar(
           title: Text('Admin'),
-          actions: [
-            IconButton(onPressed: (){}, icon: Icon(Icons.switch_account))
-          ],
+          // actions: [
+          //   IconButton(onPressed: (){}, icon: Icon(Icons.switch_account))
+          // ],
         ),
         body:
         ListView(

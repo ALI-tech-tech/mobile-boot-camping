@@ -30,9 +30,56 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
                   : ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder: (_, index) {
+                        Department dept = snapshot.data![index];
                         return ListTile(
+                          onLongPress: () async {
+                            _textController.text = dept.name!;
+                            await showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text('update Depaertment '),
+                                content: Form(
+                                  key: fkey,
+                                  child: TextFormField(
+                                    controller: _textController,
+                                    validator: (value) => value!.isEmpty
+                                        ? "pleas enter Department"
+                                        : null,
+                                    decoration: InputDecoration(
+                                      labelText: 'Enter some text',
+                                    ),
+                                  ),
+                                ),
+                                actions: [
+                                  TextButton(
+                                    child: Text('Cancel'),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                  ElevatedButton(
+                                    child: Text('Submit'),
+                                    onPressed: () async {
+                                      if (fkey.currentState!.validate()) {
+                                        await DBHelper.database.departmentDao
+                                            .updateDepartment(dept);
+
+                                        setState(() {});
+                                        Navigator.pop(context);
+                                      }
+                                    },
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => StudentDepartmentScreen(dept: snapshot.data![index]),));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => StudentDepartmentScreen(
+                                      dept: snapshot.data![index]),
+                                ));
                           },
                           leading: Container(
                             alignment: Alignment.center,
@@ -44,14 +91,17 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
                             child: Text(snapshot.data![index].id!.toString()),
                           ),
                           title: Text(snapshot.data![index].name!),
-                          trailing: IconButton(onPressed: (){
-                            DBHelper.database.studentDao.updateStudentListByDeptId(snapshot.data![index].id!);
-                            DBHelper.database.departmentDao.deleteDepartment(snapshot.data![index].id!);
-                            setState(() {
-                              
-                            });
-                            
-                          }, icon: Icon(Icons.delete)),
+                          trailing: IconButton(
+                              onPressed: () {
+                                DBHelper.database.studentDao
+                                    .updateStudentListByDeptId(
+                                        snapshot.data![index].id!);
+                                DBHelper.database.departmentDao
+                                    .deleteDepartment(
+                                        snapshot.data![index].id!);
+                                setState(() {});
+                              },
+                              icon: Icon(Icons.delete)),
                         );
                       });
             } else if (snapshot.hasError) {

@@ -22,7 +22,7 @@ class _CourseStudentScreenState extends State<CourseStudentScreen> {
   TextEditingController _textController = TextEditingController();
   TextEditingController _hController = TextEditingController();
   int selected = 1;
-  int selectedcourse=1;
+  int selectedcourse = 1;
   GlobalKey<FormState> fkey = GlobalKey();
 
   @override
@@ -35,59 +35,70 @@ class _CourseStudentScreenState extends State<CourseStudentScreen> {
         child: Column(
           children: [
             Container(
-              height: 50, 
+              height: 50,
               margin: EdgeInsets.all(10),
-              width: MediaQuery.of(context).size.width-20,
+              width: MediaQuery.of(context).size.width - 20,
               decoration: BoxDecoration(
                 color: Colors.teal[300],
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Center(
-                child: FutureBuilder(
-                  future:DBHelper.database.departmentDao.getOneDepartment(widget.s.departmentId!) ,
-                  builder: (context, snapshot) { 
-                  if(snapshot.hasData)
-                 return  Text(snapshot.data!.name!, style: TextStyle(color: Colors.white, fontSize: 20),);
-                 return Text("Not found Department");
-                 }),
-              ),
+                  child: widget.s.departmentId != null
+                      ? FutureBuilder(
+                          future: DBHelper.database.departmentDao
+                              .getOneDepartment(widget.s.departmentId!),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData)
+                              return Text(
+                                snapshot.data!.name!,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              );
+                            return Text("Not found Department");
+                          })
+                      : Text("no Department")),
             ),
             FutureBuilder(
                 future: DBHelper.database.regcoursedao
                     .getRegisteredCoursesByStudentId(widget.s.id!),
-                builder:
-                    (BuildContext context, AsyncSnapshot<List<Course>> snapshot) {
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<Course>> snapshot) {
                   if (snapshot.hasData) {
                     return snapshot.data!.isEmpty
                         ? Text('Empty')
                         : SizedBox(
-                          height: MediaQuery.of(context).size.height,
-                          child: ListView.builder(
-                              itemCount: snapshot.data!.length,
-                              itemBuilder: (_, index) {
-                                return ListTile(
-                                  leading: Container(
-                                    alignment: Alignment.center,
-                                    width: 30,
-                                    height: 30,
-                                    decoration: BoxDecoration(
-                                        color: Colors.teal,
-                                        borderRadius: BorderRadius.circular(15)),
-                                    child: Text(snapshot.data![index].id!.toString()),
-                                  ),
-                                  title: Text(snapshot.data![index].name!),
-                                  subtitle:
-                                      Text(snapshot.data![index].hours!.toString()),
-                                  trailing: IconButton(onPressed: (){
-                                    
-                                    DBHelper.database.regcoursedao.deleteRegisteredCourse(RegCourse(CourseId:snapshot.data![index].id!, StudentId: widget.s.id ));
-                                    setState(() {
-                                      
-                                    });
-                                  }, icon: Icon(Icons.delete)),
-                                );
-                              }),
-                        );
+                            height: MediaQuery.of(context).size.height,
+                            child: ListView.builder(
+                                itemCount: snapshot.data!.length,
+                                itemBuilder: (_, index) {
+                                  return ListTile(
+                                    leading: Container(
+                                      alignment: Alignment.center,
+                                      width: 30,
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                          color: Colors.teal,
+                                          borderRadius:
+                                              BorderRadius.circular(15)),
+                                      child: Text(
+                                          snapshot.data![index].id!.toString()),
+                                    ),
+                                    title: Text(snapshot.data![index].name!),
+                                    subtitle: Text(snapshot.data![index].hours!
+                                        .toString()),
+                                    trailing: IconButton(
+                                        onPressed: () {
+                                          DBHelper.database.regcoursedao
+                                              .deleteRegisteredCourse(RegCourse(
+                                                  CourseId:
+                                                      snapshot.data![index].id!,
+                                                  StudentId: widget.s.id));
+                                          setState(() {});
+                                        },
+                                        icon: Icon(Icons.delete)),
+                                  );
+                                }),
+                          );
                   } else if (snapshot.hasError) {
                     return Text(snapshot.error.toString());
                   } else {
@@ -99,7 +110,6 @@ class _CourseStudentScreenState extends State<CourseStudentScreen> {
       ),
       floatingActionButton: ElevatedButton.icon(
           onPressed: () async {
-            
             await showDialog(
               context: context,
               builder: (context) => AlertDialog(
@@ -110,29 +120,29 @@ class _CourseStudentScreenState extends State<CourseStudentScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       FutureBuilder(
-                        future: DBHelper.database.coursedao.getAllCoursesWithoutRegster(widget.s.id!),
-                        builder: (BuildContext context, AsyncSnapshot<List<Course>> snapshot) {
+                        future: DBHelper.database.coursedao
+                            .getAllCoursesWithoutRegster(widget.s.id!),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<List<Course>> snapshot) {
                           if (snapshot.hasData) {
-                            selectedcourse=snapshot.data![0].id!;
-                          return  StatefulBuilder(
-                            builder: (BuildContext context, setState) {
-                              return DropdownButton(
-                            value: selectedcourse,
-                            items: snapshot.data!
-                                .map((fc) => DropdownMenuItem<int>(
-                                      child: Text(fc.name!),
-                                      value: fc.id,
-                                    ))
-                                .toList(),
-                            onChanged: (value) {
-                              
-                              selectedcourse=value!;
-                              setState(() {});
-                            },
-                          );
-                            },
-                          );
-                        
+                            selectedcourse = snapshot.data![0].id!;
+                            return StatefulBuilder(
+                              builder: (BuildContext context, setState) {
+                                return DropdownButton(
+                                  value: selectedcourse,
+                                  items: snapshot.data!
+                                      .map((fc) => DropdownMenuItem<int>(
+                                            child: Text(fc.name!),
+                                            value: fc.id,
+                                          ))
+                                      .toList(),
+                                  onChanged: (value) {
+                                    selectedcourse = value!;
+                                    setState(() {});
+                                  },
+                                );
+                              },
+                            );
                           }
                           return Text("nodata");
                         },
@@ -152,7 +162,10 @@ class _CourseStudentScreenState extends State<CourseStudentScreen> {
                     onPressed: () async {
                       String enteredText = _textController.text;
                       if (fkey.currentState!.validate()) {
-                        await DBHelper.database.regcoursedao.insertRegisteredCourse(RegCourse(StudentId: widget.s.id, CourseId:selectedcourse ));
+                        await DBHelper.database.regcoursedao
+                            .insertRegisteredCourse(RegCourse(
+                                StudentId: widget.s.id,
+                                CourseId: selectedcourse));
                         setState(() {});
                         Navigator.pop(context);
                       }

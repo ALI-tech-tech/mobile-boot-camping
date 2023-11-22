@@ -9,7 +9,7 @@ class Course {
   final int? id;
   final String? name;
   final int? hours;
-  final int? departmentId;
+  // final int? departmentId;
 
-  Course( {this.id, this.name, this.departmentId,this.hours});
+  Course( {this.id, this.name, this.hours});
 }
