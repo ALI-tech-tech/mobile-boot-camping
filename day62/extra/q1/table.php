@@ -28,16 +28,16 @@ include 'vm.php';
         <form method="POST" action="">
             <?php if ($editMode) : ?>
                 <input type="hidden" name="action" value="update">
-                <input type="hidden" name="id" value="<?php echo $selectedUser['Id']; ?>">
+                <input type="hidden" name="id" value="<?php echo $selectedCustomer['Id']; ?>">
 
             <?php else : ?>
                 <input type="hidden" name="action" value="create">
             <?php endif; ?>
             <label for="name">Name:</label>
-            <input type="text" name="name" value="<?php echo $editMode ? $selectedUser['name'] : ''; ?>" required><br><br>
+            <input type="text" name="name" value="<?php echo $editMode ? $selectedCustomer['name'] : ''; ?>" required><br><br>
 
             <label for="phone">Phone:</label>
-            <input type="number" name="phone" value="<?php echo $editMode ? $selectedUser['phone'] : ''; ?>" required><br><br>
+            <input type="number" name="phone" value="<?php echo $editMode ? $selectedCustomer['phone'] : ''; ?>" required><br><br>
 
             <?php
             $type = array("Suggeestion", "Complain");
@@ -50,7 +50,7 @@ include 'vm.php';
             ?>
 
             <textarea cols=10 rows=4  name="content">
-            <?php echo $editMode ? $selectedUser['content'] : ''; ?>
+            <?php echo $editMode ? $selectedCustomer['content'] : ''; ?>
             </textarea><br><br>
 
             <input type="submit" name="submit" value="Submit">

@@ -27,9 +27,13 @@ switch ($action) {
         $customerModel->add($name,$phone,$type,$content);
         break;
         case 'edit':
+            $customer=array();
             $id = $_POST['Id'];
-            $selectedUser = $customerModel->getCustomer($id);
+            $selectedCustomer = $customerModel->getCustomer($id);
+            $selectedCustomer=$selectedCustomer->fetch_assoc();
+            
             $editMode = true;
+            
             break;
     case 'update':
         $id = $_POST['id'];
