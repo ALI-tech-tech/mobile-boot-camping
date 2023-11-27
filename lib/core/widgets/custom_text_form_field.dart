@@ -25,7 +25,7 @@ class CustomTextFormField extends StatelessWidget {
     this.borderDecoration,
     this.fillColor,
     this.filled = true,
-    this.validator,
+    this.validator, this.autovalid,
   }) : super(
           key: key,
         );
@@ -71,6 +71,7 @@ class CustomTextFormField extends StatelessWidget {
   final Color? fillColor;
 
   final bool? filled;
+  final AutovalidateMode? autovalid;
 
   final FormFieldValidator<String>? validator;
 
@@ -88,6 +89,7 @@ class CustomTextFormField extends StatelessWidget {
         width: width ?? double.maxFinite,
         margin: margin,
         child: TextFormField(
+          autovalidateMode:autovalid??AutovalidateMode.disabled,
           controller: controller,
           focusNode: focusNode ?? FocusNode(),
           autofocus: autofocus!,
@@ -102,6 +104,7 @@ class CustomTextFormField extends StatelessWidget {
       );
   InputDecoration get decoration => InputDecoration(
         hintText: hintText ?? "",
+        errorStyle: CustomTextStyles.bodySmallOnErrorContainer,
         hintStyle: hintStyle ?? CustomTextStyles.titleMediumBluegray400,
         prefixIcon: prefix,
         prefixIconConstraints: prefixConstraints,
@@ -121,6 +124,7 @@ class CustomTextFormField extends StatelessWidget {
               borderSide: BorderSide(
                 color: appTheme.indigo50,
                 width: 1,
+                
               ),
             ),
         enabledBorder: borderDecoration ??
@@ -141,8 +145,6 @@ class CustomTextFormField extends StatelessWidget {
             ),
       );
 }
-
-/// Extension on [CustomTextFormField] to facilitate inclusion of all types of border style etc
 extension TextFormFieldStyleHelper on CustomTextFormField {
   static OutlineInputBorder get fillGray => OutlineInputBorder(
         borderRadius: BorderRadius.circular(getHorizontalSize(28.00)),

@@ -3,15 +3,30 @@ import 'package:jobsfinder/core/widgets/custom_elevated_button.dart';
 import 'package:jobsfinder/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/validation.dart';
+
 // ignore_for_file: must_be_immutable
-class SignUpCompleteAccountScreen extends StatelessWidget {
+class SignUpCompleteAccountScreen extends StatefulWidget {
   SignUpCompleteAccountScreen({Key? key}) : super(key: key);
 
+  @override
+  State<SignUpCompleteAccountScreen> createState() =>
+      _SignUpCompleteAccountScreenState();
+}
+
+class _SignUpCompleteAccountScreenState
+    extends State<SignUpCompleteAccountScreen> {
   TextEditingController firstNameController = TextEditingController();
 
   TextEditingController lastNameController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
+
+  TextEditingController repasswordController = TextEditingController();
+
+  bool obsecure1 = true;
+
+  bool obsecure2 = true;
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -28,177 +43,213 @@ class SignUpCompleteAccountScreen extends StatelessWidget {
                     width: double.maxFinite,
                     padding:
                         getPadding(left: 24, top: 13, right: 24, bottom: 13),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          CustomImageView(
-                              svgPath: ImageConstant.imgGroup162799,
-                              height: getSize(24),
-                              width: getSize(24),
-                              onTap: () {
-                                onTapImgImage(context);
-                              }),
-                          Align(
-                              alignment: Alignment.centerRight,
-                              child: Padding(
-                                  padding: getPadding(top: 47, right: 15),
-                                  child: Text("Complete your account",
-                                      style: theme.textTheme.headlineSmall))),
-                          Align(
-                              alignment: Alignment.center,
-                              child: Padding(
-                                  padding: getPadding(top: 9),
-                                  child: Text("Lorem ipsum dolor sit amet",
-                                      style: CustomTextStyles
-                                          .titleSmallBluegray400_1))),
-                          Padding(
-                              padding: getPadding(top: 33),
-                              child: Text("First Name",
-                                  style: theme.textTheme.titleSmall)),
-                          CustomTextFormField(
-                              controller: firstNameController,
-                              margin: getMargin(top: 9),
-                              hintText: "Enter your first name",
-                              hintStyle:
-                                  CustomTextStyles.titleMediumBluegray400,
-                              contentPadding: getPadding(
-                                  left: 12, top: 15, right: 12, bottom: 15)),
-                          Padding(
-                              padding: getPadding(top: 18),
-                              child: Text("Last Name",
-                                  style: theme.textTheme.titleSmall)),
-                          CustomTextFormField(
-                              controller: lastNameController,
-                              margin: getMargin(top: 9),
-                              hintText: "Enter your last name",
-                              hintStyle:
-                                  CustomTextStyles.titleMediumBluegray400,
-                              contentPadding: getPadding(
-                                  left: 12, top: 15, right: 12, bottom: 15)),
-                          Padding(
-                              padding: getPadding(top: 18),
-                              child: Text(" Password",
-                                  style: theme.textTheme.titleSmall)),
-                          CustomTextFormField(
-                              controller: passwordController,
-                              margin: getMargin(top: 9),
-                              hintText: "Create a password",
-                              hintStyle:
-                                  CustomTextStyles.titleMediumBluegray400,
-                              textInputAction: TextInputAction.done,
-                              textInputType: TextInputType.visiblePassword,
-                              suffix: Container(
-                                  margin: getMargin(
-                                      left: 30, top: 14, right: 16, bottom: 14),
-                                  child: CustomImageView(
-                                      svgPath: ImageConstant.imgCheckmark)),
-                              suffixConstraints: BoxConstraints(
-                                  maxHeight: getVerticalSize(52)),
-                              obscureText: true,
-                              contentPadding:
-                                  getPadding(left: 16, top: 15, bottom: 15)),
-                          
-                           Padding(
-                              padding: getPadding(top: 18),
-                              child: Text("Repeat Password",
-                                  style: theme.textTheme.titleSmall)),
-                          CustomTextFormField(
-                              controller: passwordController,
-                              margin: getMargin(top: 9),
-                              hintText: "Write your password",
-                              hintStyle:
-                                  CustomTextStyles.titleMediumBluegray400,
-                              textInputAction: TextInputAction.done,
-                              textInputType: TextInputType.visiblePassword,
-                              suffix: Container(
-                                  margin: getMargin(
-                                      left: 30, top: 14, right: 16, bottom: 14),
-                                  child: CustomImageView(
-                                      svgPath: ImageConstant.imgCheckmark)),
-                              suffixConstraints: BoxConstraints(
-                                  maxHeight: getVerticalSize(52)),
-                              obscureText: true,
-                              contentPadding:
-                                  getPadding(left: 16, top: 15, bottom: 15)),
-                          
-                          
-                          CustomElevatedButton(
+                    child: SingleChildScrollView(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            CustomImageView(
+                                svgPath: ImageConstant.imgGroup162799,
+                                height: getSize(24),
+                                width: getSize(24),
+                                onTap: () {
+                                  onTapImgImage(context);
+                                }),
+                            Align(
+                                alignment: Alignment.centerRight,
+                                child: Padding(
+                                    padding: getPadding(top: 47, right: 15),
+                                    child: Text("Complete your account",
+                                        style: theme.textTheme.headlineSmall))),
+                            Align(
+                                alignment: Alignment.center,
+                                child: Padding(
+                                    padding: getPadding(top: 9),
+                                    child: Text("Lorem ipsum dolor sit amet",
+                                        style: CustomTextStyles
+                                            .titleSmallBluegray400_1))),
+                            Padding(
+                                padding: getPadding(top: 33),
+                                child: Text("First Name",
+                                    style: theme.textTheme.titleSmall)),
+                            CustomTextFormField(
+                                controller: firstNameController,
+                                margin: getMargin(top: 9),
+                                hintText: "Enter your first name",
+                                validator: (value) => MyValidate.validateName(
+                                    value!, 3, "Enter name, 3 char at least"),
+                                hintStyle:
+                                    CustomTextStyles.titleMediumBluegray400,
+                                contentPadding: getPadding(
+                                    left: 12, top: 15, right: 12, bottom: 15)),
+                            Padding(
+                                padding: getPadding(top: 18),
+                                child: Text("Last Name",
+                                    style: theme.textTheme.titleSmall)),
+                            CustomTextFormField(
+                                controller: lastNameController,
+                                validator: (value) => MyValidate.validateName(
+                                    value!, 3, "Enter name, 3 char at least"),
+                                margin: getMargin(top: 9),
+                                hintText: "Enter your last name",
+                                hintStyle:
+                                    CustomTextStyles.titleMediumBluegray400,
+                                contentPadding: getPadding(
+                                    left: 12, top: 15, right: 12, bottom: 15)),
+                            Padding(
+                                padding: getPadding(top: 18),
+                                child: Text(" Password",
+                                    style: theme.textTheme.titleSmall)),
+                            CustomTextFormField(
+                                controller: passwordController,
+                                margin: getMargin(top: 9),
+                                hintText: "Create a password",
+                                hintStyle:
+                                    CustomTextStyles.titleMediumBluegray400,
+                                validator: (value) => MyValidate.validatePass(value!, 7,
+                                    "Enter emil,at least 7 char !!!"),
+                                textInputAction: TextInputAction.done,
+                                textInputType: TextInputType.visiblePassword,
+                                suffix: InkWell(
+                                  onTap: () {
+                                    obsecure1 = !obsecure1;
+                                    setState(() {});
+                                  },
+                                  child: Container(
+                                      margin: getMargin(
+                                          left: 30,
+                                          top: 14,
+                                          right: 16,
+                                          bottom: 14),
+                                      child: !obsecure1
+                                          ? Icon(
+                                              Icons.visibility_sharp,
+                                              color: appTheme.black900,
+                                              size: 24,
+                                            )
+                                          : CustomImageView(
+                                              svgPath:
+                                                  ImageConstant.imgCheckmark)),
+                                ),
+                                suffixConstraints: BoxConstraints(
+                                    maxHeight: getVerticalSize(52)),
+                                obscureText: obsecure1,
+                                contentPadding:
+                                    getPadding(left: 16, top: 15, bottom: 15)),
+                            Padding(
+                                padding: getPadding(top: 18),
+                                child: Text("Repeat Password",
+                                    style: theme.textTheme.titleSmall)),
+                            CustomTextFormField(
+                                autovalid: AutovalidateMode.onUserInteraction,
+                                controller: repasswordController,
+                                validator: (value) =>
+                                    value != passwordController.text
+                                        ? "password not same above"
+                                        : null,
+                                margin: getMargin(top: 9),
+                                hintText: "Write your password",
+                                hintStyle:
+                                    CustomTextStyles.titleMediumBluegray400,
+                                textInputAction: TextInputAction.done,
+                                textInputType: TextInputType.visiblePassword,
+                                suffix: InkWell(
+                                  onTap: () {
+                                    obsecure2 = !obsecure2;
+                                    setState(() {});
+                                  },
+                                  child: Container(
+                                      margin: getMargin(
+                                          left: 30,
+                                          top: 14,
+                                          right: 16,
+                                          bottom: 14),
+                                      child: !obsecure2
+                                          ? Icon(
+                                              Icons.visibility_sharp,
+                                              color: appTheme.black900,
+                                              size: 24,
+                                            )
+                                          : CustomImageView(
+                                              svgPath:
+                                                  ImageConstant.imgCheckmark)),
+                                ),
+                                suffixConstraints: BoxConstraints(
+                                    maxHeight: getVerticalSize(52)),
+                                obscureText: obsecure2,
+                                contentPadding:
+                                    getPadding(left: 16, top: 15, bottom: 15)),
+                            CustomElevatedButton(
                               text: "Continue",
                               margin: getMargin(top: 40),
                               buttonStyle: CustomButtonStyles.fillPrimary,
-                              onTap: (){
+                              onTap: () {
                                 if (_formKey.currentState!.validate()) {
-                                   onTapContnueBtn(context);
+                                  onTapContnueBtn(context);
                                 }
-                               
                               },
-                              ),
-                          Align(
-                              alignment: Alignment.center,
-                              child: Padding(
-                                  padding:
-                                      getPadding(left: 40, top: 28, right: 40),
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text("Already have an account?",
-                                            style: CustomTextStyles
-                                                .titleMediumBluegray300),
-                                        GestureDetector(
-                                            onTap: () {
-                                              onTapTxtLargelabelmediu(context);
-                                            },
-                                            child: Padding(
-                                                padding: getPadding(left: 3),
-                                                child: Text(" Login",
-                                                    style: theme.textTheme
-                                                        .titleMedium)))
-                                      ]))),
-                          Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                  width: getHorizontalSize(245),
-                                  margin: getMargin(
-                                      left: 40, top: 19, right: 40, bottom: 5),
-                                  child: RichText(
-                                      text: TextSpan(children: [
-                                        TextSpan(
-                                            text:
-                                                "By signing up you agree to our ",
-                                            style: CustomTextStyles
-                                                .titleSmallBluegray400SemiBold),
-                                        TextSpan(
-                                            text: "Terms",
-                                            style: CustomTextStyles
-                                                .titleSmallErrorContainer),
-                                        TextSpan(
-                                            text: " and ",
-                                            style: CustomTextStyles
-                                                .titleSmallBluegray400SemiBold),
-                                        TextSpan(
-                                            text: "Conditions of Use",
-                                            style: CustomTextStyles
-                                                .titleSmallErrorContainer)
-                                      ]),
-                                      textAlign: TextAlign.center)))
-                        ])))));
+                            ),
+                            Align(
+                                alignment: Alignment.center,
+                                child: Padding(
+                                    padding: getPadding(
+                                        left: 40, top: 28, right: 40),
+                                    child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text("Already have an account?",
+                                              style: CustomTextStyles
+                                                  .titleMediumBluegray300),
+                                          GestureDetector(
+                                              onTap: () {
+                                                onTapTxtLargelabelmediu(
+                                                    context);
+                                              },
+                                              child: Padding(
+                                                  padding: getPadding(left: 3),
+                                                  child: Text(" Login",
+                                                      style: theme.textTheme
+                                                          .titleMedium)))
+                                        ]))),
+                            Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                    width: getHorizontalSize(245),
+                                    margin: getMargin(
+                                        left: 40,
+                                        top: 19,
+                                        right: 40,
+                                        bottom: 5),
+                                    child: RichText(
+                                        text: TextSpan(children: [
+                                          TextSpan(
+                                              text:
+                                                  "By signing up you agree to our ",
+                                              style: CustomTextStyles
+                                                  .titleSmallBluegray400SemiBold),
+                                          TextSpan(
+                                              text: "Terms",
+                                              style: CustomTextStyles
+                                                  .titleSmallErrorContainer),
+                                          TextSpan(
+                                              text: " and ",
+                                              style: CustomTextStyles
+                                                  .titleSmallBluegray400SemiBold),
+                                          TextSpan(
+                                              text: "Conditions of Use",
+                                              style: CustomTextStyles
+                                                  .titleSmallErrorContainer)
+                                        ]),
+                                        textAlign: TextAlign.center)))
+                          ]),
+                    )))));
   }
 
-  /// Navigates back to the previous screen.
-  ///
-  /// This function takes a [BuildContext] object as a parameter, which is used
-  /// to navigate back to the previous screen.
   onTapImgImage(BuildContext context) {
     Navigator.pop(context);
   }
 
-  /// Navigates to the loginScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the loginScreen.
   onTapTxtLargelabelmediu(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.loginScreen);
   }
@@ -206,4 +257,5 @@ class SignUpCompleteAccountScreen extends StatelessWidget {
   onTapContnueBtn(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.enterOtpScreen);
   }
+
 }

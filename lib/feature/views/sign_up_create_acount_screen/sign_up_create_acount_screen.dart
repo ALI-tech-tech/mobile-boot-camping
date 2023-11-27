@@ -97,6 +97,14 @@ class SignUpCreateAcountScreen extends StatelessWidget {
                                           CustomTextStyles.titleSmallPrimary))),
                           CustomTextFormField(
                               controller: emailController,
+                              validator: (value) {
+                                if (!value!.isEmpty) {
+                                  return isValidEmail(value)?null:"Email not Correct";
+                                }else{
+                                  return "Email is Empty";
+                                }
+                              }, 
+                              
                               margin: getMargin(top: 9),
                               hintText: "Enter your email address",
                               hintStyle:
@@ -110,7 +118,10 @@ class SignUpCreateAcountScreen extends StatelessWidget {
                               margin: getMargin(top: 40),
                               buttonStyle: CustomButtonStyles.fillPrimary,
                               onTap: () {
-                                onTapContinuewith(context);
+                                if (_formKey.currentState!.validate()) {
+                                  onTapContinuewith(context);
+                                }
+                                
                               }),
                           Padding(
                               padding: getPadding(left: 40, top: 28, right: 40),
@@ -157,29 +168,24 @@ class SignUpCreateAcountScreen extends StatelessWidget {
                         ])))));
   }
 
-  /// Navigates back to the previous screen.
-  ///
-  /// This function takes a [BuildContext] object as a parameter, which is used
-  /// to navigate back to the previous screen.
+
   onTapImgImage(BuildContext context) {
     Navigator.pop(context);
   }
 
-  /// Navigates to the signUpCompleteAccountScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the signUpCompleteAccountScreen.
+
   onTapContinuewith(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.signUpCompleteAccountScreen);
   }
 
-  /// Navigates to the loginScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the loginScreen.
+
   onTapTxtLargelabelmediu(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.loginScreen);
+  }
+
+   bool isValidEmail(String email) {
+    return RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(email);
   }
 }

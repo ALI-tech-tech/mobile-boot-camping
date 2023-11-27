@@ -4,6 +4,7 @@ import 'package:jobsfinder/core/widgets/custom_elevated_button.dart';
 import 'package:jobsfinder/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/validation.dart';
 import '../../../core/widgets/custom_drop_down.dart';
 
 // ignore_for_file: must_be_immutable
@@ -70,6 +71,7 @@ class _CompleteCompanySignUpState extends State<CompleteCompanySignUp> {
                                 child: Text("Company Name",
                                     style: theme.textTheme.titleSmall)),
                             CustomTextFormField(
+                                validator:(value) =>  MyValidate.validateName(value!, 5, "Company name 5 char at least"),
                                 controller: companyNameController,
                                 margin: getMargin(top: 9),
                                 hintText: "Enter Company name",
@@ -83,6 +85,7 @@ class _CompleteCompanySignUpState extends State<CompleteCompanySignUp> {
                                     style: theme.textTheme.titleSmall)),
                             CustomTextFormField(
                                 controller: descriptionController,
+                                validator: (value) =>  MyValidate.validateName(value!, 30, "Write more!!! "),
                                 maxLines: 7,
                                 margin: getMargin(top: 9),
                                 hintText: "Enter Desciption",
@@ -113,6 +116,7 @@ class _CompleteCompanySignUpState extends State<CompleteCompanySignUp> {
                                 child: Text(" Website",
                                     style: theme.textTheme.titleSmall)),
                             CustomTextFormField(
+                              validator: (value) =>  MyValidate.validateName(value!, 10, "Write Full Link"),
                                 controller: websiteController,
                                 margin: getMargin(top: 9),
                                 hintText: "Website link",
@@ -120,17 +124,9 @@ class _CompleteCompanySignUpState extends State<CompleteCompanySignUp> {
                                     CustomTextStyles.titleMediumBluegray400,
                                 textInputAction: TextInputAction.done,
                                 textInputType: TextInputType.visiblePassword,
-                                suffix: Container(
-                                    margin: getMargin(
-                                        left: 30,
-                                        top: 14,
-                                        right: 16,
-                                        bottom: 14),
-                                    child: CustomImageView(
-                                        svgPath: ImageConstant.imgCheckmark)),
                                 suffixConstraints: BoxConstraints(
                                     maxHeight: getVerticalSize(52)),
-                                obscureText: true,
+                               
                                 contentPadding:
                                     getPadding(left: 16, top: 15, bottom: 15)),
                             Padding(
@@ -165,9 +161,24 @@ class _CompleteCompanySignUpState extends State<CompleteCompanySignUp> {
                               text: "Continue",
                               margin: getMargin(top: 40),
                               buttonStyle: CustomButtonStyles.fillPrimary,
-                              onTap: () {
-                                if (_formKey.currentState!.validate()) {
+                              onTap: () async{
+                                if (_formKey.currentState!.validate() ) {
+                                  if (imageProfile!=null && imageIDCard!=null) {
                                   onTapContnueBtn(context);
+                                  }else{
+                                    await showDialog(context: context, builder: (context) => AlertDialog(
+
+                                      content: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(20)
+                                        ),
+                                        child: Text("Choose Images First")),
+                                      actions: [
+                                        CustomElevatedButton(text: "Close", buttonStyle: CustomButtonStyles.fillPrimary,)
+                                      ],
+                                    ),);
+                                  }
+                                  
                                 }
                               },
                             ),
