@@ -83,24 +83,7 @@ class ProfilePage extends StatelessWidget {
                                                               .circular(
                                                                   getHorizontalSize(
                                                                       44))),
-                                                      Padding(
-                                                          padding: getPadding(
-                                                              top: 9),
-                                                          child: Text(
-                                                              "Gustavo Lipshutz",
-                                                              style: CustomTextStyles
-                                                                  .titleMediumErrorContainer)),
-                                                      CustomCheckboxButton(
-                                                          text: "Open to work",
-                                                          value: opentowork,
-                                                          margin:
-                                                              getMargin(top: 5),
-                                                          textStyle:
-                                                              CustomTextStyles
-                                                                  .titleSmallPoppinsBluegray300,
-                                                          onChange: (value) {
-                                                            opentowork = value;
-                                                          })
+                                                      
                                                     ])))
                                       ])),
                               Container(
@@ -114,79 +97,7 @@ class ProfilePage extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: theme.textTheme.bodyMedium!
                                           .copyWith(height: 1.57))),
-                              Padding(
-                                  padding:
-                                      getPadding(left: 24, top: 17, right: 24),
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                            width: getHorizontalSize(154),
-                                            padding: getPadding(
-                                                left: 40,
-                                                top: 12,
-                                                right: 40,
-                                                bottom: 12),
-                                            decoration: AppDecoration
-                                                .fillGray200
-                                                .copyWith(
-                                                    borderRadius:
-                                                        BorderRadiusStyle
-                                                            .roundedBorder24),
-                                            child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.end,
-                                                children: [
-                                                  Padding(
-                                                      padding:
-                                                          getPadding(top: 2),
-                                                      child: Text("25",
-                                                          style: CustomTextStyles
-                                                              .titleMediumBold_1)),
-                                                  Padding(
-                                                      padding: getPadding(
-                                                          left: 8, top: 5),
-                                                      child: Text("Applied",
-                                                          style: theme.textTheme
-                                                              .labelLarge))
-                                                ])),
-                                        Container(
-                                            width: getHorizontalSize(154),
-                                            margin: getMargin(left: 19),
-                                            padding: getPadding(
-                                                left: 35,
-                                                top: 12,
-                                                right: 35,
-                                                bottom: 12),
-                                            decoration: AppDecoration
-                                                .fillGray200
-                                                .copyWith(
-                                                    borderRadius:
-                                                        BorderRadiusStyle
-                                                            .roundedBorder24),
-                                            child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                      padding:
-                                                          getPadding(top: 2),
-                                                      child: Text("10",
-                                                          style: CustomTextStyles
-                                                              .titleMediumBold_1)),
-                                                  Padding(
-                                                      padding: getPadding(
-                                                          left: 8,
-                                                          top: 2,
-                                                          bottom: 3),
-                                                      child: Text("Reviewed",
-                                                          style: theme.textTheme
-                                                              .labelLarge))
-                                                ]))
-                                      ])),
+                             
                               Padding(
                                   padding: getPadding(top: 24),
                                   child: Divider(color: appTheme.indigo50)),

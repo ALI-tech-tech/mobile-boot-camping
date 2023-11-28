@@ -4,14 +4,17 @@ import 'package:flutter/scheduler.dart';
 import 'package:jobsfinder/routes/app_routes.dart';
 import 'package:jobsfinder/core/theme/theme_helper.dart';
 
+import 'helpers/db_helper.dart';
 
-void main() {
+
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
 
-  ///Please update theme as per your need if required.
+  
+  await DBHelper.initDatabase();
   ThemeHelper().changeTheme('primary');
   runApp(MyApp());
 }

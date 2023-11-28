@@ -80,7 +80,7 @@ class ImageConstant {
   // Profile images
   static String imgBg = '$imagePath/img_bg.png';
 
-  static String img63 = '$imagePath/img_63.png';
+  static String img63 = '$imagePath/img_63.JPG';
 
   // Settings images
   static String imgPerson = '$imagePath/img_person.svg';

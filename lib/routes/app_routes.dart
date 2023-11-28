@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:jobsfinder/feature/views/complete_seeker_signup/signup_complete_seeker.dart';
 
 import '../feature/views/complete_company_sign_up/sign_up_complete_account_screen.dart';
 import '../feature/views/enter_otp_screen/enter_otp_screen.dart';
+import '../feature/views/home_container_screen/home_container_screen.dart';
 import '../feature/views/job_type_screen/job_type_screen.dart';
 import '../feature/views/login_screen/login_screen.dart';
 import '../feature/views/onboarding_one_screen/onboarding_one_screen.dart';
@@ -90,6 +92,7 @@ class AppRoutes {
 
   static const String appNavigationScreen = '/app_navigation_screen';
   static const String completecompanysignUpScreen='/completecompanysignUp_screen';
+  static const String completeseekersignUpScreen='/completeseekersignUp_screen';
 
   static Map<String, WidgetBuilder> routes = {
 
@@ -101,11 +104,12 @@ class AppRoutes {
     signUpCompleteAccountScreen: (context) => SignUpCompleteAccountScreen(),
     jobTypeScreen: (context) => JobTypeScreen(),
     completecompanysignUpScreen:(context) => CompleteCompanySignUp(),
+    completeseekersignUpScreen:(context) => CompleteSeekerSignUp(),
     // speciallizationScreen: (context) => SpeciallizationScreen(),
     // selectACountryScreen: (context) => SelectACountryScreen(),
     loginScreen: (context) => LoginScreen(),
     enterOtpScreen: (context) => EnterOtpScreen(),
-    // homeContainerScreen: (context) => HomeContainerScreen(),
+    homeContainerScreen: (context) => HomeContainerScreen(),
     // searchScreen: (context) => SearchScreen(),
     // jobDetailsTabContainerScreen: (context) => JobDetailsTabContainerScreen(),
     // messageActionScreen: (context) => MessageActionScreen(),

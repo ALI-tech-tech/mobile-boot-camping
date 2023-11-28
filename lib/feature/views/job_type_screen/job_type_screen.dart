@@ -178,6 +178,8 @@ class _JobTypeScreenState extends State<JobTypeScreen> {
                 onTap: () {
                   if (selected==2) {
                   onTapcontnuetocompany(context);
+                  }else if (selected==1) {
+                  onTapcontnuetoseeker(context);
                   }
                   
                 })));
@@ -187,7 +189,9 @@ class _JobTypeScreenState extends State<JobTypeScreen> {
   onTapcontnuetocompany(BuildContext context){
     Navigator.pushNamed(context, AppRoutes.completecompanysignUpScreen);
   }
-
+onTapcontnuetoseeker(BuildContext context){
+    Navigator.pushNamed(context, AppRoutes.completeseekersignUpScreen);
+  }
   onTapContinue(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.speciallizationScreen);
   }
