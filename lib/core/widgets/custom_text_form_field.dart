@@ -91,8 +91,8 @@ class CustomTextFormField extends StatelessWidget {
         child: TextFormField(
           autovalidateMode:autovalid??AutovalidateMode.disabled,
           controller: controller,
-          focusNode: focusNode ?? FocusNode(),
-          autofocus: autofocus!,
+          //focusNode: focusNode ?? FocusNode(),
+          //autofocus: autofocus!,
           style: textStyle ?? CustomTextStyles.labelLargeGray600,
           obscureText: obscureText!,
           textInputAction: textInputAction,

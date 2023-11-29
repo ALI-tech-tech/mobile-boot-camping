@@ -1,6 +1,14 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:floor/floor.dart';
+import 'package:jobsfinder/core/localdatabase/DAOs/job_postdao.dart';
+import 'package:jobsfinder/core/localdatabase/DAOs/seekerdao.dart';
+import 'package:jobsfinder/core/localdatabase/DAOs/skilldao.dart';
+import 'package:jobsfinder/core/localdatabase/DAOs/userdao.dart';
+import 'package:jobsfinder/core/localdatabase/DAOs/usertypedao.dart';
+import 'package:jobsfinder/core/localdatabase/DAOs/userworktypedao.dart';
+import 'package:jobsfinder/core/localdatabase/DAOs/worktypedao.dart';
 import 'package:sqflite/sqflite.dart' as sqflite;
 import '../DAOs/companydao.dart';
 import '../DAOs/educationdao.dart';
@@ -24,4 +32,11 @@ abstract class AppDatabase extends FloorDatabase {
   CompanyDao get companydao;
   EducationDao get educatiodao;
   ExperienceDao get experiencedao;
+  JobPostDao get jobpostdao;
+  SeekerDao get seekerdao;
+  SkillDao get skilldao;
+  UserDao get userdao;
+  UserTypeDao get usertypedao;
+  UserWorkTypeDao get userworktypedao;
+  WorkTypeDao get worktypedao;
 }

@@ -1,10 +1,12 @@
 
+import 'dart:typed_data';
+
 import 'package:floor/floor.dart';
 
 @Entity(tableName: 'company')
 class Company {
   @PrimaryKey()
-  final int id;
+  final int? id;
 
   final String name;
   final String description;
@@ -16,15 +18,15 @@ class Company {
   final String establishDate;
 
   final String website;
-  final String image;
+  final Uint8List? image;
 
   @ColumnInfo(name: 'id_card')
-  final String idCard;
+  final Uint8List? idCard;
 
  
 
   Company({
-    required this.id,
+     this.id,
     required this.name,
     required this.description,
     required this.workTypeId,

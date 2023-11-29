@@ -11,11 +11,11 @@ abstract class UserDao {
   Future<User?> getUserById(int id);
 
   @insert
-  Future<void> insertUser(User user);
+  Future<int?> insertUser(User user);
 
   @update
-  Future<void> updateUser(User user);
+  Future<int?> updateUser(User user);
 
   @delete
-  Future<void> deleteUser(User user);
+  Future<int?> deleteUser(User user);
 }

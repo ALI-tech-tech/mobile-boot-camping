@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: theme,
       title: 'jobsfinder',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.splashScreen,
+      initialRoute: AppRoutes.completecompanysignUpScreen,
       routes: AppRoutes.routes,
     );
   }

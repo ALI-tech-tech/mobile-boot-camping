@@ -1,4 +1,5 @@
 import 'package:jobsfinder/core/app_export.dart';
+import 'package:jobsfinder/core/localdatabase/entities/user.dart';
 import 'package:jobsfinder/core/widgets/custom_elevated_button.dart';
 import 'package:jobsfinder/core/widgets/custom_pin_code_text_field.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +71,7 @@ class _EnterOtpScreenState extends State<EnterOtpScreen> {
                           buttonStyle: CustomButtonStyles.fillPrimary,
                           onTap: ()async {
                             if (OTPConstant.OTP_LIST_NUMBER.contains(int.parse(_otpcontroller.text))) {
-                              onTapContinue(context);
+                              onTapContinue(context,ModalRoute.of(context)?.settings.arguments as User);
                             }
                             else{
                               await showDialog(context: context,
@@ -100,7 +101,7 @@ class _EnterOtpScreenState extends State<EnterOtpScreen> {
     Navigator.pop(context);
   }
 
-  onTapContinue(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.jobTypeScreen);
+  onTapContinue(BuildContext context, Object arg) {
+    Navigator.pushNamed(context, AppRoutes.jobTypeScreen, arguments: arg);
   }
 }

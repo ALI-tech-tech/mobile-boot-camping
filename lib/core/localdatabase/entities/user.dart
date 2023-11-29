@@ -3,7 +3,7 @@ import 'package:floor/floor.dart';
 @Entity(tableName: 'user')
 class User {
   @PrimaryKey()
-  final int id;
+  final int? id;
 
   @ColumnInfo(name: 'first_name')
   final String firstName;
@@ -21,10 +21,13 @@ class User {
   final bool isActive;
 
   @ColumnInfo(name: 'user_type_id')
-  final int userTypeId;
+   int userTypeId;
+  get getUserTypeId => this.userTypeId;
+
+ set setUserTypeId( userTypeId) => this.userTypeId = userTypeId;
 
   User( {
-    required this.id,
+     this.id,
     required this.firstName,
     required this.lastName,
     required this.email,

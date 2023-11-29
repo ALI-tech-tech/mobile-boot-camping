@@ -7,8 +7,8 @@ class DBHelper {
 
   static initDatabase() async {
     Callback callback = Callback(onCreate: (db, _) {
-      // db.execute(Data.UserType);
-      // db.execute(Data.worktype);
+      db.execute(Data.UserType);
+      db.execute(Data.worktype);
     });
     database = await $FloorAppDatabase
         .databaseBuilder('jobsfinder.db')

@@ -1,7 +1,9 @@
 import 'package:jobsfinder/core/app_export.dart';
+import 'package:jobsfinder/core/localdatabase/entities/user.dart';
 import 'package:jobsfinder/core/widgets/custom_elevated_button.dart';
 import 'package:jobsfinder/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:jobsfinder/feature/viewmodel/user_view_model.dart';
 
 import '../../../core/validation.dart';
 
@@ -16,20 +18,26 @@ class SignUpCompleteAccountScreen extends StatefulWidget {
 
 class _SignUpCompleteAccountScreenState
     extends State<SignUpCompleteAccountScreen> {
+
+  
+
   TextEditingController firstNameController = TextEditingController();
-
+  TextEditingController userNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
-
   TextEditingController passwordController = TextEditingController();
-
   TextEditingController repasswordController = TextEditingController();
-
+  UserViewModel uVM=UserViewModel();
   bool obsecure1 = true;
-
   bool obsecure2 = true;
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    uVM.readAllUsers();
+  }
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
@@ -97,6 +105,23 @@ class _SignUpCompleteAccountScreenState
                                 contentPadding: getPadding(
                                     left: 12, top: 15, right: 12, bottom: 15)),
                             Padding(
+                                padding: getPadding(top: 33),
+                                child: Text("User Name",
+                                    style: theme.textTheme.titleSmall)),
+                            CustomTextFormField(
+                              autovalid:AutovalidateMode.onUserInteraction ,
+                                controller: userNameController,
+                                margin: getMargin(top: 9),
+                                hintText: "Enter your Username",
+                                validator: (value) =>  List.generate(
+                                  uVM.allUsers.length, (index) => 
+                                uVM.allUsers[index].userName).contains(value)
+                                ?"username was found":null,
+                                hintStyle:
+                                    CustomTextStyles.titleMediumBluegray400,
+                                contentPadding: getPadding(
+                                    left: 12, top: 15, right: 12, bottom: 15)),
+                            Padding(
                                 padding: getPadding(top: 18),
                                 child: Text(" Password",
                                     style: theme.textTheme.titleSmall)),
@@ -106,7 +131,9 @@ class _SignUpCompleteAccountScreenState
                                 hintText: "Create a password",
                                 hintStyle:
                                     CustomTextStyles.titleMediumBluegray400,
-                                validator: (value) => MyValidate.validatePass(value!, 7,
+                                validator: (value) => MyValidate.validatePass(
+                                    value!,
+                                    7,
                                     "Enter emil,at least 7 char !!!"),
                                 textInputAction: TextInputAction.done,
                                 textInputType: TextInputType.visiblePassword,
@@ -141,7 +168,7 @@ class _SignUpCompleteAccountScreenState
                                 child: Text("Repeat Password",
                                     style: theme.textTheme.titleSmall)),
                             CustomTextFormField(
-                                autovalid: AutovalidateMode.onUserInteraction,
+                               // autovalid: AutovalidateMode.onUserInteraction,
                                 controller: repasswordController,
                                 validator: (value) =>
                                     value != passwordController.text
@@ -185,7 +212,19 @@ class _SignUpCompleteAccountScreenState
                               buttonStyle: CustomButtonStyles.fillPrimary,
                               onTap: () {
                                 if (_formKey.currentState!.validate()) {
-                                  onTapContnueBtn(context);
+                                  String email = ModalRoute.of(context)
+                                      ?.settings
+                                      .arguments as String;
+                                  User newUser = User(
+                                      firstName: firstNameController.text,
+                                      lastName: lastNameController.text,
+                                      email: email,
+                                      userName: userNameController.text,
+                                      password: passwordController.text,
+                                      isActive: true,
+                                      userTypeId: 3);
+                                    uVM.createNewUser(newUser);
+                                  onTapContnueBtn(context, newUser);
                                 }
                               },
                             ),
@@ -254,8 +293,7 @@ class _SignUpCompleteAccountScreenState
     Navigator.pushNamed(context, AppRoutes.loginScreen);
   }
 
-  onTapContnueBtn(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.enterOtpScreen);
+  onTapContnueBtn(BuildContext context, Object arg) {
+    Navigator.pushReplacementNamed(context, AppRoutes.enterOtpScreen, arguments: arg);
   }
-
 }

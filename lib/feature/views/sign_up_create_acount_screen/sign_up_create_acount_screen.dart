@@ -3,14 +3,29 @@ import 'package:jobsfinder/core/widgets/custom_elevated_button.dart';
 import 'package:jobsfinder/core/widgets/custom_outlined_button.dart';
 import 'package:jobsfinder/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:jobsfinder/feature/viewmodel/user_view_model.dart';
 
 // ignore_for_file: must_be_immutable
-class SignUpCreateAcountScreen extends StatelessWidget {
+class SignUpCreateAcountScreen extends StatefulWidget {
   SignUpCreateAcountScreen({Key? key}) : super(key: key);
 
+  @override
+  State<SignUpCreateAcountScreen> createState() =>
+      _SignUpCreateAcountScreenState();
+}
+
+class _SignUpCreateAcountScreenState extends State<SignUpCreateAcountScreen> {
   TextEditingController emailController = TextEditingController();
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  UserViewModel uVM = UserViewModel();
+  bool isFoundmail = false;
+  @override
+  void initState() {
+    super.initState();
+    uVM.readAllUsers();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,15 +111,9 @@ class SignUpCreateAcountScreen extends StatelessWidget {
                                       style:
                                           CustomTextStyles.titleSmallPrimary))),
                           CustomTextFormField(
+                              autovalid: AutovalidateMode.onUserInteraction,
                               controller: emailController,
-                              validator: (value) {
-                                if (!value!.isEmpty) {
-                                  return isValidEmail(value)?null:"Email not Correct";
-                                }else{
-                                  return "Email is Empty";
-                                }
-                              }, 
-                              
+                              validator: (value) => _validateEmail(value!),
                               margin: getMargin(top: 9),
                               hintText: "Enter your email address",
                               hintStyle:
@@ -119,9 +128,9 @@ class SignUpCreateAcountScreen extends StatelessWidget {
                               buttonStyle: CustomButtonStyles.fillPrimary,
                               onTap: () {
                                 if (_formKey.currentState!.validate()) {
-                                  onTapContinuewith(context);
+                                  onTapContinuewith(
+                                      context, emailController.text);
                                 }
-                                
                               }),
                           Padding(
                               padding: getPadding(left: 40, top: 28, right: 40),
@@ -168,24 +177,36 @@ class SignUpCreateAcountScreen extends StatelessWidget {
                         ])))));
   }
 
-
   onTapImgImage(BuildContext context) {
     Navigator.pop(context);
   }
 
-
-  onTapContinuewith(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.signUpCompleteAccountScreen);
+  onTapContinuewith(BuildContext context, Object arg) {
+    Navigator.pushNamed(context, AppRoutes.signUpCompleteAccountScreen,
+        arguments: arg);
   }
-
 
   onTapTxtLargelabelmediu(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.loginScreen);
   }
 
-   bool isValidEmail(String email) {
+  bool isValidEmail(String email) {
     return RegExp(
             r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
         .hasMatch(email);
+  }
+
+  _validateEmail(String value) {
+    if (!value!.isEmpty) {
+      if (isValidEmail(value)) {
+        return List.generate(uVM.allUsers.length, (index) => uVM.allUsers[index].email)
+                .contains(value)
+            ? "Email Found Before"
+            : null;
+      } else
+        return "Email not Correct";
+    } else {
+      return "Email is Empty";
+    }
   }
 }
