@@ -1,9 +1,16 @@
+import 'dart:typed_data';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:jobsfinder/core/app_export.dart';
+import 'package:jobsfinder/core/localdatabase/entities/education.dart';
+import 'package:jobsfinder/core/localdatabase/entities/seeker.dart';
 import 'package:jobsfinder/core/widgets/custom_elevated_button.dart';
 import 'package:jobsfinder/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:jobsfinder/core/widgets/datetimepicker.dart';
+import 'package:jobsfinder/helpers/db_helper.dart';
 
+import '../../../core/localdatabase/entities/user.dart';
 import '../../../core/validation.dart';
 import '../../../core/widgets/custom_drop_down.dart';
 
@@ -25,6 +32,8 @@ class _CompleteSeekerSignUpState extends State<CompleteSeekerSignUp> {
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   XFile? imageProfile;
+  DateTime? startdate;
+  DateTime? enddate;
 
   final ImagePicker picker = ImagePicker();
 
@@ -120,14 +129,41 @@ class _CompleteSeekerSignUpState extends State<CompleteSeekerSignUp> {
                             CustomTextFormField(
                                 controller: univerController,
                                 validator: (value) => MyValidate.validateName(
-                                    value!, 30, "Write more!!! "),
-                                
+                                    value!, 10, "Write more!!! "),
                                 margin: getMargin(top: 9),
                                 hintText: "Enter Univercity name",
                                 hintStyle:
                                     CustomTextStyles.titleMediumBluegray400,
                                 contentPadding: getPadding(
                                     left: 12, top: 15, right: 12, bottom: 15)),
+                            Padding(
+                                padding: getPadding(top: 18),
+                                child: Text("Start Date",
+                                    style: theme.textTheme.titleSmall)),
+                            CustomElevatedButton(
+                              text:(startdate==null? "Start Date":startdate!.format('yyyy-MM-dd', 'en_US')).toString(),
+                              buttonTextStyle:
+                                  CustomTextStyles.titleSmallBluegray400,
+                              margin: getMargin(top: 14),
+                              buttonStyle: CustomButtonStyles.fillBlueGray,
+                              onTap: () async {
+                                startdate= await DatePic.dateTimePickerWidget(context);
+                              },
+                            ),
+                            Padding(
+                                padding: getPadding(top: 18),
+                                child: Text("End Date",
+                                    style: theme.textTheme.titleSmall)),
+                            CustomElevatedButton(
+                              text:(enddate==null?"End Date":enddate!.format('yyyy-MM-dd', 'en_US')).toString(),
+                              buttonTextStyle:
+                                  CustomTextStyles.titleSmallBluegray400,
+                              margin: getMargin(top: 14),
+                              buttonStyle: CustomButtonStyles.fillBlueGray,
+                              onTap: () async {
+                                enddate= await DatePic.dateTimePickerWidget(context);
+                              },
+                            ),
                             Padding(
                                 padding: getPadding(top: 18),
                                 child: Text("Image Profile",
@@ -149,7 +185,9 @@ class _CompleteSeekerSignUpState extends State<CompleteSeekerSignUp> {
                               buttonStyle: CustomButtonStyles.fillPrimary,
                               onTap: () async {
                                 if (_formKey.currentState!.validate()) {
-                                  if (imageProfile != null) { 
+                                  if (imageProfile != null) {
+                                    User user = ModalRoute.of(context)?.settings.arguments as User;
+                                    await _addseeker(user);
                                     onTapContnueBtn(context);
                                   } else {
                                     await showDialog(
@@ -239,7 +277,27 @@ class _CompleteSeekerSignUpState extends State<CompleteSeekerSignUp> {
     Navigator.pop(context);
   }
 
- 
+  _addseeker(User user) async {
+    final imageBytes1 = await imageProfile!.readAsBytes();
+    
+    Seeker seeker = Seeker(
+        userId: user.id!,
+        image: Uint8List.fromList(imageBytes1),
+        descrip: descriptionController.text);
+    int? id= await DBHelper.database.seekerdao.insertSeeker(seeker);
+    if (id!=null) {
+    Education ed=Education( 
+      seekerId: id,
+       degreeName: degreeNameController.text,
+        major: majorController.text,
+         instituteUniversityName: univerController.text,
+          startDate: startdate!.format('yyyy-MM-dd', 'en_US'),
+           completionDate: enddate!.format('yyyy-MM-dd', 'en_US'));
+    await DBHelper.database.educatiodao.insertEducation(ed);
+    }
+
+  }
+
   onTapTxtLargelabelmediu(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.loginScreen);
   }

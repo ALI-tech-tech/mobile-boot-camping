@@ -1,11 +1,13 @@
 
 import 'package:floor/floor.dart';
 
+import 'user.dart';
+
 @Entity(tableName: 'skill')
 class Skill {
   @PrimaryKey()
   final int id;
-
+@ForeignKey(entity: User, childColumns: ['user_id'], parentColumns: ['id'])
   @ColumnInfo(name: 'user_id')
   final int userId;
 

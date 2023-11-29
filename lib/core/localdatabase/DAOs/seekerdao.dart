@@ -12,7 +12,7 @@ abstract class SeekerDao {
   Future<Seeker?> getSeekerById(int id);
 
   @insert
-  Future<void> insertSeeker(Seeker seeker);
+  Future<int?> insertSeeker(Seeker seeker);
 
   @update
   Future<void> updateSeeker(Seeker seeker);

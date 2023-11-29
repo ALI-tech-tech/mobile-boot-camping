@@ -210,7 +210,7 @@ class _SignUpCompleteAccountScreenState
                               text: "Continue",
                               margin: getMargin(top: 40),
                               buttonStyle: CustomButtonStyles.fillPrimary,
-                              onTap: () {
+                              onTap: ()async {
                                 if (_formKey.currentState!.validate()) {
                                   String email = ModalRoute.of(context)
                                       ?.settings
@@ -223,7 +223,7 @@ class _SignUpCompleteAccountScreenState
                                       password: passwordController.text,
                                       isActive: true,
                                       userTypeId: 3);
-                                    uVM.createNewUser(newUser);
+                                    newUser.id = await uVM.createNewUser(newUser);
                                   onTapContnueBtn(context, newUser);
                                 }
                               },

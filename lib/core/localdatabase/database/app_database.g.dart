@@ -103,15 +103,15 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `company` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `work_type_id` INTEGER NOT NULL, `establish_date` TEXT NOT NULL, `website` TEXT NOT NULL, `image` BLOB, `id_card` BLOB, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `company` (`id` INTEGER, `user_id` INTEGER, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `work_type_id` INTEGER NOT NULL, `establish_date` TEXT NOT NULL, `website` TEXT NOT NULL, `image` BLOB, `id_card` BLOB, PRIMARY KEY (`id`))');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `education` (`id` INTEGER NOT NULL, `seeker_id` INTEGER NOT NULL, `degree_name` TEXT NOT NULL, `major` TEXT NOT NULL, `insta_univer_name` TEXT NOT NULL, `started_date` TEXT NOT NULL, `completion_date` TEXT NOT NULL, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `experience` (`id` INTEGER NOT NULL, `user_id` INTEGER NOT NULL, `seeker_id` INTEGER NOT NULL, `is_current_job` INTEGER NOT NULL, `started_date` TEXT NOT NULL, `end_date` TEXT NOT NULL, `job_title` TEXT NOT NULL, `company_name` TEXT NOT NULL, `description` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `experience` (`id` INTEGER NOT NULL, `seeker_id` INTEGER NOT NULL, `is_current_job` INTEGER NOT NULL, `started_date` TEXT NOT NULL, `end_date` TEXT NOT NULL, `job_title` TEXT NOT NULL, `company_name` TEXT NOT NULL, `description` TEXT NOT NULL, PRIMARY KEY (`id`))');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `job_post` (`id` INTEGER NOT NULL, `company_id` INTEGER NOT NULL, `work_type_id` INTEGER NOT NULL, `companyName_hidden` TEXT NOT NULL, `created_date` TEXT NOT NULL, `job_desc` TEXT NOT NULL, `job_location` TEXT NOT NULL, `is_active` INTEGER NOT NULL, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `seeker` (`id` INTEGER NOT NULL, `user_id` INTEGER NOT NULL, `image` TEXT NOT NULL, `descrip` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `seeker` (`id` INTEGER, `user_id` INTEGER NOT NULL, `image` BLOB, `descrip` TEXT NOT NULL, PRIMARY KEY (`id`))');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `skill` (`id` INTEGER NOT NULL, `user_id` INTEGER NOT NULL, `skill_name` TEXT NOT NULL, `level` INTEGER NOT NULL, PRIMARY KEY (`id`))');
         await database.execute(
@@ -121,7 +121,7 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `user` (`id` INTEGER, `first_name` TEXT NOT NULL, `last_name` TEXT NOT NULL, `user_name` TEXT NOT NULL, `password` TEXT NOT NULL, `email` TEXT NOT NULL, `is_active` INTEGER NOT NULL, `user_type_id` INTEGER NOT NULL, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `work_type` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `work_type` (`id` INTEGER, `name` TEXT NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -191,6 +191,7 @@ class _$CompanyDao extends CompanyDao {
             'company',
             (Company item) => <String, Object?>{
                   'id': item.id,
+                  'user_id': item.Userid,
                   'name': item.name,
                   'description': item.description,
                   'work_type_id': item.workTypeId,
@@ -205,6 +206,7 @@ class _$CompanyDao extends CompanyDao {
             ['id'],
             (Company item) => <String, Object?>{
                   'id': item.id,
+                  'user_id': item.Userid,
                   'name': item.name,
                   'description': item.description,
                   'work_type_id': item.workTypeId,
@@ -219,6 +221,7 @@ class _$CompanyDao extends CompanyDao {
             ['id'],
             (Company item) => <String, Object?>{
                   'id': item.id,
+                  'user_id': item.Userid,
                   'name': item.name,
                   'description': item.description,
                   'work_type_id': item.workTypeId,
@@ -244,7 +247,8 @@ class _$CompanyDao extends CompanyDao {
   Future<List<Company>> getAllCompanies() async {
     return _queryAdapter.queryList('SELECT * FROM company',
         mapper: (Map<String, Object?> row) => Company(
-            id: row['id'] as int,
+            id: row['id'] as int?,
+            Userid: row['user_id'] as int?,
             name: row['name'] as String,
             description: row['description'] as String,
             workTypeId: row['work_type_id'] as int,
@@ -258,7 +262,8 @@ class _$CompanyDao extends CompanyDao {
   Future<Company?> getCompanyById(int id) async {
     return _queryAdapter.query('SELECT * FROM company WHERE id = ?1',
         mapper: (Map<String, Object?> row) => Company(
-            id: row['id'] as int,
+            id: row['id'] as int?,
+            Userid: row['user_id'] as int?,
             name: row['name'] as String,
             description: row['description'] as String,
             workTypeId: row['work_type_id'] as int,
@@ -395,7 +400,6 @@ class _$ExperienceDao extends ExperienceDao {
             'experience',
             (Experience item) => <String, Object?>{
                   'id': item.id,
-                  'user_id': item.userId,
                   'seeker_id': item.seekerId,
                   'is_current_job': item.isCurrentJob ? 1 : 0,
                   'started_date': item.startDate,
@@ -410,7 +414,6 @@ class _$ExperienceDao extends ExperienceDao {
             ['id'],
             (Experience item) => <String, Object?>{
                   'id': item.id,
-                  'user_id': item.userId,
                   'seeker_id': item.seekerId,
                   'is_current_job': item.isCurrentJob ? 1 : 0,
                   'started_date': item.startDate,
@@ -425,7 +428,6 @@ class _$ExperienceDao extends ExperienceDao {
             ['id'],
             (Experience item) => <String, Object?>{
                   'id': item.id,
-                  'user_id': item.userId,
                   'seeker_id': item.seekerId,
                   'is_current_job': item.isCurrentJob ? 1 : 0,
                   'started_date': item.startDate,
@@ -452,7 +454,6 @@ class _$ExperienceDao extends ExperienceDao {
     return _queryAdapter.queryList('SELECT * FROM experience',
         mapper: (Map<String, Object?> row) => Experience(
             id: row['id'] as int,
-            userId: row['user_id'] as int,
             seekerId: row['seeker_id'] as int,
             isCurrentJob: (row['is_current_job'] as int) != 0,
             startDate: row['started_date'] as String,
@@ -467,7 +468,6 @@ class _$ExperienceDao extends ExperienceDao {
     return _queryAdapter.query('SELECT * FROM experience WHERE id = ?1',
         mapper: (Map<String, Object?> row) => Experience(
             id: row['id'] as int,
-            userId: row['user_id'] as int,
             seekerId: row['seeker_id'] as int,
             isCurrentJob: (row['is_current_job'] as int) != 0,
             startDate: row['started_date'] as String,
@@ -650,9 +650,9 @@ class _$SeekerDao extends SeekerDao {
   Future<List<Seeker>> getAllSeekers() async {
     return _queryAdapter.queryList('SELECT * FROM seeker',
         mapper: (Map<String, Object?> row) => Seeker(
-            id: row['id'] as int,
+            id: row['id'] as int?,
             userId: row['user_id'] as int,
-            image: row['image'] as String,
+            image: row['image'] as Uint8List?,
             descrip: row['descrip'] as String));
   }
 
@@ -660,16 +660,17 @@ class _$SeekerDao extends SeekerDao {
   Future<Seeker?> getSeekerById(int id) async {
     return _queryAdapter.query('SELECT * FROM seeker WHERE id = ?1',
         mapper: (Map<String, Object?> row) => Seeker(
-            id: row['id'] as int,
+            id: row['id'] as int?,
             userId: row['user_id'] as int,
-            image: row['image'] as String,
+            image: row['image'] as Uint8List?,
             descrip: row['descrip'] as String),
         arguments: [id]);
   }
 
   @override
-  Future<void> insertSeeker(Seeker seeker) async {
-    await _seekerInsertionAdapter.insert(seeker, OnConflictStrategy.abort);
+  Future<int> insertSeeker(Seeker seeker) {
+    return _seekerInsertionAdapter.insertAndReturnId(
+        seeker, OnConflictStrategy.abort);
   }
 
   @override
@@ -1063,14 +1064,14 @@ class _$WorkTypeDao extends WorkTypeDao {
   Future<List<WorkType>> getAllWorkTypes() async {
     return _queryAdapter.queryList('SELECT * FROM work_type',
         mapper: (Map<String, Object?> row) =>
-            WorkType(id: row['id'] as int, name: row['name'] as String));
+            WorkType(id: row['id'] as int?, name: row['name'] as String));
   }
 
   @override
   Future<WorkType?> getWorkTypeById(int id) async {
     return _queryAdapter.query('SELECT * FROM work_type WHERE id = ?1',
         mapper: (Map<String, Object?> row) =>
-            WorkType(id: row['id'] as int, name: row['name'] as String),
+            WorkType(id: row['id'] as int?, name: row['name'] as String),
         arguments: [id]);
   }
 

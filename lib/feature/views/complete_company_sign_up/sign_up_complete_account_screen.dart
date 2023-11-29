@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/date_symbol_data_file.dart';
 import 'package:jobsfinder/core/app_export.dart';
+import 'package:jobsfinder/core/localdatabase/entities/user.dart';
 import 'package:jobsfinder/core/localdatabase/entities/work_type.dart';
 import 'package:jobsfinder/core/widgets/custom_elevated_button.dart';
 import 'package:jobsfinder/core/widgets/custom_text_form_field.dart';
@@ -35,7 +36,7 @@ class _CompleteCompanySignUpState extends State<CompleteCompanySignUp> {
   final ImagePicker picker = ImagePicker();
   int worktype_ID = 0;
   DateTime? selectedDate;
-
+  
   @override
   void initState() {
     super.initState();
@@ -228,14 +229,19 @@ class _CompleteCompanySignUpState extends State<CompleteCompanySignUp> {
                                         await imageProfile!.readAsBytes();
                                     final imageBytes2 =
                                         await imageIDCard!.readAsBytes();
-                                    // Company company=Company(
-                                    //   name: companyNameController.text,
-                                    //    description: descriptionController.text,
-                                    //     workTypeId: worktype_ID,
-                                    //     establishDate: establishDate,
-                                    //     website: websiteController.text,
-                                    //     image: Uint8List.fromList(imageBytes1),
-                                    //     idCard: Uint8List.fromList(imageBytes2));
+                                        User user=ModalRoute.of(context)
+                                      ?.settings
+                                      .arguments as User; 
+                                    Company company=Company(
+                                      Userid: user.id,
+                                      name: companyNameController.text,
+                                       description: descriptionController.text,
+                                        workTypeId: worktype_ID,
+                                        establishDate: selectedDate!.format('yyyy-MM-dd', 'en_US'),
+                                        website: websiteController.text,
+                                        image: Uint8List.fromList(imageBytes1),
+                                        idCard: Uint8List.fromList(imageBytes2));
+                                        DBHelper.database.companydao.insertCompany(company);
                                     onTapContnueBtn(context);
                                   } else {
                                     await showDialog(
@@ -366,7 +372,7 @@ class _CompleteCompanySignUpState extends State<CompleteCompanySignUp> {
   }
 
   onTapContnueBtn(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.enterOtpScreen);
+    Navigator.pushNamed(context, AppRoutes.loginScreen);
   }
 
   _addworktypeDialog(BuildContext context) async {

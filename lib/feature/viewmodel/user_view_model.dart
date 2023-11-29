@@ -33,11 +33,21 @@ class UserViewModel {
         id = usertype.firstWhere((element) => element.name == "Company").id;
         break;
       case 1:
-        id = usertype.firstWhere((element) => element.name == "Company").id;
+        id = usertype.firstWhere((element) => element.name == "Employee").id;
         break;
       default:
+      
     }
-    user.setUserTypeId = id;
+    user.setUserTypeId = id??3;
     await DBHelper.database.userdao.updateUser(user);
+    return user;
+  }
+
+  Future<User> readOneUser(String email ,String password)async{
+    await readAllUsers();
+    User user=allUsers.where((element) => element.email==email && element.password==password).isEmpty
+    ?User.empty():allUsers.where((element) => element.email==email && element.password==password).first;
+  
+    return user;
   }
 }

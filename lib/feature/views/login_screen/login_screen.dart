@@ -1,16 +1,27 @@
 import 'package:jobsfinder/core/app_export.dart';
+import 'package:jobsfinder/core/localdatabase/entities/user.dart';
 import 'package:jobsfinder/core/widgets/custom_elevated_button.dart';
 import 'package:jobsfinder/core/widgets/custom_outlined_button.dart';
 import 'package:jobsfinder/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
+import '../../viewmodel/user_view_model.dart';
+
 // ignore_for_file: must_be_immutable
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  UserViewModel uVM=UserViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +123,7 @@ class LoginScreen extends StatelessWidget {
                                     child: Text("password",
                                         style: theme.textTheme.titleSmall))),
                             CustomTextFormField(
-                                controller: emailController,
+                                controller: passController,
                                 margin: getMargin(top: 9),
                                 hintText: "Enter your password",
                                 hintStyle:
@@ -126,8 +137,22 @@ class LoginScreen extends StatelessWidget {
                                 text: "Continue with Email",
                                 margin: getMargin(top: 40),
                                 buttonStyle: CustomButtonStyles.fillPrimary,
-                                onTap: () {
-                                  onTapContinuewith(context);
+                                onTap: ()async {
+                                  User user=await uVM.readOneUser(emailController.text,passController.text );
+                                  if (user.email!=null) {
+                                    onTapContinuewith(context);
+                                  }
+                                  else{
+                                    await showDialog(context: context, builder: (context) => AlertDialog(
+                                      content: Text("you have not account , please register first"),
+                                      actions: [
+                                        CustomElevatedButton(text: "Register Now", 
+                                        onTap: () => Navigator.pushNamed(context, AppRoutes.signUpCreateAcountScreen),
+                                        ),
+                                      ],
+                                    ),);
+                                  }
+                                  
                                 }),
                             Padding(
                                 padding: getPadding(left: 41, top: 26, right: 41),
@@ -177,7 +202,6 @@ class LoginScreen extends StatelessWidget {
                     )))));
   }
 
-
   onTapImgImage(BuildContext context) {
     Navigator.pop(context);
   }
@@ -186,10 +210,7 @@ class LoginScreen extends StatelessWidget {
     Navigator.pushNamed(context, AppRoutes.homeContainerScreen);
   }
 
-
   onTapTxtLargelabelmediu(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.signUpCreateAcountScreen);
   }
-
-  
 }

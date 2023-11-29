@@ -1,13 +1,19 @@
 
 import 'package:floor/floor.dart';
+import 'package:jobsfinder/core/localdatabase/entities/company.dart';
+
+import 'work_type.dart';
 
 @Entity(tableName: 'job_post')
 class JobPost {
   @PrimaryKey()
   final int id;
 
+  @ForeignKey(entity: Company, childColumns: ['company_id'], parentColumns: ['id'])
+
   @ColumnInfo(name: 'company_id')
   final int companyId;
+  @ForeignKey(entity: WorkType, childColumns: ['work_type_id'], parentColumns: ['id'])
 
   @ColumnInfo(name: 'work_type_id')
   final int workTypeId;

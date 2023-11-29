@@ -1,27 +1,30 @@
 import 'package:floor/floor.dart';
+import 'package:jobsfinder/core/localdatabase/entities/user_type.dart';
 
 @Entity(tableName: 'user')
 class User {
   @PrimaryKey()
-  final int? id;
+   int? id;
 
   @ColumnInfo(name: 'first_name')
-  final String firstName;
+   String? firstName;
 
   @ColumnInfo(name: 'last_name')
-  final String lastName;
+   String? lastName;
 
   @ColumnInfo(name: 'user_name')
-  final String userName;
+   String? userName;
 
-  final String password;
-  final String email;
+   String? password;
+   String? email;
 
   @ColumnInfo(name: 'is_active')
-  final bool isActive;
+   bool? isActive;
+
+  @ForeignKey(entity: UserType, childColumns: ['user_type_id'], parentColumns: ['id'])
 
   @ColumnInfo(name: 'user_type_id')
-   int userTypeId;
+   int? userTypeId;
   get getUserTypeId => this.userTypeId;
 
  set setUserTypeId( userTypeId) => this.userTypeId = userTypeId;
@@ -36,4 +39,5 @@ class User {
     required this.isActive,
     required this.userTypeId,
   });
+  User.empty();
 }

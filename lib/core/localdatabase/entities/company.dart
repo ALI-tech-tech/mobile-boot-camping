@@ -1,12 +1,16 @@
-
 import 'dart:typed_data';
 
 import 'package:floor/floor.dart';
+
+import 'user.dart';
 
 @Entity(tableName: 'company')
 class Company {
   @PrimaryKey()
   final int? id;
+  @ForeignKey(entity: User, childColumns: ['user_id'], parentColumns: ['id'])
+  @ColumnInfo(name: 'user_id')
+  final int? Userid;
 
   final String name;
   final String description;
@@ -25,8 +29,9 @@ class Company {
 
  
 
-  Company({
-     this.id,
+  Company( {
+    this.id,
+    required this.Userid,
     required this.name,
     required this.description,
     required this.workTypeId,
@@ -34,6 +39,5 @@ class Company {
     required this.website,
     required this.image,
     required this.idCard,
-    
   });
 }

@@ -1,13 +1,15 @@
 
 import 'package:floor/floor.dart';
 
+import 'seeker.dart';
+
 @Entity(tableName: 'experience')
 class Experience {
   @PrimaryKey()
   final int id;
 
-  @ColumnInfo(name: 'user_id')
-  final int userId;
+
+  @ForeignKey(entity: Seeker, childColumns: ['seeker_id'], parentColumns: ['id'])
 
   @ColumnInfo(name: 'seeker_id')
   final int seekerId;
@@ -31,7 +33,7 @@ class Experience {
 
   Experience({
     required this.id,
-    required this.userId,
+    
     required this.seekerId,
     required this.isCurrentJob,
     required this.startDate,

@@ -183,10 +183,10 @@ class _JobTypeScreenState extends State<JobTypeScreen> {
                   User user =
                       ModalRoute.of(context)?.settings.arguments as User;
                   if (selected == 2) {
-                    await uVM.updateRole(2, user);
+                    user= await uVM.updateRole(2, user);
                     onTapcontnuetocompany(context, user);
                   } else if (selected == 1) {
-                    await uVM.updateRole(1, user);
+                    user= await uVM.updateRole(1, user);
                     onTapcontnuetoseeker(context, user);
                   }
                 })));
