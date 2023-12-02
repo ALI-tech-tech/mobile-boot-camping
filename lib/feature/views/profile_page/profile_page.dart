@@ -1,3 +1,9 @@
+import 'package:get_storage/get_storage.dart';
+import 'package:jobsfinder/core/localdatabase/entities/company.dart';
+import 'package:jobsfinder/feature/viewmodel/company_view_model.dart';
+
+import '../../../core/widgets/custom_checkbox_button.dart';
+import '../../viewmodel/worktype_view_model.dart';
 import '../profile_page/widgets/chipviewskills_item_widget.dart';
 import '../profile_page/widgets/profile_item_widget.dart';
 import 'package:jobsfinder/core/app_export.dart';
@@ -5,7 +11,6 @@ import 'package:jobsfinder/core/widgets/app_bar/appbar_image.dart';
 import 'package:jobsfinder/core/widgets/app_bar/appbar_image_1.dart';
 import 'package:jobsfinder/core/widgets/app_bar/appbar_title.dart';
 import 'package:jobsfinder/core/widgets/app_bar/custom_app_bar.dart';
-import 'package:jobsfinder/core/widgets/custom_checkbox_button.dart';
 import 'package:jobsfinder/core/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 
@@ -32,12 +37,13 @@ class ProfilePage extends StatelessWidget {
                 centerTitle: true,
                 title: AppbarTitle(text: "Profile"),
                 actions: [
+                  
                   AppbarImage1(
                       svgPath: ImageConstant.imgGroup162903,
                       margin:
                           getMargin(left: 24, top: 13, right: 24, bottom: 13),
                       onTap: () {
-                        onTapImage(context);
+                        onTapImage(context); 
                       })
                 ]),
             body: SizedBox(
@@ -83,7 +89,24 @@ class ProfilePage extends StatelessWidget {
                                                               .circular(
                                                                   getHorizontalSize(
                                                                       44))),
-                                                      
+                                                      Padding(
+                                                          padding: getPadding(
+                                                              top: 9),
+                                                          child: Text(
+                                                              "Gustavo Lipshutz",
+                                                              style: CustomTextStyles
+                                                                  .titleMediumErrorContainer)),
+                                                      // CustomCheckboxButton(
+                                                      //     text: "Open to work",
+                                                      //     value: opentowork,
+                                                      //     margin:
+                                                      //         getMargin(top: 5),
+                                                      //     textStyle:
+                                                      //         CustomTextStyles
+                                                      //             .titleSmallPoppinsBluegray300,
+                                                      //     onChange: (value) {
+                                                      //       opentowork = value;
+                                                      //     })
                                                     ])))
                                       ])),
                               Container(
@@ -97,6 +120,79 @@ class ProfilePage extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: theme.textTheme.bodyMedium!
                                           .copyWith(height: 1.57))),
+                              // Padding(
+                              //     padding:
+                              //         getPadding(left: 24, top: 17, right: 24),
+                              //     child: Row(
+                              //         mainAxisAlignment:
+                              //             MainAxisAlignment.center,
+                              //         children: [
+                              //           Container(
+                              //               width: getHorizontalSize(154),
+                              //               padding: getPadding(
+                              //                   left: 40,
+                              //                   top: 12,
+                              //                   right: 40,
+                              //                   bottom: 12),
+                              //               decoration: AppDecoration
+                              //                   .fillGray200
+                              //                   .copyWith(
+                              //                       borderRadius:
+                              //                           BorderRadiusStyle
+                              //                               .roundedBorder24),
+                              //               child: Row(
+                              //                   mainAxisAlignment:
+                              //                       MainAxisAlignment.center,
+                              //                   crossAxisAlignment:
+                              //                       CrossAxisAlignment.end,
+                              //                   children: [
+                              //                     Padding(
+                              //                         padding:
+                              //                             getPadding(top: 2),
+                              //                         child: Text("25",
+                              //                             style: CustomTextStyles
+                              //                                 .titleMediumBold_1)),
+                              //                     Padding(
+                              //                         padding: getPadding(
+                              //                             left: 8, top: 5),
+                              //                         child: Text("Applied",
+                              //                             style: theme.textTheme
+                              //                                 .labelLarge))
+                              //                   ])),
+                              //           Container(
+                              //               width: getHorizontalSize(154),
+                              //               margin: getMargin(left: 19),
+                              //               padding: getPadding(
+                              //                   left: 35,
+                              //                   top: 12,
+                              //                   right: 35,
+                              //                   bottom: 12),
+                              //               decoration: AppDecoration
+                              //                   .fillGray200
+                              //                   .copyWith(
+                              //                       borderRadius:
+                              //                           BorderRadiusStyle
+                              //                               .roundedBorder24),
+                              //               child: Row(
+                              //                   mainAxisAlignment:
+                              //                       MainAxisAlignment.center,
+                              //                   children: [
+                              //                     Padding(
+                              //                         padding:
+                              //                             getPadding(top: 2),
+                              //                         child: Text("10",
+                              //                             style: CustomTextStyles
+                              //                                 .titleMediumBold_1)),
+                              //                     Padding(
+                              //                         padding: getPadding(
+                              //                             left: 8,
+                              //                             top: 2,
+                              //                             bottom: 3),
+                              //                         child: Text("Reviewed",
+                              //                             style: theme.textTheme
+                              //                                 .labelLarge))
+                              //                   ]))
+                              //         ])),
                              
                               Padding(
                                   padding: getPadding(top: 24),
@@ -343,19 +439,12 @@ class ProfilePage extends StatelessWidget {
                             ]))))));
   }
 
-  /// Navigates back to the previous screen.
-  ///
-  /// This function takes a [BuildContext] object as a parameter, which is used
-  /// to navigate back to the previous screen.
+
   onTapArrowbackone(BuildContext context) {
     Navigator.pop(context);
   }
 
-  /// Navigates to the settingsScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the settingsScreen.
+
   onTapImage(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.settingsScreen);
   }

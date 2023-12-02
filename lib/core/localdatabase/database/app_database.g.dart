@@ -103,15 +103,15 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `company` (`id` INTEGER, `user_id` INTEGER, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `work_type_id` INTEGER NOT NULL, `establish_date` TEXT NOT NULL, `website` TEXT NOT NULL, `image` BLOB, `id_card` BLOB, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `company` (`id` INTEGER, `user_id` INTEGER, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `work_type_id` INTEGER NOT NULL, `establish_date` TEXT NOT NULL, `website` TEXT NOT NULL, `image` TEXT, `id_card` TEXT, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `education` (`id` INTEGER NOT NULL, `seeker_id` INTEGER NOT NULL, `degree_name` TEXT NOT NULL, `major` TEXT NOT NULL, `insta_univer_name` TEXT NOT NULL, `started_date` TEXT NOT NULL, `completion_date` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `education` (`id` INTEGER, `seeker_id` INTEGER NOT NULL, `degree_name` TEXT NOT NULL, `major` TEXT NOT NULL, `insta_univer_name` TEXT NOT NULL, `started_date` TEXT NOT NULL, `completion_date` TEXT NOT NULL, PRIMARY KEY (`id`))');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `experience` (`id` INTEGER NOT NULL, `seeker_id` INTEGER NOT NULL, `is_current_job` INTEGER NOT NULL, `started_date` TEXT NOT NULL, `end_date` TEXT NOT NULL, `job_title` TEXT NOT NULL, `company_name` TEXT NOT NULL, `description` TEXT NOT NULL, PRIMARY KEY (`id`))');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `job_post` (`id` INTEGER NOT NULL, `company_id` INTEGER NOT NULL, `work_type_id` INTEGER NOT NULL, `companyName_hidden` TEXT NOT NULL, `created_date` TEXT NOT NULL, `job_desc` TEXT NOT NULL, `job_location` TEXT NOT NULL, `is_active` INTEGER NOT NULL, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `seeker` (`id` INTEGER, `user_id` INTEGER NOT NULL, `image` BLOB, `descrip` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `seeker` (`id` INTEGER, `user_id` INTEGER NOT NULL, `image` TEXT, `descrip` TEXT NOT NULL, PRIMARY KEY (`id`))');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `skill` (`id` INTEGER NOT NULL, `user_id` INTEGER NOT NULL, `skill_name` TEXT NOT NULL, `level` INTEGER NOT NULL, PRIMARY KEY (`id`))');
         await database.execute(
@@ -119,7 +119,7 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `user_work_type` (`user_id` INTEGER NOT NULL, `work_type_id` INTEGER NOT NULL, FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, FOREIGN KEY (`work_type_id`) REFERENCES `work_type` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`user_id`, `work_type_id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `user` (`id` INTEGER, `first_name` TEXT NOT NULL, `last_name` TEXT NOT NULL, `user_name` TEXT NOT NULL, `password` TEXT NOT NULL, `email` TEXT NOT NULL, `is_active` INTEGER NOT NULL, `user_type_id` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `user` (`id` INTEGER, `first_name` TEXT, `last_name` TEXT, `user_name` TEXT, `password` TEXT, `email` TEXT, `is_active` INTEGER, `user_type_id` INTEGER, PRIMARY KEY (`id`))');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `work_type` (`id` INTEGER, `name` TEXT NOT NULL, PRIMARY KEY (`id`))');
 
@@ -254,8 +254,8 @@ class _$CompanyDao extends CompanyDao {
             workTypeId: row['work_type_id'] as int,
             establishDate: row['establish_date'] as String,
             website: row['website'] as String,
-            image: row['image'] as Uint8List?,
-            idCard: row['id_card'] as Uint8List?));
+            image: row['image'] as String?,
+            idCard: row['id_card'] as String?));
   }
 
   @override
@@ -269,8 +269,29 @@ class _$CompanyDao extends CompanyDao {
             workTypeId: row['work_type_id'] as int,
             establishDate: row['establish_date'] as String,
             website: row['website'] as String,
-            image: row['image'] as Uint8List?,
-            idCard: row['id_card'] as Uint8List?),
+            image: row['image'] as String?,
+            idCard: row['id_card'] as String?),
+        arguments: [id]);
+  }
+
+  @override
+  Future<Company?> getCompanyByUserId(int id) async {
+    return _queryAdapter.query(
+        'SELECT * FROM company join user on company.user_id=user.id WHERE user_id =?1',
+        mapper: (Map<String, Object?> row) => Company(
+          id: row['id'] as int?, 
+          Userid: row['user_id'] as int?, 
+          name: row['name'] as String,
+           description: row['description'] as String, 
+           workTypeId: row['work_type_id'] as int,
+            establishDate: row['establish_date'] as String,
+             website: row['website'] as String,
+              image: row['image'] as String?, 
+              idCard: row['id_card'] as String?,
+          
+             
+  
+              ),
         arguments: [id]);
   }
 
@@ -350,7 +371,7 @@ class _$EducationDao extends EducationDao {
   Future<List<Education>> getAllEducations() async {
     return _queryAdapter.queryList('SELECT * FROM education',
         mapper: (Map<String, Object?> row) => Education(
-            id: row['id'] as int,
+            id: row['id'] as int?,
             seekerId: row['seeker_id'] as int,
             degreeName: row['degree_name'] as String,
             major: row['major'] as String,
@@ -363,7 +384,7 @@ class _$EducationDao extends EducationDao {
   Future<Education?> getEducationById(int id) async {
     return _queryAdapter.query('SELECT * FROM education WHERE id = ?1',
         mapper: (Map<String, Object?> row) => Education(
-            id: row['id'] as int,
+            id: row['id'] as int?,
             seekerId: row['seeker_id'] as int,
             degreeName: row['degree_name'] as String,
             major: row['major'] as String,
@@ -652,7 +673,7 @@ class _$SeekerDao extends SeekerDao {
         mapper: (Map<String, Object?> row) => Seeker(
             id: row['id'] as int?,
             userId: row['user_id'] as int,
-            image: row['image'] as Uint8List?,
+            image: row['image'] as String?,
             descrip: row['descrip'] as String));
   }
 
@@ -662,7 +683,18 @@ class _$SeekerDao extends SeekerDao {
         mapper: (Map<String, Object?> row) => Seeker(
             id: row['id'] as int?,
             userId: row['user_id'] as int,
-            image: row['image'] as Uint8List?,
+            image: row['image'] as String?,
+            descrip: row['descrip'] as String),
+        arguments: [id]);
+  }
+
+  @override
+  Future<Seeker?> getSeekerByUserId(int id) async {
+    return _queryAdapter.query('SELECT * FROM seeker WHERE user_id = ?1',
+        mapper: (Map<String, Object?> row) => Seeker(
+            id: row['id'] as int?,
+            userId: row['user_id'] as int,
+            image: row['image'] as String?,
             descrip: row['descrip'] as String),
         arguments: [id]);
   }
@@ -783,7 +815,8 @@ class _$UserDao extends UserDao {
                   'user_name': item.userName,
                   'password': item.password,
                   'email': item.email,
-                  'is_active': item.isActive ? 1 : 0,
+                  'is_active':
+                      item.isActive == null ? null : (item.isActive! ? 1 : 0),
                   'user_type_id': item.userTypeId
                 }),
         _userUpdateAdapter = UpdateAdapter(
@@ -797,7 +830,8 @@ class _$UserDao extends UserDao {
                   'user_name': item.userName,
                   'password': item.password,
                   'email': item.email,
-                  'is_active': item.isActive ? 1 : 0,
+                  'is_active':
+                      item.isActive == null ? null : (item.isActive! ? 1 : 0),
                   'user_type_id': item.userTypeId
                 }),
         _userDeletionAdapter = DeletionAdapter(
@@ -811,7 +845,8 @@ class _$UserDao extends UserDao {
                   'user_name': item.userName,
                   'password': item.password,
                   'email': item.email,
-                  'is_active': item.isActive ? 1 : 0,
+                  'is_active':
+                      item.isActive == null ? null : (item.isActive! ? 1 : 0),
                   'user_type_id': item.userTypeId
                 });
 
@@ -832,13 +867,15 @@ class _$UserDao extends UserDao {
     return _queryAdapter.queryList('SELECT * FROM user',
         mapper: (Map<String, Object?> row) => User(
             id: row['id'] as int?,
-            firstName: row['first_name'] as String,
-            lastName: row['last_name'] as String,
-            email: row['email'] as String,
-            userName: row['user_name'] as String,
-            password: row['password'] as String,
-            isActive: (row['is_active'] as int) != 0,
-            userTypeId: row['user_type_id'] as int));
+            firstName: row['first_name'] as String?,
+            lastName: row['last_name'] as String?,
+            email: row['email'] as String?,
+            userName: row['user_name'] as String?,
+            password: row['password'] as String?,
+            isActive: row['is_active'] == null
+                ? null
+                : (row['is_active'] as int) != 0,
+            userTypeId: row['user_type_id'] as int?));
   }
 
   @override
@@ -846,13 +883,15 @@ class _$UserDao extends UserDao {
     return _queryAdapter.query('SELECT * FROM user WHERE id = ?1',
         mapper: (Map<String, Object?> row) => User(
             id: row['id'] as int?,
-            firstName: row['first_name'] as String,
-            lastName: row['last_name'] as String,
-            email: row['email'] as String,
-            userName: row['user_name'] as String,
-            password: row['password'] as String,
-            isActive: (row['is_active'] as int) != 0,
-            userTypeId: row['user_type_id'] as int),
+            firstName: row['first_name'] as String?,
+            lastName: row['last_name'] as String?,
+            email: row['email'] as String?,
+            userName: row['user_name'] as String?,
+            password: row['password'] as String?,
+            isActive: row['is_active'] == null
+                ? null
+                : (row['is_active'] as int) != 0,
+            userTypeId: row['user_type_id'] as int?),
         arguments: [id]);
   }
 

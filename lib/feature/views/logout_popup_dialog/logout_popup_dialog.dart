@@ -2,6 +2,7 @@ import 'package:jobsfinder/core/app_export.dart';
 import 'package:jobsfinder/core/widgets/custom_elevated_button.dart';
 import 'package:jobsfinder/core/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
+import 'package:jobsfinder/feature/viewmodel/user_view_model.dart';
 
 class LogoutPopupDialog extends StatelessWidget {
   const LogoutPopupDialog({Key? key}) : super(key: key);
@@ -11,6 +12,7 @@ class LogoutPopupDialog extends StatelessWidget {
     mediaQueryData = MediaQuery.of(context);
     return SingleChildScrollView(
         child: Container(
+          width: 300,
             margin: getMargin(left: 34, right: 34, bottom: 241),
             padding: getPadding(all: 32),
             decoration: AppDecoration.fillOnPrimaryContainer
@@ -28,16 +30,16 @@ class LogoutPopupDialog extends StatelessWidget {
                       padding: getPadding(top: 35),
                       child: Text("Are You Sure?",
                           style: CustomTextStyles.titleMediumBold)),
-                  Container(
-                      width: getHorizontalSize(229),
-                      margin: getMargin(left: 6, top: 8, right: 5),
-                      child: Text(
-                          "Ullamcorper imperdiet urna id non sed est sem.",
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.center,
-                          style: CustomTextStyles.titleSmallBluegray400
-                              .copyWith(height: 1.57))),
+                  // Container(
+                  //     width: getHorizontalSize(229),
+                  //     margin: getMargin(left: 6, top: 8, right: 5),
+                  //     child: Text(
+                  //         "Ullamcorper imperdiet urna id non sed est sem.",
+                  //         maxLines: 2,
+                  //         overflow: TextOverflow.ellipsis,
+                  //         textAlign: TextAlign.center,
+                  //         style: CustomTextStyles.titleSmallBluegray400
+                  //             .copyWith(height: 1.57))),
                   Padding(
                       padding: getPadding(top: 25),
                       child: Row(
@@ -77,15 +79,14 @@ class LogoutPopupDialog extends StatelessWidget {
   /// When the action is triggered, this function uses the [Navigator] widget
   /// to push the named route for the signUpCreateAcountScreen.
   onTapLogout(BuildContext context) {
-    Navigator.pushNamedAndRemoveUntil(
-        context, AppRoutes.signUpCreateAcountScreen, (route) => false);
+    UserViewModel uVM=UserViewModel();
+     uVM.removeUser();
+     Future.delayed(Duration(seconds: 1)).then((value) => Navigator.pushNamedAndRemoveUntil(
+        context, AppRoutes.loginScreen, (route) => false));
+    ;
   }
 
-  /// Navigates to the settingsScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the settingsScreen.
+
   onTapCancel(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.settingsScreen);
   }

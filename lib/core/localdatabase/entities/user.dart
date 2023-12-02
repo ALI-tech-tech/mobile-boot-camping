@@ -25,7 +25,7 @@ class User {
 
   @ColumnInfo(name: 'user_type_id')
    int? userTypeId;
-  get getUserTypeId => this.userTypeId;
+  get getUserTypeId => userTypeId;
 
  set setUserTypeId( userTypeId) => this.userTypeId = userTypeId;
 

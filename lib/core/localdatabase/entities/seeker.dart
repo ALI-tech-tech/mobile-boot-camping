@@ -1,5 +1,5 @@
 
-import 'dart:typed_data';
+
 
 import 'package:floor/floor.dart';
 
@@ -14,7 +14,7 @@ class Seeker {
   @ColumnInfo(name: 'user_id')
   final int userId;
 
-  final Uint8List? image;
+  final String? image;
   final String descrip;
 
  

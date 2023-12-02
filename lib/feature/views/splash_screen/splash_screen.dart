@@ -1,14 +1,27 @@
+import 'package:get_storage/get_storage.dart';
 import 'package:jobsfinder/core/app_export.dart';
 import 'package:flutter/material.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key})
       : super(
           key: key,
         );
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  GetStorage box=GetStorage();
+  @override
+  void initState() {
+    super.initState();
+    
+  }
+  @override
   Widget build(BuildContext context) {
+   
     mediaQueryData = MediaQuery.of(context);
     time(context);
     return SafeArea(
@@ -31,7 +44,13 @@ class SplashScreen extends StatelessWidget {
   }
 
   time(BuildContext context) {
-    Future.delayed(Duration(seconds: 2)).then((value) =>
+    print(box.read("is_logged_in"));
+    if (box.read("is_logged_in")??false) {
+      Future.delayed(const Duration(seconds: 2)).then((value) =>
+        Navigator.pushReplacementNamed(context, AppRoutes.homeContainerScreen));
+    }else {
+      Future.delayed(const Duration(seconds: 2)).then((value) =>
         Navigator.pushReplacementNamed(context, AppRoutes.onboardingOneScreen));
+    }
   }
 }

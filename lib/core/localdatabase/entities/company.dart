@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:floor/floor.dart';
 
 import 'user.dart';
@@ -22,14 +20,13 @@ class Company {
   final String establishDate;
 
   final String website;
-  final Uint8List? image;
+  final String? image;
 
   @ColumnInfo(name: 'id_card')
-  final Uint8List? idCard;
+  final String? idCard;
 
- 
+  Company({
 
-  Company( {
     this.id,
     required this.Userid,
     required this.name,
@@ -39,5 +36,8 @@ class Company {
     required this.website,
     required this.image,
     required this.idCard,
+  
   });
+
+  
 }

@@ -2,7 +2,7 @@ import 'package:jobsfinder/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropDown extends StatelessWidget {
-  CustomDropDown({
+  const CustomDropDown({
     Key? key,
     this.alignment,
     this.width,

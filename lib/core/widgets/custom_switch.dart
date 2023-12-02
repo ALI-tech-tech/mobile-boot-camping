@@ -1,6 +1,5 @@
 import 'package:jobsfinder/core/app_export.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class CustomSwitch extends StatelessWidget {
   CustomSwitch({

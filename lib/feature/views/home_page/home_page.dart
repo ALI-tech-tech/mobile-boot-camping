@@ -1,3 +1,12 @@
+import 'dart:io';
+
+import 'package:get_storage/get_storage.dart';
+import 'package:jobsfinder/core/localdatabase/entities/company.dart';
+import 'package:jobsfinder/core/localdatabase/entities/job_post.dart';
+import 'package:jobsfinder/feature/viewmodel/company_view_model.dart';
+import 'package:jobsfinder/feature/viewmodel/user_view_model.dart';
+
+import '../../../helpers/db_helper.dart';
 import '../home_page/widgets/home_item_widget.dart';
 import 'package:jobsfinder/core/app_export.dart';
 import 'package:jobsfinder/core/widgets/app_bar/appbar_circleimage.dart';
@@ -5,18 +14,42 @@ import 'package:jobsfinder/core/widgets/app_bar/appbar_image_1.dart';
 import 'package:jobsfinder/core/widgets/app_bar/appbar_subtitle.dart';
 import 'package:jobsfinder/core/widgets/app_bar/appbar_subtitle_2.dart';
 import 'package:jobsfinder/core/widgets/app_bar/custom_app_bar.dart';
-import 'package:jobsfinder/core/widgets/custom_icon_button.dart';
 import 'package:jobsfinder/core/widgets/custom_search_view.dart';
 import 'package:flutter/material.dart';
 
 // ignore_for_file: must_be_immutable
-class HomePage extends StatelessWidget {
-  HomePage({Key? key})
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key})
       : super(
           key: key,
         );
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   TextEditingController searchController = TextEditingController();
+  UserViewModel uVM = UserViewModel();
+  CompanyViewModel cVM = CompanyViewModel();
+  GetStorage box = GetStorage();
+  String? path;
+
+  getpath() async {
+    Future.delayed(const Duration(milliseconds: 500)).then((value) {
+      path = box.read("profile");
+      setState(() {});
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    uVM.getimgeprofile();
+    getpath();
+    cVM.readAllCompanies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +63,8 @@ class HomePage extends StatelessWidget {
           height: 70,
           leadingWidth: getHorizontalSize(74),
           leading: AppbarCircleimage(
-            imagePath: ImageConstant.img63,
+            file: path == null ? null : File(path!),
+            imagePath: path ?? ImageConstant.profile,
             margin: getMargin(
               top: 5,
               left: 24,
@@ -59,13 +93,17 @@ class HomePage extends StatelessWidget {
           ),
           actions: [
             AppbarImage1(
-              svgPath: ImageConstant.imgNotification,
+              svgPath: ImageConstant.imgGroup162903,
               margin: getMargin(
                 left: 24,
                 top: 17,
                 right: 24,
                 bottom: 13,
               ),
+              onTap: () {
+                Navigator.pushReplacementNamed(
+                    context, AppRoutes.settingsScreen);
+              },
             ),
           ],
         ),
@@ -76,7 +114,6 @@ class HomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
-              
               children: [
                 Align(
                   alignment: Alignment.center,
@@ -120,314 +157,8 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-               
-                // Padding(
-                //   padding: getPadding(
-                //     left: 24,
-                //     top: 25,
-                //   ),
-                //   child: Text(
-                //     "Recommendation",
-                //     style: CustomTextStyles.titleMedium18,
-                //   ),
-                // ),
-               
-                // Align(
-                //   alignment: Alignment.centerRight,
-                //   child: SingleChildScrollView(
-                //     scrollDirection: Axis.horizontal,
-                //     padding: getPadding(
-                //       left: 24,
-                //       top: 17,
-                //     ),
-                //     child: IntrinsicWidth(
-                //       child: Row(
-                //         mainAxisAlignment: MainAxisAlignment.center,
-                //         children: [
-                //           Expanded(
-                //             child: Container(
-                //               padding: getPadding(
-                //                 all: 16,
-                //               ),
-                //               decoration: AppDecoration.fillPrimary.copyWith(
-                //                 borderRadius: BorderRadiusStyle.roundedBorder16,
-                //               ),
-                //               child: Row(
-                //                 mainAxisAlignment: MainAxisAlignment.center,
-                //                 crossAxisAlignment: CrossAxisAlignment.start,
-                //                 children: [
-                //                   CustomIconButton(
-                //                     height: getSize(48),
-                //                     width: getSize(48),
-                //                     margin: getMargin(
-                //                       bottom: 96,
-                //                     ),
-                //                     padding: getPadding(
-                //                       all: 8,
-                //                     ),
-                //                     decoration: IconButtonStyleHelper
-                //                         .fillOnPrimaryContainer,
-                //                     child: CustomImageView(
-                //                       svgPath: ImageConstant.imgFrame162722,
-                //                     ),
-                //                   ),
-                //                   Padding(
-                //                     padding: getPadding(
-                //                       left: 12,
-                //                       top: 4,
-                //                     ),
-                //                     child: Column(
-                //                       crossAxisAlignment:
-                //                           CrossAxisAlignment.start,
-                //                       mainAxisAlignment: MainAxisAlignment.start,
-                //                       children: [
-                //                         Text(
-                //                           "Senior UI/UX Designer",
-                //                           style: CustomTextStyles
-                //                               .titleSmallGray5001Bold,
-                //                         ),
-                //                         Opacity(
-                //                           opacity: 0.8,
-                //                           child: Padding(
-                //                             padding: getPadding(
-                //                               top: 7,
-                //                             ),
-                //                             child: Text(
-                //                               "Shopee",
-                //                               style: CustomTextStyles
-                //                                   .labelLargeGray5001SemiBold,
-                //                             ),
-                //                           ),
-                //                         ),
-                //                         Opacity(
-                //                           opacity: 0.64,
-                //                           child: Padding(
-                //                             padding: getPadding(
-                //                               top: 11,
-                //                             ),
-                //                             child: Text(
-                //                               "Jakarta, Indonesia (Remote)",
-                //                               style: CustomTextStyles
-                //                                   .labelLargeGray5001_2,
-                //                             ),
-                //                           ),
-                //                         ),
-                //                         Padding(
-                //                           padding: getPadding(
-                //                             top: 9,
-                //                           ),
-                //                           child: Text(
-                //                             "1100 - 12.000/Month",
-                //                             style: CustomTextStyles
-                //                                 .labelLargeGray5001_1,
-                //                           ),
-                //                         ),
-                //                         Padding(
-                //                           padding: getPadding(
-                //                             top: 17,
-                //                           ),
-                //                           child: Row(
-                //                             children: [
-                //                               Container(
-                //                                 padding: getPadding(
-                //                                   left: 12,
-                //                                   top: 5,
-                //                                   right: 12,
-                //                                   bottom: 5,
-                //                                 ),
-                //                                 decoration: AppDecoration
-                //                                     .fillOnPrimaryContainer1
-                //                                     .copyWith(
-                //                                   borderRadius: BorderRadiusStyle
-                //                                       .roundedBorder16,
-                //                                 ),
-                //                                 child: Text(
-                //                                   "Fulltime",
-                //                                   style: CustomTextStyles
-                //                                       .labelLargeGray5001,
-                //                                 ),
-                //                               ),
-                //                               Container(
-                //                                 margin: getMargin(
-                //                                   left: 7,
-                //                                 ),
-                //                                 padding: getPadding(
-                //                                   left: 12,
-                //                                   top: 4,
-                //                                   right: 12,
-                //                                   bottom: 4,
-                //                                 ),
-                //                                 decoration: AppDecoration
-                //                                     .fillOnPrimaryContainer1
-                //                                     .copyWith(
-                //                                   borderRadius: BorderRadiusStyle
-                //                                       .roundedBorder16,
-                //                                 ),
-                //                                 child: Text(
-                //                                   "Two days ago",
-                //                                   style: CustomTextStyles
-                //                                       .labelLargeGray5001,
-                //                                 ),
-                //                               ),
-                //                             ],
-                //                           ),
-                //                         ),
-                //                       ],
-                //                     ),
-                //                   ),
-                //                 ],
-                //               ),
-                //             ),
-                //           ),
-                //           Expanded(
-                //             child: Container(
-                //               margin: getMargin(
-                //                 left: 16,
-                //               ),
-                //               padding: getPadding(
-                //                 all: 16,
-                //               ),
-                //               decoration: AppDecoration.fillDeepPurple.copyWith(
-                //                 borderRadius: BorderRadiusStyle.roundedBorder16,
-                //               ),
-                //               child: Row(
-                //                 mainAxisAlignment: MainAxisAlignment.center,
-                //                 crossAxisAlignment: CrossAxisAlignment.start,
-                //                 children: [
-                //                   CustomIconButton(
-                //                     height: getSize(48),
-                //                     width: getSize(48),
-                //                     margin: getMargin(
-                //                       bottom: 96,
-                //                     ),
-                //                     padding: getPadding(
-                //                       all: 8,
-                //                     ),
-                //                     decoration: IconButtonStyleHelper
-                //                         .fillOnPrimaryContainer,
-                //                     child: CustomImageView(
-                //                       svgPath: ImageConstant.imgFrame162722,
-                //                     ),
-                //                   ),
-                //                   Padding(
-                //                     padding: getPadding(
-                //                       left: 12,
-                //                     ),
-                //                     child: Column(
-                //                       crossAxisAlignment:
-                //                           CrossAxisAlignment.start,
-                //                       mainAxisAlignment: MainAxisAlignment.start,
-                //                       children: [
-                //                         Text(
-                //                           "Senior UI/UX Designer",
-                //                           style: CustomTextStyles
-                //                               .titleSmallGray5001Bold,
-                //                         ),
-                //                         Opacity(
-                //                           opacity: 0.8,
-                //                           child: Padding(
-                //                             padding: getPadding(
-                //                               top: 4,
-                //                             ),
-                //                             child: Text(
-                //                               "Shopee",
-                //                               style: CustomTextStyles
-                //                                   .labelLargeGray5001SemiBold,
-                //                             ),
-                //                           ),
-                //                         ),
-                //                         Opacity(
-                //                           opacity: 0.64,
-                //                           child: Container(
-                //                             width: getHorizontalSize(181),
-                //                             margin: getMargin(
-                //                               top: 8,
-                //                             ),
-                //                             child: Text(
-                //                               "Jakarta, Indonesia (Remote)",
-                //                               maxLines: null,
-                //                               overflow: TextOverflow.ellipsis,
-                //                               style: CustomTextStyles
-                //                                   .labelLargeGray5001_2
-                //                                   .copyWith(
-                //                                 height: 1.67,
-                //                               ),
-                //                             ),
-                //                           ),
-                //                         ),
-                //                         Padding(
-                //                           padding: getPadding(
-                //                             top: 4,
-                //                           ),
-                //                           child: Text(
-                //                             "1100 - 12.000/Month",
-                //                             style: CustomTextStyles
-                //                                 .labelLargeGray5001_1,
-                //                           ),
-                //                         ),
-                //                         Padding(
-                //                           padding: getPadding(
-                //                             top: 16,
-                //                           ),
-                //                           child: Row(
-                //                             children: [
-                //                               Container(
-                //                                 padding: getPadding(
-                //                                   left: 12,
-                //                                   top: 4,
-                //                                   right: 12,
-                //                                   bottom: 4,
-                //                                 ),
-                //                                 decoration: AppDecoration
-                //                                     .fillOnPrimaryContainer1
-                //                                     .copyWith(
-                //                                   borderRadius: BorderRadiusStyle
-                //                                       .roundedBorder16,
-                //                                 ),
-                //                                 child: Text(
-                //                                   "Fulltime",
-                //                                   style: CustomTextStyles
-                //                                       .labelLargeGray5001,
-                //                                 ),
-                //                               ),
-                //                               Container(
-                //                                 margin: getMargin(
-                //                                   left: 7,
-                //                                 ),
-                //                                 padding: getPadding(
-                //                                   left: 12,
-                //                                   top: 4,
-                //                                   right: 12,
-                //                                   bottom: 4,
-                //                                 ),
-                //                                 decoration: AppDecoration
-                //                                     .fillOnPrimaryContainer1
-                //                                     .copyWith(
-                //                                   borderRadius: BorderRadiusStyle
-                //                                       .roundedBorder16,
-                //                                 ),
-                //                                 child: Text(
-                //                                   "Two days ago",
-                //                                   style: CustomTextStyles
-                //                                       .labelLargeGray5001,
-                //                                 ),
-                //                               ),
-                //                             ],
-                //                           ),
-                //                         ),
-                //                       ],
-                //                     ),
-                //                   ),
-                //                 ],
-                //               ),
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //   ),
-                // ),
-               
+
+                
                 Padding(
                   padding: getPadding(
                     left: 24,
@@ -438,7 +169,7 @@ class HomePage extends StatelessWidget {
                     style: CustomTextStyles.titleMediumInter,
                   ),
                 ),
-               
+
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
@@ -447,22 +178,47 @@ class HomePage extends StatelessWidget {
                       top: 16,
                       right: 24,
                     ),
-                    child: ListView.separated(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      separatorBuilder: (
-                        context,
-                        index,
-                      ) {
-                        return SizedBox(
-                          height: getVerticalSize(16),
-                        );
-                      },
-                      itemCount: 5,
-                      itemBuilder: (context, index) {
-                        return HomeItemWidget();
+                    child: 
+                    FutureBuilder(
+                      future: DBHelper.database.jobpostdao.getAllJobPosts(),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          if (snapshot.hasData) {
+                            return ListView.separated(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              separatorBuilder: (
+                                context,
+                                index,
+                              ) {
+                                return SizedBox(
+                                  height: getVerticalSize(16),
+                                );
+                              },
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (context, index) {
+                                print((snapshot.data[index] as JobPost)
+                                    .companyId);
+
+                                //Company co=cVM.allCompanies.where((element) => element.id==(snapshot.data[index] as JobPost).companyId,).first;
+                                return HomeItemWidget(
+                                    jpost: snapshot.data[index] as JobPost);
+                              },
+                            );
+                          } else {
+                            return Center(
+                              child: Text(
+                                "EMPTY",
+                                style: TextStyle(
+                                    fontSize: 50, color: Colors.black),
+                              ),
+                            );
+                          }
+                        }
+                        return CircularProgressIndicator();
                       },
                     ),
+                
                   ),
                 ),
               ],

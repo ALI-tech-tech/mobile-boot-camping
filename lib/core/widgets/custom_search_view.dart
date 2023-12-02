@@ -2,7 +2,7 @@ import 'package:jobsfinder/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 class CustomSearchView extends StatelessWidget {
-  CustomSearchView({
+  const CustomSearchView({
     Key? key,
     this.alignment,
     this.width,

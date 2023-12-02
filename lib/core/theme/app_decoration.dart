@@ -37,8 +37,8 @@ class AppDecoration {
   // Gradient decorations
   static BoxDecoration get gradientGrayToGray => BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment(0.5, 0.68),
-          end: Alignment(0.5, -0.17),
+          begin: const Alignment(0.5, 0.68),
+          end: const Alignment(0.5, -0.17),
           colors: [
             appTheme.gray5001,
             appTheme.gray5001.withOpacity(0),
@@ -54,7 +54,7 @@ class AppDecoration {
             color: appTheme.blueGray900.withOpacity(0.08),
             spreadRadius: getHorizontalSize(2),
             blurRadius: getHorizontalSize(2),
-            offset: Offset(
+            offset: const Offset(
               0,
               4,
             ),
@@ -92,7 +92,7 @@ class AppDecoration {
             color: theme.colorScheme.onPrimary,
             spreadRadius: getHorizontalSize(2),
             blurRadius: getHorizontalSize(2),
-            offset: Offset(
+            offset: const Offset(
               0,
               0,
             ),

@@ -17,4 +17,8 @@ class WorkTypeViewModel {
     await readAllWorkType();
     return all.firstWhere((element) => element.name==type).id;
   }
+  getNameWorkType(int id)async{
+    await readAllWorkType();
+    return all.firstWhere((element) => element.id==id).name;
+  }
 }

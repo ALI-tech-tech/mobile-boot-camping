@@ -34,7 +34,7 @@ class SavedPage extends StatelessWidget {
                           child: Padding(
                               padding: getPadding(top: 30),
                               child: ListView.separated(
-                                  physics: BouncingScrollPhysics(),
+                                  physics: const BouncingScrollPhysics(),
                                   shrinkWrap: true,
                                   separatorBuilder: (context, index) {
                                     return SizedBox(
@@ -42,7 +42,7 @@ class SavedPage extends StatelessWidget {
                                   },
                                   itemCount: 4,
                                   itemBuilder: (context, index) {
-                                    return SavedItemWidget();
+                                    return const SavedItemWidget();
                                   }))),
                     
                     ]))));

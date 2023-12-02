@@ -1,7 +1,5 @@
-import 'dart:typed_data';
 
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/date_symbol_data_file.dart';
 import 'package:jobsfinder/core/app_export.dart';
 import 'package:jobsfinder/core/localdatabase/entities/user.dart';
 import 'package:jobsfinder/core/localdatabase/entities/work_type.dart';
@@ -17,7 +15,7 @@ import '../../viewmodel/worktype_view_model.dart';
 
 // ignore_for_file: must_be_immutable
 class CompleteCompanySignUp extends StatefulWidget {
-  CompleteCompanySignUp({Key? key}) : super(key: key);
+  const CompleteCompanySignUp({Key? key}) : super(key: key);
 
   @override
   State<CompleteCompanySignUp> createState() => _CompleteCompanySignUpState();
@@ -28,10 +26,10 @@ class _CompleteCompanySignUpState extends State<CompleteCompanySignUp> {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController websiteController = TextEditingController();
   TextEditingController workController = TextEditingController();
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  GlobalKey<FormState> _formworkKey = GlobalKey<FormState>();
-  XFile? imageProfile;
-  XFile? imageIDCard;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formworkKey = GlobalKey<FormState>();
+  String? imageProfile;
+  String? imageIDCard;
   WorkTypeViewModel wtVM = WorkTypeViewModel();
   final ImagePicker picker = ImagePicker();
   int worktype_ID = 0;
@@ -225,10 +223,7 @@ class _CompleteCompanySignUpState extends State<CompleteCompanySignUp> {
                                 if (_formKey.currentState!.validate()) {
                                   if (imageProfile != null &&
                                       imageIDCard != null) {
-                                    final imageBytes1 =
-                                        await imageProfile!.readAsBytes();
-                                    final imageBytes2 =
-                                        await imageIDCard!.readAsBytes();
+                                   
                                         User user=ModalRoute.of(context)
                                       ?.settings
                                       .arguments as User; 
@@ -239,8 +234,8 @@ class _CompleteCompanySignUpState extends State<CompleteCompanySignUp> {
                                         workTypeId: worktype_ID,
                                         establishDate: selectedDate!.format('yyyy-MM-dd', 'en_US'),
                                         website: websiteController.text,
-                                        image: Uint8List.fromList(imageBytes1),
-                                        idCard: Uint8List.fromList(imageBytes2));
+                                        image: imageProfile,
+                                        idCard: imageIDCard);
                                         DBHelper.database.companydao.insertCompany(company);
                                     onTapContnueBtn(context);
                                   } else {
@@ -251,7 +246,7 @@ class _CompleteCompanySignUpState extends State<CompleteCompanySignUp> {
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(20)),
-                                            child: Text("Choose Images First")),
+                                            child: const Text("Choose Images First")),
                                         actions: [
                                           CustomElevatedButton(
                                             text: "Close",
@@ -360,7 +355,7 @@ class _CompleteCompanySignUpState extends State<CompleteCompanySignUp> {
 
   Future getImage(ImageSource media) async {
     var img = await picker.pickImage(source: media);
-    return img;
+    return img!.path;
   }
 
   onTapImgImage(BuildContext context) {

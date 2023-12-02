@@ -9,7 +9,7 @@ import '../../../core/validation.dart';
 
 // ignore_for_file: must_be_immutable
 class SignUpCompleteAccountScreen extends StatefulWidget {
-  SignUpCompleteAccountScreen({Key? key}) : super(key: key);
+  const SignUpCompleteAccountScreen({Key? key}) : super(key: key);
 
   @override
   State<SignUpCompleteAccountScreen> createState() =>
@@ -30,7 +30,7 @@ class _SignUpCompleteAccountScreenState
   bool obsecure1 = true;
   bool obsecure2 = true;
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -73,9 +73,11 @@ class _SignUpCompleteAccountScreenState
                                 alignment: Alignment.center,
                                 child: Padding(
                                     padding: getPadding(top: 9),
-                                    child: Text("Lorem ipsum dolor sit amet",
-                                        style: CustomTextStyles
-                                            .titleSmallBluegray400_1))),
+                                    // child: Text("Lorem ipsum dolor sit amet",
+                                    //     style: CustomTextStyles
+                                    //         .titleSmallBluegray400_1)
+                                    // 
+                            )),
                             Padding(
                                 padding: getPadding(top: 33),
                                 child: Text("First Name",

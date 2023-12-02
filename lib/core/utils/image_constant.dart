@@ -80,7 +80,8 @@ class ImageConstant {
   // Profile images
   static String imgBg = '$imagePath/img_bg.png';
 
-  static String img63 = '$imagePath/img_63.JPG';
+  static String img63 = '$imagePath/profile.png';
+  static String profile = '$imagePath/profile.png';
 
   // Settings images
   static String imgPerson = '$imagePath/img_person.svg';
@@ -130,6 +131,8 @@ class ImageConstant {
   static String imgClose = '$imagePath/img_close.svg';
 
   static String imgSearch = '$imagePath/img_search.svg';
+  static String favorite = '$imagePath/favorite.svg';
+  static String favoriteun = '$imagePath/favoriteun.svg';
 
   static String imgImage50x50 = '$imagePath/img_image_50x50.png';
 

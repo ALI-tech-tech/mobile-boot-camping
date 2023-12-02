@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:jobsfinder/core/app_export.dart';
 import 'package:flutter/material.dart';
 

@@ -9,7 +9,7 @@ import '../../viewmodel/user_view_model.dart';
 
 // ignore_for_file: must_be_immutable
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -19,9 +19,9 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  UserViewModel uVM=UserViewModel();
+  UserViewModel uVM = UserViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     style: theme.textTheme.headlineSmall)),
                             Padding(
                                 padding: getPadding(top: 11),
-                                child: Text("Lorem ipsum dolor sit amet",
+                                child: Text("",
                                     style: CustomTextStyles
                                         .titleSmallBluegray400_1)),
                             CustomOutlinedButton(
@@ -64,7 +64,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 leftIcon: Container(
                                     margin: getMargin(right: 12),
                                     child: CustomImageView(
-                                        svgPath: ImageConstant.imgGooglesymbol1)),
+                                        svgPath:
+                                            ImageConstant.imgGooglesymbol1)),
                                 buttonStyle: CustomButtonStyles.outlinePrimary,
                                 buttonTextStyle: theme.textTheme.titleMedium!),
                             CustomOutlinedButton(
@@ -78,27 +79,32 @@ class _LoginScreenState extends State<LoginScreen> {
                                 buttonStyle: CustomButtonStyles.outlinePrimary,
                                 buttonTextStyle: theme.textTheme.titleMedium!),
                             Padding(
-                                padding: getPadding(left: 33, top: 26, right: 33),
+                                padding:
+                                    getPadding(left: 33, top: 26, right: 33),
                                 child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                          padding: getPadding(top: 8, bottom: 8),
+                                          padding:
+                                              getPadding(top: 8, bottom: 8),
                                           child: SizedBox(
                                               width: getHorizontalSize(62),
-                                              child: Divider())),
+                                              child: const Divider())),
                                       Padding(
                                           padding: getPadding(left: 12),
                                           child: Text("Or continue with",
                                               style: CustomTextStyles
                                                   .titleSmallBluegray300)),
                                       Padding(
-                                          padding: getPadding(top: 8, bottom: 8),
+                                          padding:
+                                              getPadding(top: 8, bottom: 8),
                                           child: SizedBox(
                                               width: getHorizontalSize(74),
                                               child: Divider(
-                                                  indent: getHorizontalSize(12))))
+                                                  indent:
+                                                      getHorizontalSize(12))))
                                     ])),
                             Align(
                                 alignment: Alignment.centerLeft,
@@ -124,6 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         style: theme.textTheme.titleSmall))),
                             CustomTextFormField(
                                 controller: passController,
+                                obscureText: true,
                                 margin: getMargin(top: 9),
                                 hintText: "Enter your password",
                                 hintStyle:
@@ -132,30 +139,41 @@ class _LoginScreenState extends State<LoginScreen> {
                                 textInputType: TextInputType.emailAddress,
                                 contentPadding: getPadding(
                                     left: 12, top: 15, right: 12, bottom: 15)),
-                                    
                             CustomElevatedButton(
                                 text: "Continue with Email",
                                 margin: getMargin(top: 40),
                                 buttonStyle: CustomButtonStyles.fillPrimary,
-                                onTap: ()async {
-                                  User user=await uVM.readOneUser(emailController.text,passController.text );
-                                  if (user.email!=null) {
+                                onTap: () async {
+                                  User user = await uVM.readOneUser(
+                                      emailController.text,
+                                      passController.text);
+                                  if (user.id != null) {
+                                    uVM.storeUser(user);
                                     onTapContinuewith(context);
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                        content: const Text(
+                                            "you have not account , please register first"),
+                                        actions: [
+                                          CustomElevatedButton(
+                                            buttonStyle:
+                                                CustomButtonStyles.fillPrimary,
+                                            text: "Register Now",
+                                            onTap: () => Navigator.pushNamed(
+                                                context,
+                                                AppRoutes
+                                                    .signUpCreateAcountScreen),
+                                          ),
+                                        ],
+                                      ),
+                                    );
                                   }
-                                  else{
-                                    await showDialog(context: context, builder: (context) => AlertDialog(
-                                      content: Text("you have not account , please register first"),
-                                      actions: [
-                                        CustomElevatedButton(text: "Register Now", 
-                                        onTap: () => Navigator.pushNamed(context, AppRoutes.signUpCreateAcountScreen),
-                                        ),
-                                      ],
-                                    ),);
-                                  }
-                                  
                                 }),
                             Padding(
-                                padding: getPadding(left: 41, top: 26, right: 41),
+                                padding:
+                                    getPadding(left: 41, top: 26, right: 41),
                                 child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -181,7 +199,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: RichText(
                                     text: TextSpan(children: [
                                       TextSpan(
-                                          text: "By signing up you agree to our ",
+                                          text:
+                                              "By signing up you agree to our ",
                                           style: CustomTextStyles
                                               .titleSmallBluegray400SemiBold),
                                       TextSpan(
@@ -207,7 +226,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   onTapContinuewith(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.homeContainerScreen);
+    Navigator.pushNamedAndRemoveUntil(
+        context, AppRoutes.homeContainerScreen, (route) => false);
   }
 
   onTapTxtLargelabelmediu(BuildContext context) {

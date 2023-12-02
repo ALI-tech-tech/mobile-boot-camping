@@ -2,7 +2,7 @@ import 'package:jobsfinder/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomBar extends StatefulWidget {
-  CustomBottomBar({this.onChanged});
+  CustomBottomBar({super.key, this.onChanged});
 
   Function(BottomBarEnum)? onChanged;
 
@@ -21,17 +21,17 @@ class CustomBottomBarState extends State<CustomBottomBar> {
       type: BottomBarEnum.Home,
     ),
     BottomMenuModel(
-      icon: ImageConstant.imgNavmessage,
-      activeIcon: ImageConstant.imgNavmessage,
-      title: "Message",
+      icon: ImageConstant.favoriteun,
+      activeIcon: ImageConstant.favorite,
+      title: "Favorite",
       type: BottomBarEnum.Message,
     ),
-    BottomMenuModel(
-      icon: ImageConstant.imgNavsaved,
-      activeIcon: ImageConstant.imgNavsaved,
-      title: "Saved",
-      type: BottomBarEnum.Saved,
-    ),
+    // BottomMenuModel(
+    //   icon: ImageConstant.imgNavsaved,
+    //   activeIcon: ImageConstant.imgNavsaved,
+    //   title: "Saved",
+    //   type: BottomBarEnum.Saved,
+    // ),
     BottomMenuModel(
       icon: ImageConstant.imgNavprofile,
       activeIcon: ImageConstant.imgNavprofile,
@@ -51,7 +51,7 @@ class CustomBottomBarState extends State<CustomBottomBar> {
             color: theme.colorScheme.primary.withOpacity(0.08),
             spreadRadius: getHorizontalSize(2),
             blurRadius: getHorizontalSize(2),
-            offset: Offset(
+            offset: const Offset(
               0,
               -4,
             ),
@@ -74,6 +74,7 @@ class CustomBottomBarState extends State<CustomBottomBar> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 CustomImageView(
+                  
                   svgPath: bottomMenuList[index].icon,
                   height: getSize(24),
                   width: getSize(24),
@@ -134,6 +135,7 @@ enum BottomBarEnum {
   Message,
   Saved,
   Profile,
+  Settings
 }
 
 class BottomMenuModel {
@@ -154,12 +156,14 @@ class BottomMenuModel {
 }
 
 class DefaultWidget extends StatelessWidget {
+  const DefaultWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.all(10),
-      child: Center(
+      padding: const EdgeInsets.all(10),
+      child: const Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,

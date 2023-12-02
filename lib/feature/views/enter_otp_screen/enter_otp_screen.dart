@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/otp.dart';
 
 class EnterOtpScreen extends StatefulWidget {
-   EnterOtpScreen({Key? key}) : super(key: key);
+   const EnterOtpScreen({Key? key}) : super(key: key);
 
   @override
   State<EnterOtpScreen> createState() => _EnterOtpScreenState();
@@ -15,7 +15,7 @@ class EnterOtpScreen extends StatefulWidget {
 
 class _EnterOtpScreenState extends State<EnterOtpScreen> {
   
-  TextEditingController _otpcontroller=TextEditingController();
+  final TextEditingController _otpcontroller=TextEditingController();
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
@@ -51,9 +51,9 @@ class _EnterOtpScreenState extends State<EnterOtpScreen> {
                                         "We have just sent you 4 digit code via your email ",
                                     style: CustomTextStyles
                                         .titleSmallBluegray400_3),
-                                TextSpan(
-                                    text: "example@gmail.com",
-                                    style: CustomTextStyles.titleSmallPrimary_1)
+                                // TextSpan(
+                                //     text: "example@gmail.com",
+                                //     style: CustomTextStyles.titleSmallPrimary_1)
                               ]),
                               textAlign: TextAlign.center)),
                       CustomPinCodeTextField(
@@ -75,7 +75,7 @@ class _EnterOtpScreenState extends State<EnterOtpScreen> {
                             }
                             else{
                               await showDialog(context: context,
-                               builder: (context) => AlertDialog(content: Text("Wrong code"),actions: [
+                               builder: (context) => AlertDialog(content: const Text("Wrong code"),actions: [
                                 CustomElevatedButton(text: "OK",buttonStyle: CustomButtonStyles.fillPrimary,onTap: (){
                                   Navigator.pop(context);
                                 },)

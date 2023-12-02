@@ -1,3 +1,4 @@
+
 import 'package:floor/floor.dart';
 
 import '../entities/seeker.dart';
@@ -10,6 +11,8 @@ abstract class SeekerDao {
 
   @Query('SELECT * FROM seeker WHERE id = :id')
   Future<Seeker?> getSeekerById(int id);
+@Query('SELECT * FROM seeker WHERE user_id = :id limit 1')
+  Future<Seeker?> getSeekerByUserId(int id);
 
   @insert
   Future<int?> insertSeeker(Seeker seeker);

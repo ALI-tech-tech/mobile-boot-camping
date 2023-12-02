@@ -1,4 +1,3 @@
-import 'dart:typed_data';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:jobsfinder/core/app_export.dart';
@@ -12,11 +11,10 @@ import 'package:jobsfinder/helpers/db_helper.dart';
 
 import '../../../core/localdatabase/entities/user.dart';
 import '../../../core/validation.dart';
-import '../../../core/widgets/custom_drop_down.dart';
 
 // ignore_for_file: must_be_immutable
 class CompleteSeekerSignUp extends StatefulWidget {
-  CompleteSeekerSignUp({Key? key}) : super(key: key);
+  const CompleteSeekerSignUp({Key? key}) : super(key: key);
 
   @override
   State<CompleteSeekerSignUp> createState() => _CompleteSeekerSignUpState();
@@ -30,8 +28,8 @@ class _CompleteSeekerSignUpState extends State<CompleteSeekerSignUp> {
   TextEditingController majorController = TextEditingController();
   TextEditingController univerController = TextEditingController();
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  XFile? imageProfile;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String? imageProfile;
   DateTime? startdate;
   DateTime? enddate;
 
@@ -197,7 +195,7 @@ class _CompleteSeekerSignUpState extends State<CompleteSeekerSignUp> {
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(20)),
-                                            child: Text("Choose Images First")),
+                                            child: const Text("Choose Images First")),
                                         actions: [
                                           CustomElevatedButton(
                                             text: "Close",
@@ -270,7 +268,7 @@ class _CompleteSeekerSignUpState extends State<CompleteSeekerSignUp> {
 
   Future getImage(ImageSource media) async {
     var img = await picker.pickImage(source: media);
-    return img;
+    return img!.path;
   }
 
   onTapImgImage(BuildContext context) {
@@ -278,11 +276,10 @@ class _CompleteSeekerSignUpState extends State<CompleteSeekerSignUp> {
   }
 
   _addseeker(User user) async {
-    final imageBytes1 = await imageProfile!.readAsBytes();
     
     Seeker seeker = Seeker(
         userId: user.id!,
-        image: Uint8List.fromList(imageBytes1),
+        image: imageProfile,
         descrip: descriptionController.text);
     int? id= await DBHelper.database.seekerdao.insertSeeker(seeker);
     if (id!=null) {

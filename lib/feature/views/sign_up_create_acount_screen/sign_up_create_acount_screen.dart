@@ -7,7 +7,7 @@ import 'package:jobsfinder/feature/viewmodel/user_view_model.dart';
 
 // ignore_for_file: must_be_immutable
 class SignUpCreateAcountScreen extends StatefulWidget {
-  SignUpCreateAcountScreen({Key? key}) : super(key: key);
+  const SignUpCreateAcountScreen({Key? key}) : super(key: key);
 
   @override
   State<SignUpCreateAcountScreen> createState() =>
@@ -17,7 +17,7 @@ class SignUpCreateAcountScreen extends StatefulWidget {
 class _SignUpCreateAcountScreenState extends State<SignUpCreateAcountScreen> {
   TextEditingController emailController = TextEditingController();
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   UserViewModel uVM = UserViewModel();
   bool isFoundmail = false;
@@ -57,9 +57,10 @@ class _SignUpCreateAcountScreenState extends State<SignUpCreateAcountScreen> {
                                   style: theme.textTheme.headlineSmall)),
                           Padding(
                               padding: getPadding(top: 11),
-                              child: Text("Lorem ipsum dolor sit amet",
-                                  style:
-                                      CustomTextStyles.titleMediumBluegray400)),
+                              // child: Text("Lorem ipsum dolor sit amet",
+                              //     style:
+                              //         CustomTextStyles.titleMediumBluegray400)
+                              ),
                           CustomOutlinedButton(
                               height: getVerticalSize(56),
                               text: "Continue with Google",
@@ -90,7 +91,7 @@ class _SignUpCreateAcountScreenState extends State<SignUpCreateAcountScreen> {
                                         padding: getPadding(top: 8, bottom: 8),
                                         child: SizedBox(
                                             width: getHorizontalSize(62),
-                                            child: Divider())),
+                                            child: const Divider())),
                                     Padding(
                                         padding: getPadding(left: 12),
                                         child: Text("Or continue with",
@@ -197,14 +198,15 @@ class _SignUpCreateAcountScreenState extends State<SignUpCreateAcountScreen> {
   }
 
   _validateEmail(String value) {
-    if (!value!.isEmpty) {
+    if (value.isNotEmpty) {
       if (isValidEmail(value)) {
         return List.generate(uVM.allUsers.length, (index) => uVM.allUsers[index].email)
                 .contains(value)
             ? "Email Found Before"
             : null;
-      } else
+      } else {
         return "Email not Correct";
+      }
     } else {
       return "Email is Empty";
     }

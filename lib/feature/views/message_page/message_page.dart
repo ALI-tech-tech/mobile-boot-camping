@@ -1,9 +1,11 @@
+import '../../../core/localdatabase/entities/job_post.dart';
+import '../../../helpers/db_helper.dart';
+import '../home_page/widgets/home_item_widget.dart';
 import '../message_page/widgets/message_item_widget.dart';
 import 'package:jobsfinder/core/app_export.dart';
 import 'package:jobsfinder/core/widgets/app_bar/appbar_image.dart';
 import 'package:jobsfinder/core/widgets/app_bar/appbar_title.dart';
 import 'package:jobsfinder/core/widgets/app_bar/custom_app_bar.dart';
-import 'package:jobsfinder/core/widgets/custom_elevated_button.dart';
 import 'package:jobsfinder/core/widgets/custom_search_view.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +32,7 @@ class MessagePage extends StatelessWidget {
                       onTapArrowbackone(context);
                     }),
                 centerTitle: true,
-                title: AppbarTitle(text: "Message")),
+                title: AppbarTitle(text: "Favorites")),
             body: Container(
                 width: double.maxFinite,
                 padding: getPadding(all: 24),
@@ -61,39 +63,55 @@ class MessagePage extends StatelessWidget {
                       Expanded(
                           child: Padding(
                               padding: getPadding(top: 24),
-                              child: ListView.separated(
-                                  //physics: NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  separatorBuilder: (context, index) {
-                                    return Padding(
-                                        padding:
-                                            getPadding(top: 7.5, bottom: 7.5),
-                                        child: SizedBox(
-                                            width: getHorizontalSize(327),
-                                            child: Divider(
-                                                height: getVerticalSize(1),
-                                                thickness: getVerticalSize(1),
-                                                color: appTheme.indigo50)));
-                                  },
-                                  itemCount: 20,
-                                  itemBuilder: (context, index) {
-                                    return MessageItemWidget(
-                                        onTapRowesther: () {
-                                      onTapRowesther(context);
-                                    });
-                                  }))),
-                      // Spacer(),
-                      // CustomElevatedButton(
-                      //     height: getVerticalSize(46),
-                      //     width: getHorizontalSize(137),
-                      //     text: "New Chat",
-                      //     leftIcon: Container(
-                      //         margin: getMargin(right: 4),
-                      //         child: CustomImageView(
-                      //             svgPath: ImageConstant.imgPlusGray5001)),
-                      //     buttonStyle: CustomButtonStyles.fillPrimaryTL20,
-                      //     buttonTextStyle: CustomTextStyles.titleSmallGray5001)
-                    ]))));
+                              child: 
+                              FutureBuilder(
+                      future: DBHelper.database.jobpostdao.getAllJobPosts(),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          if (snapshot.hasData) {
+                            return ListView.separated(
+                              //physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              separatorBuilder: (
+                                context,
+                                index,
+                              ) {
+                                return SizedBox(
+                                  height: getVerticalSize(16),
+                                );
+                              },
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (context, index) {
+                                print((snapshot.data[index] as JobPost)
+                                    .companyId);
+                
+                                //Company co=cVM.allCompanies.where((element) => element.id==(snapshot.data[index] as JobPost).companyId,).first;
+                                return HomeItemWidget(
+                                    jpost: snapshot.data[index] as JobPost);
+                              },
+                            );
+                          } else {
+                            return Center(
+                              child: Text(
+                                "EMPTY",
+                                style: TextStyle(
+                                    fontSize: 50, color: Colors.black),
+                              ),
+                            );
+                          }
+                        }
+                        return CircularProgressIndicator();
+                      },
+                    ),
+                
+                                  )
+                                  
+                                  ),
+                      
+                    
+                    ]))
+                    )
+                    );
   }
 
  

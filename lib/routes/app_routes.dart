@@ -9,6 +9,7 @@ import '../feature/views/login_screen/login_screen.dart';
 import '../feature/views/onboarding_one_screen/onboarding_one_screen.dart';
 import '../feature/views/onboarding_three_screen/onboarding_three_screen.dart';
 import '../feature/views/onboarding_two_screen/onboarding_two_screen.dart';
+import '../feature/views/settings_screen/settings_screen.dart';
 import '../feature/views/sign_up_complete_account_screen/sign_up_complete_account_screen.dart';
 import '../feature/views/sign_up_create_acount_screen/sign_up_create_acount_screen.dart';
 import '../feature/views/splash_screen/splash_screen.dart';
@@ -96,20 +97,20 @@ class AppRoutes {
 
   static Map<String, WidgetBuilder> routes = {
 
-    splashScreen: (context) => SplashScreen(),
+    splashScreen: (context) => const SplashScreen(),
     onboardingOneScreen: (context) => OnboardingOneScreen(),
     onboardingTwoScreen: (context) => OnboardingTwoScreen(),
     onboardingThreeScreen: (context) => OnboardingThreeScreen(),
-    signUpCreateAcountScreen: (context) => SignUpCreateAcountScreen(),
-    signUpCompleteAccountScreen: (context) => SignUpCompleteAccountScreen(),
-    jobTypeScreen: (context) => JobTypeScreen(),
-    completecompanysignUpScreen:(context) => CompleteCompanySignUp(),
-    completeseekersignUpScreen:(context) => CompleteSeekerSignUp(),
+    signUpCreateAcountScreen: (context) => const SignUpCreateAcountScreen(),
+    signUpCompleteAccountScreen: (context) => const SignUpCompleteAccountScreen(),
+    jobTypeScreen: (context) => const JobTypeScreen(),
+    completecompanysignUpScreen:(context) => const CompleteCompanySignUp(),
+    completeseekersignUpScreen:(context) => const CompleteSeekerSignUp(),
     // speciallizationScreen: (context) => SpeciallizationScreen(),
     // selectACountryScreen: (context) => SelectACountryScreen(),
-    loginScreen: (context) => LoginScreen(),
-    enterOtpScreen: (context) => EnterOtpScreen(),
-    homeContainerScreen: (context) => HomeContainerScreen(),
+    loginScreen: (context) => const LoginScreen(),
+    enterOtpScreen: (context) => const EnterOtpScreen(),
+    homeContainerScreen: (context) => const HomeContainerScreen(),
     // searchScreen: (context) => SearchScreen(),
     // jobDetailsTabContainerScreen: (context) => JobDetailsTabContainerScreen(),
     // messageActionScreen: (context) => MessageActionScreen(),
@@ -117,7 +118,7 @@ class AppRoutes {
     // applyJobScreen: (context) => ApplyJobScreen(),
     // notificationsMyProposalsTabContainerScreen: (context) =>
     //     NotificationsMyProposalsTabContainerScreen(),
-    // settingsScreen: (context) => SettingsScreen(),
+    settingsScreen: (context) => SettingsScreen(),
     // personalInfoScreen: (context) => PersonalInfoScreen(),
     // experienceSettingScreen: (context) => ExperienceSettingScreen(),
     // newPositionScreen: (context) => NewPositionScreen(),

@@ -53,15 +53,15 @@ class SliderthebestapItemWidget extends StatelessWidget {
               padding: getPadding(
                 top: 19,
               ),
-              child: Text(
-                "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem . ",
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: CustomTextStyles.titleSmallBluegray300.copyWith(
-                  height: 1.57,
-                ),
-              ),
+              // child: Text(
+              //   "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem . ",
+              //   maxLines: 3,
+              //   overflow: TextOverflow.ellipsis,
+              //   textAlign: TextAlign.center,
+              //   style: CustomTextStyles.titleSmallBluegray300.copyWith(
+              //     height: 1.57,
+              //   ),
+              // ),
             ),
             CustomElevatedButton(
               width: getHorizontalSize(101),

@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class CustomImageView extends StatelessWidget {
 
   ///[file] is required parameter for fetching image file
   File? file;
-
+  Uint8List? imagbyte;
   double? height;
   double? width;
   Color? color;
@@ -32,10 +33,11 @@ class CustomImageView extends StatelessWidget {
 
   ///a [CustomImageView] it can be used for showing any type of images
   /// it will shows the placeholder image if image is not found on network image
-  CustomImageView({
+  CustomImageView({super.key, 
     this.url,
     this.imagePath,
     this.svgPath,
+    this.imagbyte,
     this.file,
     this.height,
     this.width,
@@ -98,7 +100,7 @@ class CustomImageView extends StatelessWidget {
 
   Widget _buildImageView() {
     if (svgPath != null && svgPath!.isNotEmpty) {
-      return Container(
+      return SizedBox(
         height: height,
         width: width,
         child: SvgPicture.asset(
@@ -124,7 +126,7 @@ class CustomImageView extends StatelessWidget {
         fit: fit,
         imageUrl: url!,
         color: color,
-        placeholder: (context, url) => Container(
+        placeholder: (context, url) => SizedBox(
           height: 30,
           width: 30,
           child: LinearProgressIndicator(
@@ -147,7 +149,15 @@ class CustomImageView extends StatelessWidget {
         fit: fit ?? BoxFit.cover,
         color: color,
       );
+    } else if (imagePath != null && imagePath!.isNotEmpty) {
+      return Image.memory(
+        imagbyte!,
+        height: height,
+        width: width,
+        fit: fit ?? BoxFit.cover,
+        color: color,
+      );
     }
-    return SizedBox();
+    return const SizedBox();
   }
 }

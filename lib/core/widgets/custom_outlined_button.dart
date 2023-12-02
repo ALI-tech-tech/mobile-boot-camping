@@ -3,8 +3,8 @@ import 'package:jobsfinder/core/widgets/base_button.dart';
 import 'package:flutter/material.dart';
 
 class CustomOutlinedButton extends BaseButton {
-  CustomOutlinedButton({
-    Key? key,
+  const CustomOutlinedButton({super.key, 
+    
     this.decoration,
     this.leftIcon,
     this.rightIcon,
@@ -49,8 +49,8 @@ class CustomOutlinedButton extends BaseButton {
   }
 
   Widget get buildOutlinedButtonWidget => Container(
-        height: this.height ?? getVerticalSize(44),
-        width: this.width ?? double.maxFinite,
+        height: height ?? getVerticalSize(44),
+        width: width ?? double.maxFinite,
         margin: margin,
         decoration: decoration,
         child: OutlinedButton(
