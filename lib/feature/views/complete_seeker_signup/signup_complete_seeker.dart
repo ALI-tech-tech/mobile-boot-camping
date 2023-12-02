@@ -70,9 +70,10 @@ class _CompleteSeekerSignUpState extends State<CompleteSeekerSignUp> {
                                 alignment: Alignment.center,
                                 child: Padding(
                                     padding: getPadding(top: 9),
-                                    child: Text("Lorem ipsum dolor sit amet",
-                                        style: CustomTextStyles
-                                            .titleSmallBluegray400_1))),
+                                    // child: Text("Lorem ipsum dolor sit amet",
+                                    //     style: CustomTextStyles
+                                    //         .titleSmallBluegray400_1) 
+                            )),
                             Padding(
                                 padding: getPadding(top: 18),
                                 child: Text("Major",

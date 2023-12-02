@@ -43,7 +43,7 @@ class MessagePage extends StatelessWidget {
                       CustomSearchView(
                           margin: getMargin(top: 4),
                           controller: searchController,
-                          hintText: "Search Message...",
+                          hintText: "Search Favorite...",
                           hintStyle: CustomTextStyles.titleMediumBluegray400,
                           prefix: Container(
                               margin: getMargin(

@@ -234,7 +234,7 @@ class ProfilePage extends StatelessWidget {
                                             margin:
                                                 getMargin(top: 14, right: 22),
                                             child: Text(
-                                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero, cursus molestie nullam ac pharetra est nec enim. Vel eleifend semper nunc faucibus donec pretium.",
+                                                "About me",
                                                 maxLines: 5,
                                                 overflow: TextOverflow.ellipsis,
                                                 style: CustomTextStyles
@@ -282,7 +282,7 @@ class ProfilePage extends StatelessWidget {
                                                 runSpacing: getVerticalSize(12),
                                                 spacing: getHorizontalSize(12),
                                                 children: List<Widget>.generate(
-                                                    8,
+                                                    2,
                                                     (index) =>
                                                         ChipviewskillsItemWidget())))
                                       ])),
@@ -341,7 +341,7 @@ class ProfilePage extends StatelessWidget {
                                                               color: appTheme
                                                                   .indigo50)));
                                                 },
-                                                itemCount: 3,
+                                                itemCount: 1,
                                                 itemBuilder: (context, index) {
                                                   return ProfileItemWidget();
                                                 }))

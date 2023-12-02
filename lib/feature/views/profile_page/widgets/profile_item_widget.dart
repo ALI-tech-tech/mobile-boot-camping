@@ -18,7 +18,7 @@ class ProfileItemWidget extends StatelessWidget {
         alignment: Alignment.topLeft,
         children: [
           CustomImageView(
-            svgPath: ImageConstant.imgLogoDeepOrange700,
+           // svgPath: ImageConstant.imgLogoDeepOrange700,
             height: getSize(32),
             width: getSize(32),
             alignment: Alignment.topLeft,
@@ -38,7 +38,7 @@ class ProfileItemWidget extends StatelessWidget {
                     all: 8,
                   ),
                   child: CustomImageView(
-                    svgPath: ImageConstant.imgUser,
+                   // svgPath: ImageConstant.imgUser,
                   ),
                 ),
                 Padding(

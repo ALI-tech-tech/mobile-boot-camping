@@ -43,60 +43,64 @@ class SettingsScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Container(
-                                  padding: getPadding(top: 13, bottom: 13),
-                                  decoration: AppDecoration.fillPrimary
-                                      .copyWith(
-                                          borderRadius: BorderRadiusStyle
-                                              .roundedBorder16),
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Padding(
-                                            padding:
-                                                getPadding(top: 3, bottom: 2),
-                                            child: SizedBox(
-                                                height: getSize(64),
-                                                width: getSize(64),
-                                                child:
-                                                    CircularProgressIndicator(
-                                                        value: 0.5,
-                                                        strokeWidth:
-                                                            getHorizontalSize(
-                                                                4)))),
-                                        Padding(
-                                            padding: getPadding(top: 6),
-                                            child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Text("Profile Completeness",
-                                                      style: CustomTextStyles
-                                                          .titleMediumInterOnPrimaryContainer),
-                                                  Opacity(
-                                                      opacity: 0.8,
-                                                      child: Container(
-                                                          width:
-                                                              getHorizontalSize(
-                                                                  199),
-                                                          margin:
-                                                              getMargin(top: 6),
-                                                          child: Text(
-                                                              "Quality profiles are 5 times more likely to get hired by clients.",
-                                                              maxLines: 2,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              style: CustomTextStyles
-                                                                  .bodySmallOnPrimaryContainer
-                                                                  .copyWith(
-                                                                      height:
-                                                                          1.67))))
-                                                ]))
-                                      ])),
+                              // Container(
+                              //     padding: getPadding(top: 13, bottom: 13),
+                              //     decoration: AppDecoration.fillPrimary
+                              //         .copyWith(
+                              //             borderRadius: BorderRadiusStyle
+                              //                 .roundedBorder16),
+                              //     child: Row(
+                              //         mainAxisAlignment:
+                              //             MainAxisAlignment.spaceEvenly,
+                              //         children: [
+                              //           Padding(
+                              //               padding:
+                              //                   getPadding(top: 3, bottom: 2),
+                              //               child: SizedBox(
+                              //                   height: getSize(64),
+                              //                   width: getSize(64),
+                              //                   child:
+                              //                       CircularProgressIndicator(
+                              //                           value: 0.5,
+                              //                           strokeWidth:
+                              //                               getHorizontalSize(
+                              //                                   4)))),
+                              //           // Padding(
+                              //           //     padding: getPadding(top: 6),
+                              //           //     child: Column(
+                              //           //         crossAxisAlignment:
+                              //           //             CrossAxisAlignment.start,
+                              //           //         mainAxisAlignment:
+                              //           //             MainAxisAlignment.start,
+                              //           //         children: [
+                              //           //           Text("Profile Completeness",
+                              //           //               style: CustomTextStyles
+                              //           //                   .titleMediumInterOnPrimaryContainer),
+                              //           //           Opacity(
+                              //           //               opacity: 0.8,
+                              //           //               child: Container(
+                              //           //                   width:
+                              //           //                       getHorizontalSize(
+                              //           //                           199),
+                              //           //                   margin:
+                              //           //                       getMargin(top: 6),
+                              //           //                   child: Text(
+                              //           //                       "Quality profiles are 5 times more likely to get hired by clients.",
+                              //           //                       maxLines: 2,
+                              //           //                       overflow:
+                              //           //                           TextOverflow
+                              //           //                               .ellipsis,
+                              //           //                       style: CustomTextStyles
+                              //           //                           .bodySmallOnPrimaryContainer
+                              //           //                           .copyWith(
+                              //           //                               height:
+                              //           //                                   1.67))))
+                              //           //         ])
+                              //           //         )
+                              //         ])
+                                      
+                              //         ),
+                             
                               Align(
                                   alignment: Alignment.centerLeft,
                                   child: Padding(
@@ -420,65 +424,34 @@ class SettingsScreen extends StatelessWidget {
     }
   }
 
-  /// Navigates back to the previous screen.
-  ///
-  /// This function takes a [BuildContext] object as a parameter, which is used
-  /// to navigate back to the previous screen.
+  
   onTapArrowbackone(BuildContext context) {
     Navigator.pop(context);
   }
 
-  /// Navigates to the personalInfoScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the personalInfoScreen.
   onTapAccount(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.personalInfoScreen);
   }
 
-  /// Navigates to the experienceSettingScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the experienceSettingScreen.
+  
   onTapPrivacy(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.experienceSettingScreen);
   }
 
-  /// Navigates to the notificationsScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the notificationsScreen.
+  
   onTapNotification(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.notificationsScreen);
   }
 
-  /// Navigates to the languageScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the languageScreen.
   onTapLanguage(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.languageScreen);
   }
 
-  /// Navigates to the privacyScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the privacyScreen.
   onTapLegalandpolicie(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.privacyScreen);
   }
 
-  /// Displays an [AlertDialog] with a custom content widget using the
-  /// provided [BuildContext].
-  ///
-  /// The custom content is created using the [LogoutPopupDialog]
-  /// method and is displayed in an [AlertDialog] that fills the entire screen
-  /// with no padding.
+
   onTapTxtLargelabelmediu(BuildContext context) {
     showDialog(
         context: context,

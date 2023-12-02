@@ -37,11 +37,11 @@ class SliderthebestapItemWidget extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "افضل تطبيق ",
+                      text: " The best app for ",
                       style: theme.textTheme.headlineSmall,
                     ),
                     TextSpan(
-                      text: "للبحث عن وظيفة الاحلام",
+                      text: " Find Your Dream job  ",
                       style: theme.textTheme.headlineSmall,
                     ),
                   ],
