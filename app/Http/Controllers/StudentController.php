@@ -77,14 +77,16 @@ class StudentController extends Controller
         }
     }
 
+    
+
     function rule(Request $request)
     {
 
         return FacadesValidator::make(
             $request->all(),
             [
-                'name' => 'required|unique',
-                'email'=>'required|email',
+                'name' => 'required|unique:students,name',
+                'email'=>'required|email|unique:students,email',
             ]
         );
     }

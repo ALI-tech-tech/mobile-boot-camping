@@ -6,11 +6,13 @@ use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponse;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
+use Illuminate\Support\Facades\DB;
+
 
 
 class TeacherController extends Controller
 {
-    
+
     use ApiResponse;
     /**
      * Display a listing of the resource.
@@ -28,12 +30,11 @@ class TeacherController extends Controller
     {
         $validation = $this->rule($request);
         if ($validation->fails()) {
-            return $this->failed_response(result:$validation->errors());
+            return $this->failed_response(result: $validation->errors());
         }
         //--------------------------------------------
         $teacher = Teacher::create($request->all());
         return $this->success_response(result: $teacher, code: 201);
-   
     }
 
     /**
@@ -63,6 +64,22 @@ class TeacherController extends Controller
         }
     }
 
+    public function getTeacherByCountCourse()
+    {
+
+        // $teachers = Teacher::join('courses', 'teachers.id', '=', 'courses.teacher_id')
+        //     ->select('teachers.*', DB::raw('COUNT(courses.id) as courses_count'))
+        //     ->groupBy('teachers.id')
+        //     ->having('courses_count', '>', 2)
+        //     ->get();
+        $teachers = Teacher::join('courses', 'teachers.id', '=', 'courses.teacher_id')
+    ->select('teachers.id', 'teachers.name',  DB::raw('COUNT(courses.id) as courses_count'))
+    ->groupBy('teachers.id', 'teachers.name')
+    ->having('courses_count', '>', 2)
+    ->get();
+
+        return $this->success_response(result: $teachers, code: 200);
+    }
     /**
      * Remove the specified resource from storage.
      */
@@ -71,9 +88,9 @@ class TeacherController extends Controller
         try {
             $teacher = Teacher::findOrFail($id);
             $teacher->delete();
-            return $this->success_response(result:null,code:200);
+            return $this->success_response(result: null, code: 200);
         } catch (\Exception $e) {
-            return $this->failed_response(msg:'Teacher not found',code: 404);
+            return $this->failed_response(msg: 'Teacher not found', code: 404);
         }
     }
 
@@ -83,8 +100,8 @@ class TeacherController extends Controller
         return FacadesValidator::make(
             $request->all(),
             [
-                'name' => 'required|unique',
-                
+                'name' => 'required|unique:teachers,name',
+
             ]
         );
     }

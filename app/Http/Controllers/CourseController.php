@@ -20,6 +20,12 @@ class CourseController extends Controller
         $reault = Course::all();
         return $this->success_response($reault);
     }
+    public function getCoursesByHours(int $hours)
+    {
+        //get all courses with hours 3 and you can send any number of hours
+        $courses = Course::where('hours', $hours)->get();
+        return response()->json($courses);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -28,12 +34,17 @@ class CourseController extends Controller
     {
         $validation = $this->rule($request);
         if ($validation->fails()) {
-            return $this->failed_response(result:$validation->errors());
+            return $this->failed_response(result: $validation->errors());
         }
         //--------------------------------------------
-        $course = Course::create($request->all());
-        return $this->success_response(result: $course, code: 201);
-   
+        $createdCourses = [];
+
+        foreach ($request['courses'] as $courseData) {
+            $course = Course::create($courseData);
+            $createdCourses[] = $course;
+        }
+        //$course = Course::create($request->all());
+        return $this->success_response(result: $createdCourses , code: 201);
     }
 
     /**
@@ -71,9 +82,9 @@ class CourseController extends Controller
         try {
             $course = Course::findOrFail($id);
             $course->delete();
-            return $this->success_response(result:null,code:200);
+            return $this->success_response(result: null, code: 200);
         } catch (\Exception $e) {
-            return $this->failed_response(msg:'Course not found',code: 404);
+            return $this->failed_response(msg: 'Course not found', code: 404);
         }
     }
 
@@ -83,8 +94,10 @@ class CourseController extends Controller
         return FacadesValidator::make(
             $request->all(),
             [
-                'name' => 'required|unique',
-                'hours'=>'required',
+
+                'courses' => 'required|array',
+                'courses.*.name' => 'required|unique:courses,name',
+                'courses.*.hours' => 'required|integer',
             ]
         );
     }

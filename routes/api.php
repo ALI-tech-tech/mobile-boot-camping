@@ -26,5 +26,9 @@ Route::apiResources([
     'course'=>CourseController::class,
     'student'=>StudentController::class,
     'teacher'=>TeacherController::class,
-    'courseregister'=>CourseRegistrationController::class,
+    //'courseregister'=>CourseRegistrationController::class,
 ]);
+
+Route::post('/students/{student}/courses/{course}', [CourseRegistrationController::class,'registerStudentForCourse']);  
+Route::get('/course/hour/{hour}', [CourseController::class,'getCoursesByHours']);  
+Route::get('/getTeacherByCountCourse', [TeacherController::class,'getTeacherByCountCourse']);  
