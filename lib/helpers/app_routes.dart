@@ -1,4 +1,5 @@
 import 'package:blogappwithrealapi/core/view/add_artical.dart';
+import 'package:blogappwithrealapi/core/view/addcomment.dart';
 import 'package:flutter/material.dart';
 
 import '../core/model/article.dart';
@@ -15,6 +16,7 @@ class AppRoutes {
   static const String errorNotfound = '/notfound';
   static const String addartical = '/addartical';
   static const String articaldetails = '/articaldetails';
+  static const String addcomment = '/addcomment';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -36,6 +38,10 @@ class AppRoutes {
       final article = settings.arguments as Article;
         return MaterialPageRoute(
           builder: (_) => ArticalDetailsScreen(article: article),
+        );
+      case addcomment:
+        return MaterialPageRoute(
+          builder: (_) => AddComment(),
         );
       default:
         return MaterialPageRoute(

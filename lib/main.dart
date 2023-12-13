@@ -1,5 +1,6 @@
 import 'package:blogappwithrealapi/core/view/home_screen.dart';
 import 'package:blogappwithrealapi/core/viewmodel/artical_viewmodel.dart';
+import 'package:blogappwithrealapi/core/viewmodel/comment_view_model.dart';
 import 'package:blogappwithrealapi/core/viewmodel/user_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => ArticalViewModel(),),
         ChangeNotifierProvider(create: (context) => UserViewModel(),),
+        ChangeNotifierProvider(create: (context) => CommentViewModel(),),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
