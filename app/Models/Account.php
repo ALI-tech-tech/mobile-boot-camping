@@ -13,9 +13,9 @@ class Account extends Model
         'branch_id',
         'currency',
         'type',
-        'withdraw_limit',
+        
+        'amount', 
         'is_main',
-       
     ];
    
 

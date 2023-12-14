@@ -21,7 +21,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'main_account_id',
         'is_suspended',
         'momaiaz_number',
     ];

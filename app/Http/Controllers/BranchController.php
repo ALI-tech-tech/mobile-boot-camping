@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BranchController extends Controller
@@ -23,6 +24,7 @@ class BranchController extends Controller
         $branch = Branch::create($request->all());
         return response()->json($branch, 201);
     }
+    
 
     public function update(Request $request, Branch $branch)
     {
@@ -36,4 +38,3 @@ class BranchController extends Controller
         return response()->json(['message' => 'Branch deleted successfully']);
     }
 }
-

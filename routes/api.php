@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\OperationAccountController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BankController;
@@ -33,13 +34,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // });
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth:api'])->group(function () {
 
     Route::resource('users', UserController::class);
 
 
     Route::resource('accounts', AccountController::class);
-
+    Route::resource('Operation', OperationAccountController::class);
 
     Route::resource('branchs', BranchController::class);
 });
