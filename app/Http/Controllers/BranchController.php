@@ -14,8 +14,9 @@ class BranchController extends Controller
         return response()->json($branches);
     }
 
-    public function show(Branch $branch)
+    public function show(int $id)
     {
+        $branch = Branch::find($id);
         return response()->json($branch);
     }
 

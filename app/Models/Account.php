@@ -11,10 +11,9 @@ class Account extends Model
     protected $fillable = [
         'user_id',
         'branch_id',
-        'currency',
-        'type',
-        
-        'amount', 
+        'currency_id',
+        'type_id',
+        'balance', 
         'is_main',
     ];
    

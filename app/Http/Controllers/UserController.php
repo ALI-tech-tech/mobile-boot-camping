@@ -18,8 +18,6 @@ class UserController extends Controller
     $user = Auth::user();
 
     $accountId = $request->input('account_id'); 
-    $userId = $request->user()->id; 
-    $user = User::find($userId); 
 
     if ($user && $user->accounts()->where('id', $accountId)->exists()) {
 
@@ -31,21 +29,23 @@ class UserController extends Controller
 
     return response()->json(['message' => 'Account not found.'], 404);
 }
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $userData = $request->all();
     
         
         $year = substr(date('Y'), -2);
-        $randomNumbers = Str::random(4);
+        $randomNumbers = str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
+       
         $userData['momaiaz_number'] = $year . $randomNumbers;
     
         $user = User::create($userData);
-    
+        $user->createToken('API Token')->plainTextToken;
         return response()->json($user, 201);
     }
-    public function show(User $user)
+    public function show(int $id)
     {
+        $user=User::find($id);
         return response()->json($user);
     }
 
