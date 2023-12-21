@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('currencies', function (Blueprint $table) {
             $table->id();
-            $table->string('currency');
+            $table->string('name');
+            $table->string('symbol');
             $table->decimal('withdraw_limit', 10, 2);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

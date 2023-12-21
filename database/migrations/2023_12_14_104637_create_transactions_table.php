@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('account_id');
-            $table->decimal('amount', 8, 2);
+            $table->String('momaiaz_number')->nullable;
+            $table->double('amount');
             $table->unsignedBigInteger('type_id');
             $table->timestamps();
 
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->foreign('type_id')->references('id')->on('transactiontypes')->onDelete('cascade');
+            $table->foreign('momaiaz_number')->references('momaiaz_number')->on('users')->onDelete('cascade');
         });
     }
 

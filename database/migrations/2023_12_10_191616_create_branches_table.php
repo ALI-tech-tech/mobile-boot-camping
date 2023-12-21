@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
+            $table->json('name');
             $table->string('code')->unique();
             $table->timestamps();
         });

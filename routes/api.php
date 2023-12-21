@@ -35,11 +35,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // });
 
 
-Route::post('/login', [authController::class, 'login']);
-Route::post('/logout', [authController::class, 'logout']);
+Route::get('/login', [authController::class, 'login'])->name('login');
 //'middleware' => ['auth:sanctum']
-Route::group([], function () {
-
+Route::middleware(['localization'])->group( function () {
+    Route::post('/logout', [authController::class, 'logout']);
 
     Route::get('/users', [UserController::class, 'index']);
     Route::put('/users/{id}', [UserController::class, 'update']);

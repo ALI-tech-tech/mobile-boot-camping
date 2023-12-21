@@ -5,12 +5,13 @@ use Illuminate\Support\Str;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use app\Http\Resources\User as UserResource;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = UserResource::collection(User::all());
         return response()->json($users);
     }
     public function updateMainAccount(Request $request)

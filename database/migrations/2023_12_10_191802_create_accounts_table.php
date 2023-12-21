@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
+            $table->String("account_naumber");
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('branch_id');
             $table->unsignedBigInteger('currency_id'); 
             $table->unsignedBigInteger('type_id'); 
-            $table->decimal('balance', 10, 2)->default(0);
+            $table->double('balance')->default(0);
             $table->boolean('is_main')->default(false);
+            $table->unique(['user_id','branch_id', "currency_id"]);
             $table->timestamps();
         
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

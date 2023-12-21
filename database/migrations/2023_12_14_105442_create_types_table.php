@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('types', function (Blueprint $table) {
+        Schema::create('account_types', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['saving', 'current']);
+            $table->json('name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
